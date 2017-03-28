@@ -25856,7 +25856,7 @@
                 "type": "text/javascript",
                 "exec": [
                   "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 404\"] = responseCode.code === 200;",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 404\"] = responseCode.code === 404;",
                   "",
                   "//Verifing that the response time is less than what has been declared in enviroenment variable ",
                   "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
