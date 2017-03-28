@@ -27066,7 +27066,7 @@
                   "\r",
                   "try\r",
                   "{\r",
-                  "    tests[\"Verifying that User status is Not Activated\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:deleteUserResponse'].userDetails.userStatus === \"I\";\r",
+                  "    tests[\"Verifying that User status is Not Activated\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:deleteUserResponse'].result.successFlag === true;\r",
                   "    tests[\"Verifying that User ID is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDeletionSuccessful === true ;\r",
                   "    tests[\"Verifying that Email is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.email === environment.Email ;\r",
                   "    tests[\"Verifying that First Name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.givenName === environment.firstName ;\r",
