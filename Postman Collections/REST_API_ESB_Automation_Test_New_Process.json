@@ -20426,7 +20426,7 @@
         },
         {
           "_postman_id": "9a173fde-e54a-f8ba-a087-787c4a8f9315",
-          "name": "RA-261 : Trigger Bulk Push Notification Same Entity Number",
+          "name": "Trigger Bulk Push Notification Same Entity Number",
           "event": [
             {
               "listen": "test",
@@ -20494,7 +20494,7 @@
         },
         {
           "_postman_id": "38f319a7-7359-fb83-f77e-e8283c9daed3",
-          "name": "RA-261 : Trigger Push Notification for Current Week's invalid Entity No",
+          "name": "Trigger Push Notification for Current Week's invalid Entity No",
           "event": [
             {
               "listen": "test",
