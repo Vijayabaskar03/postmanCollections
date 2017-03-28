@@ -24680,7 +24680,6 @@
                   "",
                   "var body = JSON.parse(responseBody);",
                   "try{",
-                  "    tests[\"Verifying that the response contails the correct Email Address\"] =  body.email === environment.Email;",
                   "    tests[\"Verifying that the status is 'activation email successfully resent'\"] =  body.status === \"activation email successfully resent to \"+environment.Email;",
                   "}",
                   "",
