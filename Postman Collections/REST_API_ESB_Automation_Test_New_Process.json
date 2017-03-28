@@ -26995,7 +26995,7 @@
         },
         {
           "_postman_id": "3d32f42d-fd56-8c48-9d74-0af3580520fa",
-          "name": "ESB Resend Activation Email - Not Enrolled copy",
+          "name": "ESB Resend Activation Email - Not In UMS",
           "event": [
             {
               "listen": "test",
