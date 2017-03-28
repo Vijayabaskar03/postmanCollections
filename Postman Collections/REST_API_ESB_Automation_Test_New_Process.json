@@ -27062,6 +27062,9 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
+                  "//Verifying that the service is returning response code 400 \r",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;\r",
+                  "\r",
                   "var jsonObject = xml2Json(responseBody);\r",
                   "\r",
                   "try\r",
