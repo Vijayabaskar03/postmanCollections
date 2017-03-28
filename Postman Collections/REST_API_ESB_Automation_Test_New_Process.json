@@ -26412,7 +26412,7 @@
         },
         {
           "_postman_id": "62bc35fc-1de9-f395-8c63-1bbe989a7331",
-          "name": "RA-263 : ESB Resend Activation Email - Not Enrolled",
+          "name": "ESB Resend Activation Email - Not Enrolled",
           "event": [
             {
               "listen": "test",
@@ -27039,7 +27039,7 @@
         },
         {
           "_postman_id": "3d32f42d-fd56-8c48-9d74-0af3580520fa",
-          "name": "RA-263 : ESB Resend Activation Email - Not In UMS",
+          "name": "ESB Resend Activation Email - Not In UMS",
           "event": [
             {
               "listen": "test",
