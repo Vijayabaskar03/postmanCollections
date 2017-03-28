@@ -27052,6 +27052,61 @@
             "description": "Generated from a curl request: \ncurl -X POST -H \\\"Content-Type: application/json\\\" -H \\\"Authorization: Basic QWRtaW5pc3RyYXRvcjoxUDF0eXRoMw==\\\" -H \\\"Cache-Control: no-cache\\\" -H \\\"Postman-Token: c6d5e0d6-fb3b-87ac-27e3-a43dfd0b64af\\\" -d '{\\\"email\\\":\\\"um@um.com\\\"}' \\\"http://%7B%7Bbaseurl%7D%7D/rest/aiaVitalityMembershipEnrollment.ws.resendActivationMail.v1\\\""
           },
           "response": []
+        },
+        {
+          "_postman_id": "c05be7af-087b-0076-5ccf-3cc89a402482",
+          "name": "Delete User in UMS",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonObject = xml2Json(responseBody);\r",
+                  "\r",
+                  "try\r",
+                  "{\r",
+                  "    tests[\"Verifying that User status is Not Activated\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:deleteUserResponse'].userDetails.userStatus === \"I\";\r",
+                  "    tests[\"Verifying that User ID is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDeletionSuccessful === true ;\r",
+                  "    tests[\"Verifying that Email is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.email === environment.Email ;\r",
+                  "    tests[\"Verifying that First Name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.givenName === environment.firstName ;\r",
+                  "    tests[\"Verifying that Last name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.surname === environment.lastName ;\r",
+                  "    tests[\"Verifying that Member Type is as passed to UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.memberType === \"GROUP\" ;\r",
+                  "    tests[\"Verifying that User Groups List is VITALITY_AWAITING_ACTIVATION\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userGroupsList === \"VITALITY_AWAITING_ACTIVATION\" ;\r",
+                  "    \r",
+                  "    //Setting up the token to an environment variable to be used in subsequent requests\r",
+                  "    postman.setEnvironmentVariable(\"umsToken\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.token);\r",
+                  "    \r",
+                  "    postman.setEnvironmentVariable(\"aiaClientNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaClientNumber);\r",
+                  "    postman.setEnvironmentVariable(\"aiaVitalityMemberNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityMemberNumber);\r",
+                  "    postman.setEnvironmentVariable(\"aiaDsyPolicyNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaDsyPolicyNumber);\r",
+                  "    postman.setEnvironmentVariable(\"aiaVitalityId\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityId);\r",
+                  "}\r",
+                  "\r",
+                  "catch(err){\r",
+                  "    tests[\"Data in response does not exist\"] = false;  \r",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "https://meltvihs03.aia.biz:443/user-management-service/UsermanagementService",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/xml",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.usermanagement.aiaa.com.au\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <ser:deleteUserRequest>\r\n         <source>VITALITY</source>\r\n         <userType>?</userType>\r\n         <userDetails>\r\n            <userName>?</userName>\r\n            <userId>5spvozoyv@oivhnghntestpii.com</userId>\r\n            <userDN>?</userDN>\r\n            <email>?</email>\r\n            <givenName>?</givenName>\r\n            <surname>?</surname>\r\n            <webChannel>?</webChannel>\r\n            <token>?</token>\r\n            <fundIdentifier>?</fundIdentifier>\r\n            <eligibilityAssessorEmail>?</eligibilityAssessorEmail>\r\n            <activationURL>?</activationURL>\r\n            <consentURL>?</consentURL>\r\n            <!--1 or more repetitions:-->\r\n            <userRolesList>?</userRolesList>\r\n            <title>?</title>\r\n            <dateOfBirth>?</dateOfBirth>\r\n            <gender>?</gender>\r\n            <addressLine1>?</addressLine1>\r\n            <addressLine2>?</addressLine2>\r\n            <suburb>?</suburb>\r\n            <state>?</state>\r\n            <postcode>?</postcode>\r\n            <country>?</country>\r\n            <mobilePhone>?</mobilePhone>\r\n            <workPhone>?</workPhone>\r\n            <homePhone>?</homePhone>\r\n            <fax>?</fax>\r\n            <isRetailLifeInsured>?</isRetailLifeInsured>\r\n            <passwordRequestDate>?</passwordRequestDate>\r\n            <password>?</password>\r\n            <passwordRequestCount>?</passwordRequestCount>\r\n            <aiaProposalNumber>?</aiaProposalNumber>\r\n            <aiaProposalWritingAdviser>?</aiaProposalWritingAdviser>\r\n            <aiaCCAppTnCAcceptedDate>?</aiaCCAppTnCAcceptedDate>\r\n            <aiaCCAppTnCVersion>?</aiaCCAppTnCVersion>\r\n            <!--1 or more repetitions:-->\r\n            <userGroupsList>?</userGroupsList>\r\n            <!--1 or more repetitions:-->\r\n            <userGroupsDNList>?</userGroupsDNList>\r\n            <memberType>?</memberType>\r\n            <residentialPostcode>?</residentialPostcode>\r\n            <userStatus>?</userStatus>\r\n            <aiaClientNumber>?</aiaClientNumber>\r\n            <aiaVitalityMemberNumber>?</aiaVitalityMemberNumber>\r\n            <aiaDsyPolicyNumber>?</aiaDsyPolicyNumber>\r\n            <aiaVitalityCobrandingInfo>?</aiaVitalityCobrandingInfo>\r\n         </userDetails>\r\n      </ser:deleteUserRequest>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>"
+            },
+            "description": ""
+          },
+          "response": []
         }
       ]
     }
