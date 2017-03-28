@@ -20241,7 +20241,7 @@
         },
         {
           "_postman_id": "45f5a5ab-7531-7b8f-f730-bf0d08f9d164",
-          "name": "Trigger Push Notification for Previous Week's success",
+          "name": "RA-261 : Trigger Push Notification for Previous Week's success",
           "event": [
             {
               "listen": "test",
@@ -20342,7 +20342,7 @@
         },
         {
           "_postman_id": "be525e26-2901-6e9d-ee10-096eea18b131",
-          "name": "Trigger Push Notification for Weekly Target Communication",
+          "name": "RA-261 : Trigger Push Notification for Weekly Target Communication",
           "event": [
             {
               "listen": "test",
@@ -20426,7 +20426,7 @@
         },
         {
           "_postman_id": "9a173fde-e54a-f8ba-a087-787c4a8f9315",
-          "name": "Trigger Bulk Push Notification Same Entity Number",
+          "name": "RA-261 : Trigger Bulk Push Notification Same Entity Number",
           "event": [
             {
               "listen": "test",
@@ -20494,7 +20494,7 @@
         },
         {
           "_postman_id": "38f319a7-7359-fb83-f77e-e8283c9daed3",
-          "name": "Trigger Push Notification for Current Week's invalid Entity No",
+          "name": "RA-261 : Trigger Push Notification for Current Week's invalid Entity No",
           "event": [
             {
               "listen": "test",
@@ -20553,7 +20553,7 @@
         },
         {
           "_postman_id": "fa3f2188-a07a-5cca-7cbb-e83d79d6f6b4",
-          "name": "Trigger Push Notification for Previous Week's success invalid Entity No",
+          "name": "RA-261 : Trigger Push Notification for Previous Week's success invalid Entity No",
           "event": [
             {
               "listen": "test",
@@ -20614,7 +20614,7 @@
         },
         {
           "_postman_id": "947d5871-7c1c-27f2-7be8-fedb7c703f24",
-          "name": "Trigger Push Notification for Weekly Target Communication invalid Entity No",
+          "name": "RA-261 : Trigger Push Notification for Weekly Target Communication invalid Entity No",
           "event": [
             {
               "listen": "test",
