@@ -24680,7 +24680,7 @@
                   "",
                   "var body = JSON.parse(responseBody);",
                   "try{",
-                  "    tests[\"Verifying that the status is 'activation email successfully resent to \"+environment.Email] =  body.status === \"activation email successfully resent to \"+environment.Email+\"'\";",
+                  "    tests[\"Verifying that the status is 'activation email successfully resent to \"+environment.Email+\"'\"] =  body.status === \"activation email successfully resent to \"+environment.Email;",
                   "}",
                   "",
                   "catch(err){",
