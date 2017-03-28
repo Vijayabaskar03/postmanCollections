@@ -20553,7 +20553,7 @@
         },
         {
           "_postman_id": "fa3f2188-a07a-5cca-7cbb-e83d79d6f6b4",
-          "name": "RA-261 : Trigger Push Notification for Previous Week's success invalid Entity No",
+          "name": "Trigger Push Notification for Previous Week's success invalid Entity No",
           "event": [
             {
               "listen": "test",
