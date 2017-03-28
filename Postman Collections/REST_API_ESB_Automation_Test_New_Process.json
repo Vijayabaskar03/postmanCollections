@@ -25856,15 +25856,15 @@
                 "type": "text/javascript",
                 "exec": [
                   "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 404\"] = responseCode.code === 200;",
                   "",
                   "//Verifing that the response time is less than what has been declared in enviroenment variable ",
                   "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
                   "",
                   "var body = JSON.parse(responseBody);",
                   "try{",
-                  "    tests[\"Verifying that the response contails the correct Email Address\"] =  body.email === environment.Email;",
-                  "    tests[\"Verifying that the status is 'activation email successfully resent'\"] =  body.status === \"activation email successfully resent\";",
+                  "    // tests[\"Verifying that the response contails the correct Email Address\"] =  body.email === environment.Email;",
+                  "    tests[\"Verifying that the status is 'Not Found'\"] =  body.status === \"Not Found\";",
                   "}",
                   "",
                   "catch(err){",
@@ -25901,7 +25901,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"memberId\":\"{{memberID}}\",\r\n    \"relationshipName\":\"{{relationshipName}}\",\r\n    \"uuid\":\"{{$guid}}\"\r\n}\r\n"
+              "raw": "{\r\n\t\"memberId\":\"eraefw34234534\",\r\n    \"relationshipName\":\"{{relationshipName}}\",\r\n    \"uuid\":\"{{$guid}}\"\r\n}\r\n"
             },
             "description": "Generated from a curl request: \ncurl -X POST -H \\\"Content-Type: application/json\\\" -H \\\"Authorization: Basic QWRtaW5pc3RyYXRvcjoxUDF0eXRoMw==\\\" -H \\\"Cache-Control: no-cache\\\" -H \\\"Postman-Token: c6d5e0d6-fb3b-87ac-27e3-a43dfd0b64af\\\" -d '{\\\"email\\\":\\\"um@um.com\\\"}' \\\"http://%7B%7Bbaseurl%7D%7D/rest/aiaVitalityMembershipEnrollment.ws.resendActivationMail.v1\\\""
           },
