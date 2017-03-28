@@ -25917,7 +25917,7 @@
         },
         {
           "_postman_id": "0e92e810-fbde-df91-998a-dc1ecdf10ec1",
-          "name": "RA-153: Enrolling a Member - New Process copy",
+          "name": "RA-153: Enrolling a Member - New Process",
           "event": [
             {
               "listen": "test",
@@ -26021,6 +26021,454 @@
               "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
             },
             "description": ""
+          },
+          "response": [
+            {
+              "id": "181cad91-fbea-6913-ea5a-efb765e84acd",
+              "name": "error",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Wed, 14 Dec 2016 00:42:55 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-Backside-Transport",
+                  "name": "X-Backside-Transport",
+                  "value": "OK OK"
+                },
+                {
+                  "description": "",
+                  "key": "X-Client-IP",
+                  "name": "X-Client-IP",
+                  "value": "10.61.38.184"
+                },
+                {
+                  "description": "",
+                  "key": "X-Global-Transaction-ID",
+                  "name": "X-Global-Transaction-ID",
+                  "value": "348720"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "1537",
+              "body": "{\"response\":{}}"
+            },
+            {
+              "id": "714780d8-f44c-af70-f043-d5ffa59364b6",
+              "name": "response 1",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:13:56 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "215",
+              "body": "{\"token\":\"39b8615a-307d-419f-a503-4d4fa6c7021d\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "8d286434-e5c9-b9a3-9082-64f308f8fb66",
+              "name": "response 2",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:14:07 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "237",
+              "body": "{\"token\":\"a77eb61e-5dd3-4680-931e-49122ab21153\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "b3f1ebae-b5e1-8f69-f885-7ab7b9bb2600",
+              "name": "response 3",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:14:17 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "1830",
+              "body": "{\"token\":\"1ed2d16e-9fc9-46ed-af8e-49e5b5207e79\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            }
+          ]
+        },
+        {
+          "_postman_id": "36ee8a78-b76c-be62-b313-c4c1be3f672b",
+          "name": "RA-147 : Verifing user has been added to UMS and is InActive Status copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonObject = xml2Json(responseBody);\r",
+                  "\r",
+                  "try\r",
+                  "{\r",
+                  "    tests[\"Verifying that User status is Not Activated\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userStatus === \"I\";\r",
+                  "    tests[\"Verifying that User ID is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userId === environment.Email ;\r",
+                  "    tests[\"Verifying that Email is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.email === environment.Email ;\r",
+                  "    tests[\"Verifying that First Name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.givenName === environment.firstName ;\r",
+                  "    tests[\"Verifying that Last name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.surname === environment.lastName ;\r",
+                  "    tests[\"Verifying that Member Type is as passed to UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.memberType === \"GROUP\" ;\r",
+                  "    tests[\"Verifying that User Groups List is VITALITY_AWAITING_ACTIVATION\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userGroupsList === \"VITALITY_AWAITING_ACTIVATION\" ;\r",
+                  "    \r",
+                  "    //Setting up the token to an environment variable to be used in subsequent requests\r",
+                  "    postman.setEnvironmentVariable(\"umsToken\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.token);\r",
+                  "    \r",
+                  "    postman.setEnvironmentVariable(\"aiaClientNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaClientNumber);\r",
+                  "    postman.setEnvironmentVariable(\"aiaVitalityMemberNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityMemberNumber);\r",
+                  "    postman.setEnvironmentVariable(\"aiaDsyPolicyNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaDsyPolicyNumber);\r",
+                  "    postman.setEnvironmentVariable(\"aiaVitalityId\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityId);\r",
+                  "}\r",
+                  "\r",
+                  "catch(err){\r",
+                  "    tests[\"Data in response does not exist\"] = false;  \r",
+                  "}\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{UmsURL}}/user-management-service/UsermanagementService",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/xml",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.usermanagement.aiaa.com.au\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <ser:searchUserRequest>\n         <source>VITALITY</source>\n         <userType></userType>\n         <userDetails>\n            <userName></userName>\n            <userId></userId>\n            <userDN></userDN>\n            <email>{{Email}}</email>\n            <givenName></givenName>\n            <surname></surname>\n            <webChannel></webChannel>\n            <token></token>\n            <fundIdentifier></fundIdentifier>\n            <eligibilityAssessorEmail></eligibilityAssessorEmail>\n            <activationURL></activationURL>\n            <consentURL></consentURL>\n            <!--1 or more repetitions:-->\n            <userRolesList></userRolesList>\n            <title></title>\n            <dateOfBirth></dateOfBirth>\n            <gender></gender>\n            <addressLine1></addressLine1>\n            <addressLine2></addressLine2>\n            <suburb></suburb>\n            <state></state>\n            <postcode></postcode>\n            <country></country>\n            <mobilePhone></mobilePhone>\n            <workPhone></workPhone>\n            <homePhone></homePhone>\n            <fax></fax>\n            <isRetailLifeInsured></isRetailLifeInsured>\n            <passwordRequestDate></passwordRequestDate>\n            <password></password>\n            <passwordRequestCount></passwordRequestCount>\n            <aiaProposalNumber></aiaProposalNumber>\n            <aiaProposalWritingAdviser></aiaProposalWritingAdviser>\n            <aiaCCAppTnCAcceptedDate></aiaCCAppTnCAcceptedDate>\n            <aiaCCAppTnCVersion></aiaCCAppTnCVersion>\n            <!--1 or more repetitions:-->\n            <userGroupsList></userGroupsList>\n            <!--1 or more repetitions:-->\n            <userGroupsDNList></userGroupsDNList>\n            <memberType></memberType>\n            <residentialPostcode></residentialPostcode>\n            <userStatus></userStatus>\n            <aiaClientNumber></aiaClientNumber>\n            <aiaVitalityMemberNumber></aiaVitalityMemberNumber>\n            <aiaDsyPolicyNumber></aiaDsyPolicyNumber>\n            <aiaVitalityCobrandingInfo></aiaVitalityCobrandingInfo>\n         </userDetails>\n      </ser:searchUserRequest>\n   </soapenv:Body>\n</soapenv:Envelope>\n\n"
+            },
+            "description": "A/C:\r\nGiven that members activated their membership\r\nWhen ESB gets the action\r\nThen their membership will be activated in UMS"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "62bc35fc-1de9-f395-8c63-1bbe989a7331",
+          "name": "ESB Resend Activation Email - Activated Member copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
+                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "try{",
+                  "    tests[\"Verifying that the response contails the correct Email Address\"] =  body.email === environment.Email;",
+                  "    tests[\"Verifying that the status is 'activation email successfully resent'\"] =  body.status === \"activation email successfully resent\";",
+                  "}",
+                  "",
+                  "catch(err){",
+                  "    tests[\"Data in response does not exist\"] = false;  ",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.resendActivationMail.v1",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"memberId\":\"{{memberID}}\",\r\n    \"relationshipName\":\"{{relationshipName}}\",\r\n    \"uuid\":\"{{$guid}}\"\r\n}\r\n"
+            },
+            "description": "Generated from a curl request: \ncurl -X POST -H \\\"Content-Type: application/json\\\" -H \\\"Authorization: Basic QWRtaW5pc3RyYXRvcjoxUDF0eXRoMw==\\\" -H \\\"Cache-Control: no-cache\\\" -H \\\"Postman-Token: c6d5e0d6-fb3b-87ac-27e3-a43dfd0b64af\\\" -d '{\\\"email\\\":\\\"um@um.com\\\"}' \\\"http://%7B%7Bbaseurl%7D%7D/rest/aiaVitalityMembershipEnrollment.ws.resendActivationMail.v1\\\""
           },
           "response": []
         }
