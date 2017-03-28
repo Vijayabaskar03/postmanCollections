@@ -27067,7 +27067,7 @@
                   "try\r",
                   "{\r",
                   "    tests[\"Verifying that result status is success\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:deleteUserResponse'].result.successFlag === \"true\";\r",
-                  "    tests[\"Verifying that the deletion is successful\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDeletionSuccessful === \"true\";\r",
+                  "    tests[\"Verifying that the deletion is successful\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:deleteUserResponse'].userDeletionSuccessful === \"true\";\r",
                   "}\r",
                   "catch(err){\r",
                   "    tests[\"Data in response does not exist\"] = false;  \r",
