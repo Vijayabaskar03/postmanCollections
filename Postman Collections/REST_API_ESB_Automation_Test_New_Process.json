@@ -27090,7 +27090,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"memberId\":\"RA1490672977698\",\r\n    \"relationshipName\":\"{{relationshipName}}\",\r\n    \"uuid\":\"{{$guid}}\"\r\n}\r\n"
+              "raw": "{\r\n\t\"memberId\":\"{{memberID}}\",\r\n    \"relationshipName\":\"{{relationshipName}}\",\r\n    \"uuid\":\"{{$guid}}\"\r\n}\r\n"
             },
             "description": "Generated from a curl request: \ncurl -X POST -H \\\"Content-Type: application/json\\\" -H \\\"Authorization: Basic QWRtaW5pc3RyYXRvcjoxUDF0eXRoMw==\\\" -H \\\"Cache-Control: no-cache\\\" -H \\\"Postman-Token: c6d5e0d6-fb3b-87ac-27e3-a43dfd0b64af\\\" -d '{\\\"email\\\":\\\"um@um.com\\\"}' \\\"http://%7B%7Bbaseurl%7D%7D/rest/aiaVitalityMembershipEnrollment.ws.resendActivationMail.v1\\\""
           },
