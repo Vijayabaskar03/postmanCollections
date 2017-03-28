@@ -26472,7 +26472,7 @@
         },
         {
           "_postman_id": "16eac3aa-76ec-bc41-bd8b-915d44ea1682",
-          "name": "RA-153: Enrolling a Member - New Process copy",
+          "name": "RA-153: Enrolling a Member - New Process",
           "event": [
             {
               "listen": "test",
