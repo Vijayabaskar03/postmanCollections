@@ -26928,6 +26928,70 @@
             "description": ""
           },
           "response": []
+        },
+        {
+          "_postman_id": "ca883ba8-ca2a-81c1-5d4a-afd31cd11b33",
+          "name": "RA-147 : Verifing user has been added to UMS and is InActive Status copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonObject = xml2Json(responseBody);\r",
+                  "\r",
+                  "try\r",
+                  "{\r",
+                  "    tests[\"Verifying that User status is Not Activated\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userStatus === \"I\";\r",
+                  "    tests[\"Verifying that User ID is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userId === environment.Email ;\r",
+                  "    tests[\"Verifying that Email is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.email === environment.Email ;\r",
+                  "    tests[\"Verifying that First Name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.givenName === environment.firstName ;\r",
+                  "    tests[\"Verifying that Last name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.surname === environment.lastName ;\r",
+                  "    tests[\"Verifying that Member Type is as passed to UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.memberType === \"GROUP\" ;\r",
+                  "    tests[\"Verifying that User Groups List is VITALITY_AWAITING_ACTIVATION\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userGroupsList === \"VITALITY_AWAITING_ACTIVATION\" ;\r",
+                  "    \r",
+                  "    //Setting up the token to an environment variable to be used in subsequent requests\r",
+                  "    postman.setEnvironmentVariable(\"umsToken\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.token);\r",
+                  "    \r",
+                  "    postman.setEnvironmentVariable(\"aiaClientNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaClientNumber);\r",
+                  "    postman.setEnvironmentVariable(\"aiaVitalityMemberNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityMemberNumber);\r",
+                  "    postman.setEnvironmentVariable(\"aiaDsyPolicyNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaDsyPolicyNumber);\r",
+                  "    postman.setEnvironmentVariable(\"aiaVitalityId\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityId);\r",
+                  "}\r",
+                  "\r",
+                  "catch(err){\r",
+                  "    tests[\"Data in response does not exist\"] = false;  \r",
+                  "}\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{UmsURL}}/user-management-service/UsermanagementService",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/xml",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.usermanagement.aiaa.com.au\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <ser:searchUserRequest>\n         <source>VITALITY</source>\n         <userType></userType>\n         <userDetails>\n            <userName></userName>\n            <userId></userId>\n            <userDN></userDN>\n            <email>{{Email}}</email>\n            <givenName></givenName>\n            <surname></surname>\n            <webChannel></webChannel>\n            <token></token>\n            <fundIdentifier></fundIdentifier>\n            <eligibilityAssessorEmail></eligibilityAssessorEmail>\n            <activationURL></activationURL>\n            <consentURL></consentURL>\n            <!--1 or more repetitions:-->\n            <userRolesList></userRolesList>\n            <title></title>\n            <dateOfBirth></dateOfBirth>\n            <gender></gender>\n            <addressLine1></addressLine1>\n            <addressLine2></addressLine2>\n            <suburb></suburb>\n            <state></state>\n            <postcode></postcode>\n            <country></country>\n            <mobilePhone></mobilePhone>\n            <workPhone></workPhone>\n            <homePhone></homePhone>\n            <fax></fax>\n            <isRetailLifeInsured></isRetailLifeInsured>\n            <passwordRequestDate></passwordRequestDate>\n            <password></password>\n            <passwordRequestCount></passwordRequestCount>\n            <aiaProposalNumber></aiaProposalNumber>\n            <aiaProposalWritingAdviser></aiaProposalWritingAdviser>\n            <aiaCCAppTnCAcceptedDate></aiaCCAppTnCAcceptedDate>\n            <aiaCCAppTnCVersion></aiaCCAppTnCVersion>\n            <!--1 or more repetitions:-->\n            <userGroupsList></userGroupsList>\n            <!--1 or more repetitions:-->\n            <userGroupsDNList></userGroupsDNList>\n            <memberType></memberType>\n            <residentialPostcode></residentialPostcode>\n            <userStatus></userStatus>\n            <aiaClientNumber></aiaClientNumber>\n            <aiaVitalityMemberNumber></aiaVitalityMemberNumber>\n            <aiaDsyPolicyNumber></aiaDsyPolicyNumber>\n            <aiaVitalityCobrandingInfo></aiaVitalityCobrandingInfo>\n         </userDetails>\n      </ser:searchUserRequest>\n   </soapenv:Body>\n</soapenv:Envelope>\n\n"
+            },
+            "description": "A/C:\r\nGiven that members activated their membership\r\nWhen ESB gets the action\r\nThen their membership will be activated in UMS"
+          },
+          "response": []
         }
       ]
     }
