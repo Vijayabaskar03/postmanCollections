@@ -25917,7 +25917,7 @@
         },
         {
           "_postman_id": "0e92e810-fbde-df91-998a-dc1ecdf10ec1",
-          "name": "RA-153: Enrolling a Member - New Process",
+          "name": "RA-153: Enrolling a Member - New Process copy",
           "event": [
             {
               "listen": "test",
@@ -26349,7 +26349,7 @@
         },
         {
           "_postman_id": "36ee8a78-b76c-be62-b313-c4c1be3f672b",
-          "name": "RA-147 : Verifing user has been added to UMS and is InActive Status",
+          "name": "RA-147 : Verifing user has been added to UMS and is InActive Status copy",
           "event": [
             {
               "listen": "test",
@@ -26413,7 +26413,7 @@
         },
         {
           "_postman_id": "62bc35fc-1de9-f395-8c63-1bbe989a7331",
-          "name": "ESB Resend Activation Email - Activated Member",
+          "name": "ESB Resend Activation Email - Activated Member copy",
           "event": [
             {
               "listen": "test",
