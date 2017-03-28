@@ -25743,7 +25743,7 @@
                 "type": "text/javascript",
                 "exec": [
                   "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 400\"] = responseCode.code === 400;",
                   "",
                   "//Verifing that the response time is less than what has been declared in enviroenment variable ",
                   "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
@@ -25751,7 +25751,7 @@
                   "var body = JSON.parse(responseBody);",
                   "try{",
                   "    tests[\"Verifying that the response contails the correct Email Address\"] =  body.email === environment.Email;",
-                  "    tests[\"Verifying that the status is 'activation email successfully resent'\"] =  body.status === \"activation email successfully resent\";",
+                  "    tests[\"Verifying that the status is 'activation email successfully resent'\"] =  body.status === \"Resend Activation Mail cannot be sent for member as member has either not been enrolled or has already activated account\";",
                   "}",
                   "",
                   "catch(err){",
