@@ -25848,7 +25848,7 @@
         },
         {
           "_postman_id": "25bb1083-d0ed-04b2-e749-67744e432ea1",
-          "name": "ESB Resend Activation Email - Activated Member copy",
+          "name": "ESB Resend Activation Email - Invalid MemberID",
           "event": [
             {
               "listen": "test",
