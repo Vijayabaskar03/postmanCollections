@@ -25735,7 +25735,7 @@
         },
         {
           "_postman_id": "bf76feb9-e7fd-30fb-c7b1-ddfc98fcda27",
-          "name": "ESB Resend Activation Email - Activated Member",
+          "name": "RA-263 : ESB Resend Activation Email - Activated Member",
           "event": [
             {
               "listen": "test",
