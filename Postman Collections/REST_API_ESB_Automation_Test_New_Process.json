@@ -20426,7 +20426,7 @@
         },
         {
           "_postman_id": "9a173fde-e54a-f8ba-a087-787c4a8f9315",
-          "name": "Trigger Bulk Push Notification Same Entity Number",
+          "name": "RA-261 : Trigger Bulk Push Notification Same Entity Number",
           "event": [
             {
               "listen": "test",
@@ -20494,7 +20494,7 @@
         },
         {
           "_postman_id": "38f319a7-7359-fb83-f77e-e8283c9daed3",
-          "name": "Trigger Push Notification for Current Week's invalid Entity No",
+          "name": "RA-261 : Trigger Push Notification for Current Week's invalid Entity No",
           "event": [
             {
               "listen": "test",
@@ -20553,7 +20553,7 @@
         },
         {
           "_postman_id": "fa3f2188-a07a-5cca-7cbb-e83d79d6f6b4",
-          "name": "Trigger Push Notification for Previous Week's success invalid Entity No",
+          "name": "RA-261 : Trigger Push Notification for Previous Week's success invalid Entity No",
           "event": [
             {
               "listen": "test",
@@ -20614,7 +20614,7 @@
         },
         {
           "_postman_id": "947d5871-7c1c-27f2-7be8-fedb7c703f24",
-          "name": "Trigger Push Notification for Weekly Target Communication invalid Entity No",
+          "name": "RA-261 : Trigger Push Notification for Weekly Target Communication invalid Entity No",
           "event": [
             {
               "listen": "test",
@@ -20658,7 +20658,7 @@
         },
         {
           "_postman_id": "e03f3cb9-70d7-ab2d-628d-0ebe831567c0",
-          "name": "Trigger Bulk Push Notification Atleast one is valid",
+          "name": "RA-261 : Trigger Bulk Push Notification Atleast one is valid",
           "event": [
             {
               "listen": "test",
@@ -20730,7 +20730,7 @@
         },
         {
           "_postman_id": "313d9bba-8684-ebbf-a61b-53fd62ce069e",
-          "name": "Trigger Bulk Push Notification All are invalid",
+          "name": "RA-261 : Trigger Bulk Push Notification All are invalid",
           "event": [
             {
               "listen": "test",
@@ -20800,7 +20800,7 @@
         },
         {
           "_postman_id": "3f61bb81-f515-0431-2093-0c26b45a9711",
-          "name": "Trigger Bulk Push Notification 3 Entity Numbers",
+          "name": "RA-261 : Trigger Bulk Push Notification 3 Entity Numbers",
           "event": [
             {
               "listen": "test",
@@ -26464,7 +26464,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"memberId\":\"RA1490672977698\",\r\n    \"relationshipName\":\"{{relationshipName}}\",\r\n    \"uuid\":\"{{$guid}}\"\r\n}\r\n"
+              "raw": "{\r\n\t\"memberId\":\"{{memberID}}\",\r\n    \"relationshipName\":\"{{relationshipName}}\",\r\n    \"uuid\":\"{{$guid}}\"\r\n}\r\n"
             },
             "description": "Generated from a curl request: \ncurl -X POST -H \\\"Content-Type: application/json\\\" -H \\\"Authorization: Basic QWRtaW5pc3RyYXRvcjoxUDF0eXRoMw==\\\" -H \\\"Cache-Control: no-cache\\\" -H \\\"Postman-Token: c6d5e0d6-fb3b-87ac-27e3-a43dfd0b64af\\\" -d '{\\\"email\\\":\\\"um@um.com\\\"}' \\\"http://%7B%7Bbaseurl%7D%7D/rest/aiaVitalityMembershipEnrollment.ws.resendActivationMail.v1\\\""
           },
