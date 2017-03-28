@@ -26904,7 +26904,7 @@
         },
         {
           "_postman_id": "24f8399a-2439-74e4-0081-c2266257ddcd",
-          "name": "Wait for enrolment to finish copy",
+          "name": "Wait for enrolment to finish",
           "request": {
             "auth": {
               "type": "basic",
