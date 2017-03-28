@@ -24725,58 +24725,6 @@
           "response": []
         },
         {
-          "_postman_id": "05001062-4751-554b-ffef-ec358690c57c",
-          "name": "ESB Resend Activation Email - Invalid Email",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
-                  "",
-                  "var body = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Verifying that the response contails the correct Email Address\"] =  body.email === environment.Email;",
-                  "tests[\"Verifying that the response contains the correct operation\"] =  body.operation === \"ACTIVATION\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "basic",
-              "basic": {
-                "username": "Administrator",
-                "password": "manage",
-                "saveHelperData": true,
-                "showPassword": false
-              }
-            },
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.resendActivationMail.v1",
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"email\":\"dummyemail@dummy.com\"}"
-            },
-            "description": "Generated from a curl request: \ncurl -X POST -H \\\"Content-Type: application/json\\\" -H \\\"Authorization: Basic QWRtaW5pc3RyYXRvcjoxUDF0eXRoMw==\\\" -H \\\"Cache-Control: no-cache\\\" -H \\\"Postman-Token: c6d5e0d6-fb3b-87ac-27e3-a43dfd0b64af\\\" -d '{\\\"email\\\":\\\"um@um.com\\\"}' \\\"http://%7B%7Bbaseurl%7D%7D/rest/aiaVitalityMembershipEnrollment.ws.resendActivationMail.v1\\\""
-          },
-          "response": []
-        },
-        {
           "_postman_id": "29a1cdeb-d921-3d76-a558-fa33d2dfc14e",
           "name": "RA-153: Enrolling a Member - New Process",
           "event": [
