@@ -20494,7 +20494,7 @@
         },
         {
           "_postman_id": "38f319a7-7359-fb83-f77e-e8283c9daed3",
-          "name": "Trigger Push Notification for Current Week's invalid Entity No",
+          "name": "RA-261 : Trigger Push Notification for Current Week's invalid Entity No",
           "event": [
             {
               "listen": "test",
@@ -20553,7 +20553,7 @@
         },
         {
           "_postman_id": "fa3f2188-a07a-5cca-7cbb-e83d79d6f6b4",
-          "name": "Trigger Push Notification for Previous Week's success invalid Entity No",
+          "name": "RA-261 : Trigger Push Notification for Previous Week's success invalid Entity No",
           "event": [
             {
               "listen": "test",
@@ -20614,7 +20614,7 @@
         },
         {
           "_postman_id": "947d5871-7c1c-27f2-7be8-fedb7c703f24",
-          "name": "Trigger Push Notification for Weekly Target Communication invalid Entity No",
+          "name": "RA-261 : Trigger Push Notification for Weekly Target Communication invalid Entity No",
           "event": [
             {
               "listen": "test",
@@ -20658,7 +20658,7 @@
         },
         {
           "_postman_id": "e03f3cb9-70d7-ab2d-628d-0ebe831567c0",
-          "name": "Trigger Bulk Push Notification Atleast one is valid",
+          "name": "RA-261 : Trigger Bulk Push Notification Atleast one is valid",
           "event": [
             {
               "listen": "test",
