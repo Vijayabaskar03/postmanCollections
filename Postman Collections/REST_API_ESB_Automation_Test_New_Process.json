@@ -25855,7 +25855,7 @@
         },
         {
           "_postman_id": "177cb659-6d71-0272-7d13-7149e3f6ce1b",
-          "name": "RA-263 : ESB Resend Activation Email - Invalid Relationship Name",
+          "name": "ESB Resend Activation Email - Invalid Relationship Name",
           "event": [
             {
               "listen": "test",
@@ -26412,7 +26412,7 @@
         },
         {
           "_postman_id": "62bc35fc-1de9-f395-8c63-1bbe989a7331",
-          "name": "RA-263 : ESB Resend Activation Email - Not Enrolled",
+          "name": "ESB Resend Activation Email - Not Enrolled",
           "event": [
             {
               "listen": "test",
