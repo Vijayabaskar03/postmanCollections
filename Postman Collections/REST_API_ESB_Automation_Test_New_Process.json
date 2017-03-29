@@ -23546,7 +23546,7 @@
             }
           ],
           "request": {
-            "url": "{{UmsURL}}/user-management-service/UsermanagementService",
+            "url": "{{UmsURL}}/{{UMSContext}}/UsermanagementService",
             "method": "POST",
             "header": [
               {
@@ -26953,7 +26953,7 @@
             }
           ],
           "request": {
-            "url": "https://meltvihs03.aia.biz:443/user-management-service/UsermanagementService",
+            "url": "{{UmsURL}}/{{UMSContext}}/UsermanagementService",
             "method": "POST",
             "header": [
               {
