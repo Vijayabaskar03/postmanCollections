@@ -7086,6 +7086,58 @@
           "response": []
         },
         {
+          "_postman_id": "cf842b84-f100-9405-fe46-c0ddfa403894",
+          "name": "RA-93 : Verify that Relationship Name is stored as blank in VMMP stage DB with failure reason copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
+                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "try{",
+                  "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
+                  "    tests[\"Verifying that Failure reason in staging VMMP DB is Relationship ID has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"relationshipName-Relationship Name must exist\";",
+                  "    tests[\"Verifying that Relationship ID in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].RELATIONSHIP_NAME === null;",
+                  "}",
+                  "catch(err){",
+                  "  tests[\"Data in response does not exist\"] = false;  ",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{StageDB}}",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"{{Email}}\"} "
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
           "_postman_id": "49f8a4e9-55d5-db1e-4be5-03fdfe7aa17d",
           "name": "----RA-93 : Relationship Name is incorrect",
           "event": [
@@ -10070,58 +10122,6 @@
               "body": "{\"email\":\"hu75m5appa@m95anefu.com\",\"getMemberInfoStagingOutput\":{\"results\":[{\"ID\":101517,\"TITLE\":\"Mr\",\"FIRST_NAME\":\"gwlcgefblm\",\"LAST_NAME\":\"Last\",\"GENDER\":\"M\",\"DOB\":\"1970-01-01\",\"EMAIL\":\"hu75m5appa@m95anefu.com\",\"MOBILE\":\"0404040404\",\"MAILING_ADDRESS1\":null,\"MAILING_ADDRESS2\":null,\"MAILING_CITY\":\"Wiseman's Ferry\",\"MAILING_STATE\":\"VIC\",\"MAILING_POSTCODE\":\"3144\",\"RESIDENTIAL_ADDRESS1\":null,\"RESIDENTIAL_ADDRESS2\":null,\"RESIDENTIAL_CITY\":null,\"RESIDENTIAL_STATE\":null,\"RESIDENTIAL_POSTCODE\":null,\"MEMBER_TYPE\":\"GROUP\",\"ADVISER_CODE\":null,\"PAYING_POLICY_NUMBER\":null,\"WORK_PHONE\":\"0288944513\",\"HOME_PHONE\":\"0288911783\",\"CREATED_DATE\":\"2016-10-03 09:47:05.866504\",\"POLICY_ISSUE_DATE\":null,\"VITALITY_POLICY_STATUS\":null,\"EFFECTIVE_DATE\":null,\"INFORCE_POLICY_INDICATOR\":null,\"RELATIONSHIP_NAME\":\"{{relationshipName}}\",\"AIA_CLIENT_NUMBER\":null,\"AIA_VITALITY_ID\":null,\"PROCESSED_FILE\":null,\"NOMINATION_ID\":\"abcd1234\",\"STATUS\":\"INVALID\",\"FAILURE_REASON\":\"addrLine1-addressLine1 has invalid characters\",\"REC_TYPE\":null}]}}"
             }
           ]
-        },
-        {
-          "_postman_id": "cf842b84-f100-9405-fe46-c0ddfa403894",
-          "name": "RA-93 : Verify that Relationship Name is stored as blank in VMMP stage DB with failure reason copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
-                  "",
-                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
-                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
-                  "",
-                  "var body = JSON.parse(responseBody);",
-                  "",
-                  "try{",
-                  "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "    tests[\"Verifying that Failure reason in staging VMMP DB is Relationship ID has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"relationshipName-Relationship Name must exist\";",
-                  "    tests[\"Verifying that Relationship ID in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].RELATIONSHIP_NAME === null;",
-                  "}",
-                  "catch(err){",
-                  "  tests[\"Data in response does not exist\"] = false;  ",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "url": "{{StageDB}}",
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"email\":\"{{Email}}\"} "
-            },
-            "description": ""
-          },
-          "response": []
         }
       ]
     },
