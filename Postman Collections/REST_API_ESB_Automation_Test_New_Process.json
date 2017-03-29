@@ -9757,7 +9757,7 @@
         },
         {
           "_postman_id": "cd419127-3b12-ab3d-fb09-8e09fc9c1620",
-          "name": "RA-93 : Address Line 1 has greater than 100 characters copy",
+          "name": "RA-93 : Address Line 1 is null",
           "event": [
             {
               "listen": "test",
