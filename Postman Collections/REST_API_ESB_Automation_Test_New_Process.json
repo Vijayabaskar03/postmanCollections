@@ -21835,7 +21835,7 @@
             }
           ],
           "request": {
-            "url": "{{UmsURL}}/user-management-service/UsermanagementService",
+            "url": "{{UmsURL}}/{{UMSContext}}/UsermanagementService",
             "method": "POST",
             "header": [
               {
