@@ -6935,7 +6935,7 @@
         },
         {
           "_postman_id": "f2ec10aa-1185-5b7a-3e39-5618a0beb32b",
-          "name": "RA-93 : Verify that Relationship Name is stored as blank in VMMP stage DB with failure reason",
+          "name": "RA-93 : Verify that Relationship Nameis stored as blank in VMMP stage DB with failure reason",
           "event": [
             {
               "listen": "test",
@@ -7085,7 +7085,7 @@
         },
         {
           "_postman_id": "0471d014-2234-68f1-73c2-c5bf5dcad272",
-          "name": "RA-93 : Verify that Relationship Name is stored as is in VMMP stage DB with failure reason",
+          "name": "RA-93 : Verify that Relationship ID is stored as is in VMMP stage DB with failure reason",
           "event": [
             {
               "listen": "test",
