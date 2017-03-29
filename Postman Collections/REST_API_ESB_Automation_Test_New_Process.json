@@ -9863,8 +9863,8 @@
           "response": []
         },
         {
-          "_postman_id": "31b8bf03-cdcc-14d9-b0aa-66401a1a094a",
-          "name": "RA-93 : Verify that Address Line 1 is stored as blank in VMMP stage with relevent failure reason stored copy",
+          "_postman_id": "a336be8b-be59-4b29-1df8-aad078c31ba1",
+          "name": "RA-93 :Address Line 2 is stored as blank in DB when passing invalid values copy",
           "event": [
             {
               "listen": "test",
@@ -9872,27 +9872,66 @@
                 "type": "text/javascript",
                 "exec": [
                   "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 400\"] = responseCode.code === 400;",
                   "",
                   "//Verifing that the response time is less than what has been declared in enviroenment variable ",
                   "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
                   "",
                   "var body = JSON.parse(responseBody);",
                   "",
-                  "try{",
-                  "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "    tests[\"Verifying that Failure reason in staging VMMP DB is addressLine1 has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"addrLine1-Address line 1 has invalid characters\";",
-                  "    tests[\"Verifying that addressLine1 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_ADDRESS1 === null; ",
+                  "tests[\"Verifying that the failure reason says Invalid Fields\"] = body.failureReason === \"Invalid Fields\";",
+                  "tests[\"Verifying that the request is returing Invalid Field Error Message\"] = body.invalidFields.addrLine2 === \"Address line 2 has invalid characters\";"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Generating Random Email address to pass into the data so that user duplication does not happen",
+                  "function makeEmail() {",
+                  "  var strValues = \"qpotvghysbnxui56z\";",
+                  "  var strEmail = \"\";",
+                  "  var strTmp;",
+                  "  for (var i = 0; i < 10; i++) {",
+                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+                  "    strEmail = strEmail + strTmp;",
+                  "  }",
+                  "  strTmp = \"\";",
+                  "  strEmail = strEmail + \"@\";",
+                  "  for (var j = 0; j < 8; j++) {",
+                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+                  "    strEmail = strEmail + strTmp;",
+                  "  }",
+                  "  strEmail = strEmail + \"esbpii.com\";",
+                  "  return strEmail;",
                   "}",
-                  "catch(err){",
-                  "    tests[\"Data does not exist\"] = false;",
-                  "}"
+                  "",
+                  "//Setting up the random email to an environment variable",
+                  "postman.setEnvironmentVariable(\"Email\", makeEmail());",
+                  "",
+                  "var firstName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);",
+                  "",
+                  "//Setting up the firstName to an environment variable",
+                  "postman.setEnvironmentVariable(\"firstName\", firstName);",
+                  "",
+                  "var lastName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);",
+                  "",
+                  "//Setting up the lastName to an environment variable",
+                  "postman.setEnvironmentVariable(\"lastName\", lastName);",
+                  "",
+                  "//Incrementing and Setting up the memberID to an environment variable",
+                  "// var memberIdNumber = parseInt(environment.memberIdNumber)+1;",
+                  "var memberIdNumber = Date.now();",
+                  "postman.setEnvironmentVariable(\"memberIdNumber\", memberIdNumber);",
+                  "postman.setEnvironmentVariable(\"memberID\", \"RA\"+memberIdNumber.toString());"
                 ]
               }
             }
           ],
           "request": {
-            "url": "{{StageDB}}",
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
             "method": "POST",
             "header": [
               {
@@ -9908,7 +9947,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"email\":\"{{Email}}\"} "
+              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"line2\":\"4*&^%)&((&@$@nt Road\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
             },
             "description": ""
           },
