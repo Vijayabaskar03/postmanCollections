@@ -7136,7 +7136,7 @@
         },
         {
           "_postman_id": "33451516-c75f-a768-9bc1-cd0901eb90c7",
-          "name": "RA-93 :Birth Date is null copy",
+          "name": "RA-93 :Birth Date format is invalid",
           "event": [
             {
               "listen": "test",
