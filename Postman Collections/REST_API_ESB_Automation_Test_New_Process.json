@@ -8127,119 +8127,6 @@
           "response": []
         },
         {
-          "_postman_id": "31b8bf03-cdcc-14d9-b0aa-66401a1a094a",
-          "name": "RA-93 : Verify that all the Address fields are stored as blank in VMMP stage without any failure reason",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
-                  "",
-                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
-                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
-                  "",
-                  "var body = JSON.parse(responseBody);",
-                  "",
-                  "try{",
-                  "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"VALID_SHORT_PROCESS\" || body.getMemberInfoStagingOutput.results[0].STATUS === null;",
-                  "    tests[\"Verifying that Failure reason in staging VMMP DB is addressLine1 has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === null;",
-                  "    tests[\"Verifying that addressLine1 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_ADDRESS1 === null; ",
-                  "    tests[\"Verifying that addressLine1 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_ADDRESS2 === null; ",
-                  "    tests[\"Verifying that addressLine1 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_CITY === null; ",
-                  "    tests[\"Verifying that addressLine1 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_STATE === null; ",
-                  "    tests[\"Verifying that addressLine1 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_POSTCODE === null; ",
-                  "}",
-                  "catch(err){",
-                  "    tests[\"Data does not exist\"] = false;",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "url": "{{StageDB}}",
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"email\":\"{{Email}}\"} "
-            },
-            "description": ""
-          },
-          "response": [
-            {
-              "id": "9d77ad9c-1174-c8c0-8da7-beef0164a350",
-              "name": "response for esb",
-              "originalRequest": {
-                "url": "{{StageDB}}",
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  },
-                  {
-                    "key": "Authorization",
-                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                    "description": ""
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\"email\":\"{{Email}}\"} "
-                },
-                "description": ""
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "javascript",
-              "_postman_previewtype": "text",
-              "header": [
-                {
-                  "description": "",
-                  "key": "Content-Length",
-                  "name": "Content-Length",
-                  "value": "1001"
-                },
-                {
-                  "description": "",
-                  "key": "Content-Type",
-                  "name": "Content-Type",
-                  "value": "application/json; charset=UTF-8"
-                }
-              ],
-              "cookie": [
-                {
-                  "expires": "Invalid Date",
-                  "httpOnly": false,
-                  "domain": "10.61.38.165",
-                  "path": "/",
-                  "secure": false,
-                  "value": "",
-                  "key": "ssnid"
-                }
-              ],
-              "responseTime": "35",
-              "body": "{\"email\":\"hu75m5appa@m95anefu.com\",\"getMemberInfoStagingOutput\":{\"results\":[{\"ID\":101517,\"TITLE\":\"Mr\",\"FIRST_NAME\":\"gwlcgefblm\",\"LAST_NAME\":\"Last\",\"GENDER\":\"M\",\"DOB\":\"1970-01-01\",\"EMAIL\":\"hu75m5appa@m95anefu.com\",\"MOBILE\":\"0404040404\",\"MAILING_ADDRESS1\":null,\"MAILING_ADDRESS2\":null,\"MAILING_CITY\":\"Wiseman's Ferry\",\"MAILING_STATE\":\"VIC\",\"MAILING_POSTCODE\":\"3144\",\"RESIDENTIAL_ADDRESS1\":null,\"RESIDENTIAL_ADDRESS2\":null,\"RESIDENTIAL_CITY\":null,\"RESIDENTIAL_STATE\":null,\"RESIDENTIAL_POSTCODE\":null,\"MEMBER_TYPE\":\"GROUP\",\"ADVISER_CODE\":null,\"PAYING_POLICY_NUMBER\":null,\"WORK_PHONE\":\"0288944513\",\"HOME_PHONE\":\"0288911783\",\"CREATED_DATE\":\"2016-10-03 09:47:05.866504\",\"POLICY_ISSUE_DATE\":null,\"VITALITY_POLICY_STATUS\":null,\"EFFECTIVE_DATE\":null,\"INFORCE_POLICY_INDICATOR\":null,\"RELATIONSHIP_NAME\":\"{{relationshipName}}\",\"AIA_CLIENT_NUMBER\":null,\"AIA_VITALITY_ID\":null,\"PROCESSED_FILE\":null,\"NOMINATION_ID\":\"abcd1234\",\"STATUS\":\"INVALID\",\"FAILURE_REASON\":\"addrLine1-addressLine1 has invalid characters\",\"REC_TYPE\":null}]}}"
-            }
-          ]
-        },
-        {
           "_postman_id": "951d3ae0-b5a6-735d-d357-bd3a9ac21b98",
           "name": "RA-93 :Address Line 2 is stored as blank in DB when passing invalid values",
           "event": [
@@ -10116,6 +10003,119 @@
             "description": ""
           },
           "response": []
+        },
+        {
+          "_postman_id": "31b8bf03-cdcc-14d9-b0aa-66401a1a094a",
+          "name": "RA-93 : Verify that all the Address fields are stored as blank in VMMP stage without any failure reason",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
+                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "try{",
+                  "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"VALID_SHORT_PROCESS\" || body.getMemberInfoStagingOutput.results[0].STATUS === null;",
+                  "    tests[\"Verifying that Failure reason in staging VMMP DB is addressLine1 has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === null;",
+                  "    tests[\"Verifying that addressLine1 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_ADDRESS1 === null; ",
+                  "    tests[\"Verifying that addressLine1 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_ADDRESS2 === null; ",
+                  "    tests[\"Verifying that addressLine1 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_CITY === null; ",
+                  "    tests[\"Verifying that addressLine1 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_STATE === null; ",
+                  "    tests[\"Verifying that addressLine1 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_POSTCODE === null; ",
+                  "}",
+                  "catch(err){",
+                  "    tests[\"Data does not exist\"] = false;",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{StageDB}}",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"{{Email}}\"} "
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "id": "9d77ad9c-1174-c8c0-8da7-beef0164a350",
+              "name": "response for esb",
+              "originalRequest": {
+                "url": "{{StageDB}}",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"email\":\"{{Email}}\"} "
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "javascript",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Content-Length",
+                  "name": "Content-Length",
+                  "value": "1001"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json; charset=UTF-8"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "httpOnly": false,
+                  "domain": "10.61.38.165",
+                  "path": "/",
+                  "secure": false,
+                  "value": "",
+                  "key": "ssnid"
+                }
+              ],
+              "responseTime": "35",
+              "body": "{\"email\":\"hu75m5appa@m95anefu.com\",\"getMemberInfoStagingOutput\":{\"results\":[{\"ID\":101517,\"TITLE\":\"Mr\",\"FIRST_NAME\":\"gwlcgefblm\",\"LAST_NAME\":\"Last\",\"GENDER\":\"M\",\"DOB\":\"1970-01-01\",\"EMAIL\":\"hu75m5appa@m95anefu.com\",\"MOBILE\":\"0404040404\",\"MAILING_ADDRESS1\":null,\"MAILING_ADDRESS2\":null,\"MAILING_CITY\":\"Wiseman's Ferry\",\"MAILING_STATE\":\"VIC\",\"MAILING_POSTCODE\":\"3144\",\"RESIDENTIAL_ADDRESS1\":null,\"RESIDENTIAL_ADDRESS2\":null,\"RESIDENTIAL_CITY\":null,\"RESIDENTIAL_STATE\":null,\"RESIDENTIAL_POSTCODE\":null,\"MEMBER_TYPE\":\"GROUP\",\"ADVISER_CODE\":null,\"PAYING_POLICY_NUMBER\":null,\"WORK_PHONE\":\"0288944513\",\"HOME_PHONE\":\"0288911783\",\"CREATED_DATE\":\"2016-10-03 09:47:05.866504\",\"POLICY_ISSUE_DATE\":null,\"VITALITY_POLICY_STATUS\":null,\"EFFECTIVE_DATE\":null,\"INFORCE_POLICY_INDICATOR\":null,\"RELATIONSHIP_NAME\":\"{{relationshipName}}\",\"AIA_CLIENT_NUMBER\":null,\"AIA_VITALITY_ID\":null,\"PROCESSED_FILE\":null,\"NOMINATION_ID\":\"abcd1234\",\"STATUS\":\"INVALID\",\"FAILURE_REASON\":\"addrLine1-addressLine1 has invalid characters\",\"REC_TYPE\":null}]}}"
+            }
+          ]
         }
       ]
     },
