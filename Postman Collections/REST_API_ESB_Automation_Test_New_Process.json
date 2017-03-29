@@ -6943,16 +6943,14 @@
                   "",
                   "var body = JSON.parse(responseBody);",
                   "",
-                  "if (body.getMemberInfoStagingOutput.results[0] !== undefined ){",
+                  "try{",
                   "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
                   "    tests[\"Verifying that Failure reason in staging VMMP DB is Relationship ID has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"INVALID_RELATIONSHIP\";",
                   "    tests[\"Verifying that Relationship ID in staging VMMP DB is not null\"] = body.getMemberInfoStagingOutput.results[0].RELATIONSHIP_NAME !== null;",
                   "}",
-                  "else",
-                  "{",
-                  "    tests[\"Data does not exist\"] = false;",
-                  "}",
-                  ""
+                  "catch(err){",
+                  "  tests[\"Data in response does not exist\"] = false;  ",
+                  "}"
                 ]
               }
             }
