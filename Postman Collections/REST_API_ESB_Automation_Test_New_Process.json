@@ -6266,13 +6266,7 @@
                   "",
                   "var body = JSON.parse(responseBody);",
                   "",
-                  "",
-                  "",
-                  "tests[\"Verifying that Enrolment is successfull\"] =  body.status === \"Data Accepted\";",
-                  "",
-                  "",
-                  "",
-                  ""
+                  "tests[\"Verifying that Enrolment is successfull\"] =  body.status === \"Data Accepted\";"
                 ]
               }
             },
