@@ -2945,7 +2945,7 @@
             }
           ],
           "request": {
-            "url": "{{UmsURL}}/{{UMSContext}}/UsermanagementService",
+            "url": "{{UmsURL}}/restapi-user-management-service/UsermanagementService",
             "method": "POST",
             "header": [
               {
