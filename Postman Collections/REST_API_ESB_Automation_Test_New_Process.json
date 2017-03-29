@@ -6987,7 +6987,7 @@
         },
         {
           "_postman_id": "df937f05-fc69-ae68-78bf-e3ce934ef823",
-          "name": "RA-93 : Relationship Name  is null copy",
+          "name": "RA-93 : Relationship Name  is empty",
           "event": [
             {
               "listen": "test",
