@@ -6981,6 +6981,103 @@
           "response": []
         },
         {
+          "_postman_id": "98338454-ebf0-4777-4ca4-88a1f23d7d78",
+          "name": "RA-93 :Birth Date is stored as blank in DB when passing invalid values",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 400\"] = responseCode.code === 400;",
+                  "",
+                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
+                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the failure reason says Invalid Fields\"] = body.failureReason === \"Invalid Fields\";",
+                  "tests[\"Verifying that the request is returing Invalid Field Error Message\"] = body.invalidFields.dateOfBirth === \"Date of birth format is incorrect.  Please ensure date of birth follows the format of dd/MM/yyyy.\";"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Generating Random Email address to pass into the data so that user duplication does not happen",
+                  "function makeEmail() {",
+                  "  var strValues = \"qpwoeufbncmakhfga597\";",
+                  "  var strEmail = \"\";",
+                  "  var strTmp;",
+                  "  for (var i = 0; i < 10; i++) {",
+                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+                  "    strEmail = strEmail + strTmp;",
+                  "  }",
+                  "  strTmp = \"\";",
+                  "  strEmail = strEmail + \"@\";",
+                  "  for (var j = 0; j < 8; j++) {",
+                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+                  "    strEmail = strEmail + strTmp;",
+                  "  }",
+                  "  strEmail = strEmail + \".com\"",
+                  "  return strEmail;",
+                  "}",
+                  "",
+                  "//Setting up the random email to an environment variable",
+                  "postman.setEnvironmentVariable(\"Email\", makeEmail());",
+                  "",
+                  "//Generating Random 9 digit number to populate in variables to pass Id set 1 requests",
+                  "var Txt1 = Math.floor(100000000 + Math.random() * 900000000);",
+                  "",
+                  "////Setting up the random numeric to an environment variable for AIA_VITALITY_ID",
+                  "postman.setEnvironmentVariable(\"AIA_VITALITY_ID\", Txt1);",
+                  "",
+                  "//Generating Random 9 digit number to populate in variables to pass Id set 1 requests",
+                  "var Txt2 = Math.floor(100000000 + Math.random() * 900000000);",
+                  "postman.setEnvironmentVariable(\"AIA_CLIENT_NUMBER\", Txt2);",
+                  "",
+                  "//Generating Random name string to pass in first name ",
+                  "var firstName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);",
+                  "",
+                  "//Setting up the firstName to an environment variable",
+                  "postman.setEnvironmentVariable(\"firstName\", firstName);",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"dfgsdfgsdf\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
           "_postman_id": "966e781e-ba87-68e1-8262-7b5b1b94d280",
           "name": "RA-93 :Address Line 1 is stored as blank in DB when passing invalid values",
           "event": [
@@ -7349,103 +7446,6 @@
             "body": {
               "mode": "raw",
               "raw": "{\"email\":\"{{Email}}\"} "
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "98338454-ebf0-4777-4ca4-88a1f23d7d78",
-          "name": "RA-93 :Birth Date is stored as blank in DB when passing invalid values",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 400\"] = responseCode.code === 400;",
-                  "",
-                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
-                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
-                  "",
-                  "var body = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Verifying that the failure reason says Invalid Fields\"] = body.failureReason === \"Invalid Fields\";",
-                  "tests[\"Verifying that the request is returing Invalid Field Error Message\"] = body.invalidFields.dateOfBirth === \"Date of birth format is incorrect.  Please ensure date of birth follows the format of dd/MM/yyyy.\";"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Generating Random Email address to pass into the data so that user duplication does not happen",
-                  "function makeEmail() {",
-                  "  var strValues = \"qpwoeufbncmakhfga597\";",
-                  "  var strEmail = \"\";",
-                  "  var strTmp;",
-                  "  for (var i = 0; i < 10; i++) {",
-                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
-                  "    strEmail = strEmail + strTmp;",
-                  "  }",
-                  "  strTmp = \"\";",
-                  "  strEmail = strEmail + \"@\";",
-                  "  for (var j = 0; j < 8; j++) {",
-                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
-                  "    strEmail = strEmail + strTmp;",
-                  "  }",
-                  "  strEmail = strEmail + \".com\"",
-                  "  return strEmail;",
-                  "}",
-                  "",
-                  "//Setting up the random email to an environment variable",
-                  "postman.setEnvironmentVariable(\"Email\", makeEmail());",
-                  "",
-                  "//Generating Random 9 digit number to populate in variables to pass Id set 1 requests",
-                  "var Txt1 = Math.floor(100000000 + Math.random() * 900000000);",
-                  "",
-                  "////Setting up the random numeric to an environment variable for AIA_VITALITY_ID",
-                  "postman.setEnvironmentVariable(\"AIA_VITALITY_ID\", Txt1);",
-                  "",
-                  "//Generating Random 9 digit number to populate in variables to pass Id set 1 requests",
-                  "var Txt2 = Math.floor(100000000 + Math.random() * 900000000);",
-                  "postman.setEnvironmentVariable(\"AIA_CLIENT_NUMBER\", Txt2);",
-                  "",
-                  "//Generating Random name string to pass in first name ",
-                  "var firstName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);",
-                  "",
-                  "//Setting up the firstName to an environment variable",
-                  "postman.setEnvironmentVariable(\"firstName\", firstName);",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"dfgsdfgsdf\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
             },
             "description": ""
           },
