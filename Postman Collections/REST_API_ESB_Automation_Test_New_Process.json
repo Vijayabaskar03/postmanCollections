@@ -9645,58 +9645,6 @@
             "description": "Given that an invalid record was received by ESB \r\nWhen ESB identifies an invalid record,\r\nThen it will store it in VMMP staging DB in the following manner:\r\n1 - The invalid field will be left blank\r\n2 - The invalid value and the reason will be captured in the reason field\r\n"
           },
           "response": []
-        },
-        {
-          "_postman_id": "99de2556-e24b-6c78-2221-a2d262fd593f",
-          "name": "RA-93 : Verify that Address Line 1 is stored as blank in VMMP stage with relevent failure reason stored copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
-                  "",
-                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
-                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
-                  "",
-                  "var body = JSON.parse(responseBody);",
-                  "",
-                  "try{",
-                  "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "    tests[\"Verifying that Failure reason in staging VMMP DB is addressLine1 has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"addrLine1-Address line 1 has invalid characters\";",
-                  "    tests[\"Verifying that addressLine1 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_ADDRESS1 === null; ",
-                  "}",
-                  "catch(err){",
-                  "    tests[\"Data does not exist\"] = false;",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "url": "{{StageDB}}",
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"email\":\"{{Email}}\"} "
-            },
-            "description": ""
-          },
-          "response": []
         }
       ]
     },
