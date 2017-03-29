@@ -10022,7 +10022,7 @@
                   "var body = JSON.parse(responseBody);",
                   "",
                   "try{",
-                  "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"VALID_SHORT_PROCESS\" || null;",
+                  "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"VALID_SHORT_PROCESS\" || null",
                   "    tests[\"Verifying that Failure reason in staging VMMP DB is addressLine1 has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"addrLine1-Address line 1 has invalid characters\";",
                   "    tests[\"Verifying that addressLine1 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_ADDRESS1 === null; ",
                   "    tests[\"Verifying that addressLine1 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_ADDRESS2 === null; ",
