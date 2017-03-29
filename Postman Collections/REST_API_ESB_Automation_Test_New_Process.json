@@ -7084,7 +7084,7 @@
         },
         {
           "_postman_id": "d2a53111-ffdb-6220-0d75-cb0202033f6f",
-          "name": "RA-93 : Verify that Date Of Birth is stored as blank in VMMP stage DB with relevent failure reason stored",
+          "name": "RA-93 : Verify that Birth Date is stored as blank in VMMP stage DB with relevent failure reason stored",
           "event": [
             {
               "listen": "test",
