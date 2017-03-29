@@ -8384,6 +8384,60 @@
           "response": []
         },
         {
+          "_postman_id": "0471d014-2234-68f1-73c2-c5bf5dcad272",
+          "name": "RA-93 : Verify that Relationship ID is stored as blank in VMMP stage DB with failure reason",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
+                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "if (body.getMemberInfoStagingOutput.results[0] !== undefined ){",
+                  "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
+                  "    tests[\"Verifying that Failure reason in staging VMMP DB is Relationship ID has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"relationshipName-Relationship Name must be less than or equal to 50 characters\";",
+                  "    tests[\"Verifying that Relationship ID in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].RELATIONSHIP_NAME === null;",
+                  "}",
+                  "else",
+                  "{",
+                  "    tests[\"Data does not exist\"] = false;",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{StageDB}}",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"{{Email}}\"} "
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
           "_postman_id": "3fb638b4-c496-eb70-ecdb-7969a29003e4",
           "name": "RA-93 : Phone is stored as blank in VMMP Stage DB when passing invalid values",
           "event": [
@@ -9155,60 +9209,6 @@
                   "",
                   "{",
                   "    ",
-                  "    tests[\"Data does not exist\"] = false;",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "url": "{{StageDB}}",
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"email\":\"{{Email}}\"} "
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "0471d014-2234-68f1-73c2-c5bf5dcad272",
-          "name": "RA-93 : Verify that Relationship ID is stored as blank in VMMP stage DB with failure reason",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
-                  "",
-                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
-                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
-                  "",
-                  "var body = JSON.parse(responseBody);",
-                  "",
-                  "if (body.getMemberInfoStagingOutput.results[0] !== undefined ){",
-                  "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "    tests[\"Verifying that Failure reason in staging VMMP DB is Relationship ID has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"relationshipName-Relationship Name must be less than or equal to 50 characters\";",
-                  "    tests[\"Verifying that Relationship ID in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].RELATIONSHIP_NAME === null;",
-                  "}",
-                  "else",
-                  "{",
                   "    tests[\"Data does not exist\"] = false;",
                   "}",
                   ""
