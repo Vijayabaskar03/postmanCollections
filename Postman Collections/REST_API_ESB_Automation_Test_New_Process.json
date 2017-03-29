@@ -6984,7 +6984,7 @@
         },
         {
           "_postman_id": "98338454-ebf0-4777-4ca4-88a1f23d7d78",
-          "name": "RA-93 :Birth Date is null",
+          "name": "RA-93 : Date Of Birth is null",
           "event": [
             {
               "listen": "test",
