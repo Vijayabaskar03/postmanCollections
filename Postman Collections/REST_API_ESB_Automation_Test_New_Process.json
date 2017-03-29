@@ -6703,8 +6703,7 @@
                   "}",
                   "catch(err){",
                   "  tests[\"Data in response does not exist\"] = false;  ",
-                  "}",
-                  ""
+                  "}"
                 ]
               }
             },
