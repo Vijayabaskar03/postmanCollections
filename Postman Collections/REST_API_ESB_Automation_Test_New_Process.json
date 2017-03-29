@@ -8153,7 +8153,7 @@
                   "",
                   "var body = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Verifying that the failure reason is 'Invalid Fields'\"] = body.failureReason === \"Invalid Fields\";",
+                  "tests[\"Verifying that the failure reason is 'Invalid Fields'\"] = body.failureReaon === \"Invalid Fields\";",
                   "tests[\"Verifying that the invalid fields are listed in the response\"] = body.invalidFields.relationshipName === \"Relationship Name must be less than or equal to 50 characters\";",
                   "",
                   "",
