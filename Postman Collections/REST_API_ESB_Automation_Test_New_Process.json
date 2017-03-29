@@ -8138,7 +8138,7 @@
         },
         {
           "_postman_id": "f75b4b31-d35e-57e0-5722-bc5b079e0f14",
-          "name": "RA-93 : Relationship ID is stored as blank in VMMP Stage DB when passing invalid values",
+          "name": "RA-93 : Relationship ID is Incorrect",
           "event": [
             {
               "listen": "test",
