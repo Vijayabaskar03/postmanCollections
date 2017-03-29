@@ -7442,7 +7442,7 @@
         },
         {
           "_postman_id": "966e781e-ba87-68e1-8262-7b5b1b94d280",
-          "name": "RA-93 : Address Line 1 is invalid",
+          "name": "RA-93 : Address Line 1 has invalid characters",
           "event": [
             {
               "listen": "test",
