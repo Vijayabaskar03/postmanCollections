@@ -6835,7 +6835,7 @@
         },
         {
           "_postman_id": "967659a9-0d80-7cb0-2842-614e434684c4",
-          "name": "RA-93 : Relationship ID format is null",
+          "name": "RA-93 : Relationship Name  is null",
           "event": [
             {
               "listen": "test",
