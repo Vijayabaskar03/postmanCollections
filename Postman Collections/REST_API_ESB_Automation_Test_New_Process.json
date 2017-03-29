@@ -7663,7 +7663,7 @@
         },
         {
           "_postman_id": "dbe2429a-39b5-9ef4-f7a4-8604ea1d73eb",
-          "name": "RA-93 : Address Line 1 has invalid characters copy",
+          "name": "RA-93 : Address Line 1 has greater than 100 characters",
           "event": [
             {
               "listen": "test",
