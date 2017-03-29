@@ -7001,7 +7001,7 @@
                   "try{",
                   "    tests[\"Verifying that the status is 'registration failed'\"] = body.status === \"registration failed\";",
                   "    tests[\"Verifying that the failure reason is 'Invalid Fields'\"] = body.failureReason === \"Invalid Fields\";",
-                  "    tests[\"Verifying that the invalid fields are listed in the response\"] = body.invalidFields.dateOfBirth === \"Date of birth is required.  Please add date of birth and try again.\";",
+                  "    tests[\"Verifying that the invalid fields are listed in the response\"] = body.invalidFields.dateOfBirth === \"Date of birth is required. Please add date of birth and try again.\";",
                   "}",
                   "catch(err){",
                   "  tests[\"Data in response does not exist\"] = false;  ",
