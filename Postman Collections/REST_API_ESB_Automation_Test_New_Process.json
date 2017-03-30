@@ -7139,7 +7139,7 @@
         },
         {
           "_postman_id": "49f8a4e9-55d5-db1e-4be5-03fdfe7aa17d",
-          "name": "----RA-93 : Relationship Name is incorrect",
+          "name": "RA-93 : Relationship Name is incorrect",
           "event": [
             {
               "listen": "test",
@@ -11364,23 +11364,16 @@
                   "",
                   "var body = JSON.parse(responseBody);",
                   "",
-                  "if (body.getMemberInfoStagingOutput.results[0] !== undefined ){",
-                  "",
-                  "",
-                  "tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "tests[\"Verifying that Failure reason in staging VMMP DB is Phone has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"homeNumber-phone number must be 10 digits,workNumber-phone number must be 10 digits,mobileNumber-phone number must be numeric\";",
-                  "tests[\"Verifying that Mobile Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MOBILE === null;",
-                  "tests[\"Verifying that Work Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].WORK_PHONE === null;",
-                  "tests[\"Verifying that Home Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].HOME_PHONE === null;",
-                  "",
+                  "try{",
+                  "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
+                  "    tests[\"Verifying that Failure reason in staging VMMP DB is Phone has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"homeNumber-phone number must be 10 digits,workNumber-phone number must be 10 digits,mobileNumber-phone number must be numeric\";",
+                  "    tests[\"Verifying that Mobile Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MOBILE === null;",
+                  "    tests[\"Verifying that Work Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].WORK_PHONE === null;",
+                  "    tests[\"Verifying that Home Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].HOME_PHONE === null;",
                   "}",
-                  "else",
-                  "",
-                  "{",
-                  "    ",
-                  "    tests[\"Data does not exist\"] = false;",
-                  "}",
-                  ""
+                  "catch(err){",
+                  "  tests[\"Data in response does not exist\"] = false;  ",
+                  "}"
                 ]
               }
             }
