@@ -8760,73 +8760,6 @@
           ]
         },
         {
-          "_postman_id": "a6fd1574-fd38-2f68-d8d1-6ee800fdbf60",
-          "name": "RA-93 : Verify that Last name is stored as blank in VMMP stage DB with failure reason as INVALID",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
-                  "",
-                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
-                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
-                  "",
-                  "",
-                  "",
-                  "var body = JSON.parse(responseBody);",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "if (body.getMemberInfoStagingOutput.results[0] !== undefined ){",
-                  "",
-                  "",
-                  "",
-                  "tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "tests[\"Verifying that Failure reason in staging VMMP DB is Last name has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"lastName-lastName must contain only alphabets and \\\\-\\\\ or \\\\ ' \\\\\";",
-                  "tests[\"Verifying that Last name in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].LAST_NAME === null;",
-                  "",
-                  "}",
-                  "else",
-                  "",
-                  "{",
-                  "    ",
-                  "    tests[\"Data does not exist\"] = false;",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "url": "{{StageDB}}",
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"email\":\"{{Email}}\"} "
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
           "_postman_id": "09d6b89b-17c0-7566-7f04-9a1d0fd9ef0d",
           "name": "RA-93 :Last name is Member Type as blank in VMMP Stage DB when passing invalid values",
           "event": [
@@ -10228,73 +10161,6 @@
           "response": []
         },
         {
-          "_postman_id": "8ce3fd3c-10e1-265c-a71a-95f642a89bda",
-          "name": "RA-93 : Verify that Gender is stored as blank in VMMP stage DB with failure reason as INVALID",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
-                  "",
-                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
-                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
-                  "",
-                  "",
-                  "",
-                  "var body = JSON.parse(responseBody);",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "if (body.getMemberInfoStagingOutput.results[0] !== undefined ){",
-                  "",
-                  "",
-                  "",
-                  "tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "tests[\"Verifying that Failure reason in staging VMMP DB is Gender has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"gender-gender must be either 'M' , 'F'\";",
-                  "tests[\"Verifying that Gender in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].GENDER === null;",
-                  "",
-                  "}",
-                  "else",
-                  "",
-                  "{",
-                  "    ",
-                  "    tests[\"Data does not exist\"] = false;",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "url": "{{StageDB}}",
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"email\":\"{{Email}}\"} "
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
           "_postman_id": "e512410e-622b-81e7-0708-c40011233dc0",
           "name": "RA-93 :Gender is stored as blank in VMMP Stage DB when passing invalid values",
           "event": [
@@ -10388,6 +10254,73 @@
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"Last\",\r\n    \"gender\":\"MFGF\",\r\n    \"dateOfBirth\":\"10/10/1970\",\r\n    \"email\":\"{{Email}}\",\r\n    \"nominationId\":\"abcd1234\",\r\n    \"address\":{\r\n      \"line1\":\"50 Punt Road\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"3144\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"0404040404\",\r\n      \"homeNumber\":\"0288911783\",\r\n      \"workNumber\":\"0288944513\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n\r\n      \r\n    },\r\n     \r\n    \"vitalityPolicyDetails\":{\r\n\r\n    \r\n \r\n  }\r\n  },\r\n    \r\n     \r\n  \"reasonForJoining\":\"Unknown\",\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"transactionId\":\"abcd1234\"\r\n \r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8ce3fd3c-10e1-265c-a71a-95f642a89bda",
+          "name": "RA-93 : Verify that Gender is stored as blank in VMMP stage DB with failure reason as INVALID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
+                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
+                  "",
+                  "",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "if (body.getMemberInfoStagingOutput.results[0] !== undefined ){",
+                  "",
+                  "",
+                  "",
+                  "tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
+                  "tests[\"Verifying that Failure reason in staging VMMP DB is Gender has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"gender-gender must be either 'M' , 'F'\";",
+                  "tests[\"Verifying that Gender in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].GENDER === null;",
+                  "",
+                  "}",
+                  "else",
+                  "",
+                  "{",
+                  "    ",
+                  "    tests[\"Data does not exist\"] = false;",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{StageDB}}",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"{{Email}}\"} "
             },
             "description": ""
           },
@@ -10488,6 +10421,73 @@
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"La*^GBst\",\r\n    \"gender\":\"F\",\r\n    \"dateOfBirth\":\"10/10/1970\",\r\n    \"email\":\"{{Email}}\",\r\n    \"nominationId\":\"abcd1234\",\r\n    \"address\":{\r\n      \"line1\":\"50 Punt Road\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"3144\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"0404040404\",\r\n      \"homeNumber\":\"0288911783\",\r\n      \"workNumber\":\"0288944513\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n\r\n      \r\n    },\r\n     \r\n    \"vitalityPolicyDetails\":{\r\n\r\n    \r\n \r\n  }\r\n  },\r\n    \r\n     \r\n  \"reasonForJoining\":\"Unknown\",\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"transactionId\":\"abcd1234\"\r\n \r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a6fd1574-fd38-2f68-d8d1-6ee800fdbf60",
+          "name": "RA-93 : Verify that Last name is stored as blank in VMMP stage DB with failure reason as INVALID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
+                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
+                  "",
+                  "",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "if (body.getMemberInfoStagingOutput.results[0] !== undefined ){",
+                  "",
+                  "",
+                  "",
+                  "tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
+                  "tests[\"Verifying that Failure reason in staging VMMP DB is Last name has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"lastName-lastName must contain only alphabets and \\\\-\\\\ or \\\\ ' \\\\\";",
+                  "tests[\"Verifying that Last name in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].LAST_NAME === null;",
+                  "",
+                  "}",
+                  "else",
+                  "",
+                  "{",
+                  "    ",
+                  "    tests[\"Data does not exist\"] = false;",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{StageDB}}",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"{{Email}}\"} "
             },
             "description": ""
           },
