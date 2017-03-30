@@ -11720,7 +11720,7 @@
                   "try{",
                   "    tests[\"Verifying that the status is 'registration failed'\"] = body.status === \"registration failed\";",
                   "    tests[\"Verifying that the failure reason is 'Invalid Fields'\"] = body.failureReason === \"Invalid Fields\";",
-                  "    tests[\"Verifying that the invalid fields are listed in the response\"] = body.invalidFields.workNumber === \"Phone number must be numeric\";",
+                  "    tests[\"Verifying that the invalid fields are listed in the response\"] = body.invalidFields.mobileNumber === \"Phone number must be numeric\";",
                   "}",
                   "catch(err){",
                   "  tests[\"Data in response does not exist\"] = false;  ",
@@ -11791,7 +11791,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":null,\r\n      \"homeNumber\":null,\r\n      \"workNumber\":\"abcdefgh\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}\r\n"
+              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"abcdefgh\",\r\n      \"homeNumber\":null,\r\n      \"workNumber\":null\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}\r\n"
             },
             "description": ""
           },
@@ -11799,7 +11799,7 @@
         },
         {
           "_postman_id": "8695fa77-aec8-d453-a1b7-88358ddcd990",
-          "name": "RA-93 : Verify that Phone is stored as blank in VMMP stage DB with failure reason",
+          "name": "RA-93 : Verify that Phone is stored as blank in VMMP stage DB with failure reason copy copy",
           "event": [
             {
               "listen": "test",
@@ -11816,7 +11816,7 @@
                   "",
                   "try{",
                   "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "    tests[\"Verifying that Failure reason in staging VMMP DB is Phone has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"workNumber-Phone number must be numeric\";",
+                  "    tests[\"Verifying that Failure reason in staging VMMP DB is Phone has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"mobileNumber-Phone number must be numeric\";",
                   "    tests[\"Verifying that Mobile Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MOBILE === null;",
                   "    tests[\"Verifying that Work Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].WORK_PHONE === null;",
                   "    tests[\"Verifying that Home Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].HOME_PHONE === null;",
