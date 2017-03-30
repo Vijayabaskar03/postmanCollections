@@ -12731,7 +12731,7 @@
         },
         {
           "_postman_id": "08ca45c0-764b-52a7-ebf3-71028f5612ab",
-          "name": "RA-93 : Phone number - Only Home number is sent copy",
+          "name": "RA-93 : uuid is null",
           "event": [
             {
               "listen": "test",
