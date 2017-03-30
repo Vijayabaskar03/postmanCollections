@@ -10510,11 +10510,7 @@
                   "",
                   "var body = JSON.parse(responseBody);",
                   "",
-                  "",
-                  "tests[\"Verifying that the request is returing Invalid Field Error Message\"] = body.invalidFields.suburb === \"suburb has invalid characters\";",
-                  "",
-                  "",
-                  ""
+                  "tests[\"Verifying that the request is returing Invalid Field Error Message\"] = body.invalidFields.suburb === \"Missing suburb\";"
                 ]
               }
             },
@@ -10587,7 +10583,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"KILO*H&\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}\r\n\r\n\r\n{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"Last\",\r\n    \"gender\":\"F\",\r\n    \"dateOfBirth\":\"10/10/1970\",\r\n    \"email\":\"{{Email}}\",\r\n    \"nominationId\":\"abcd1234\",\r\n    \"address\":{\r\n      \"line1\":\"50 Punt Road\",\r\n      \"suburb\":\"KILO*H&\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"3144\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"0404040404\",\r\n      \"homeNumber\":\"0288911784\",\r\n      \"workNumber\":\"0288944514\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n\r\n      \r\n    },\r\n     \r\n    \"vitalityPolicyDetails\":{\r\n\r\n    \r\n \r\n  }\r\n  },\r\n    \r\n     \r\n  \"reasonForJoining\":\"Unknown\",\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"transactionId\":\"abcd1234\"\r\n \r\n}"
+              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":null,\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}\r\n\r\n\r\n{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"Last\",\r\n    \"gender\":\"F\",\r\n    \"dateOfBirth\":\"10/10/1970\",\r\n    \"email\":\"{{Email}}\",\r\n    \"nominationId\":\"abcd1234\",\r\n    \"address\":{\r\n      \"line1\":\"50 Punt Road\",\r\n      \"suburb\":\"KILO*H&\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"3144\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"0404040404\",\r\n      \"homeNumber\":\"0288911784\",\r\n      \"workNumber\":\"0288944514\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n\r\n      \r\n    },\r\n     \r\n    \"vitalityPolicyDetails\":{\r\n\r\n    \r\n \r\n  }\r\n  },\r\n    \r\n     \r\n  \"reasonForJoining\":\"Unknown\",\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"transactionId\":\"abcd1234\"\r\n \r\n}"
             },
             "description": ""
           },
