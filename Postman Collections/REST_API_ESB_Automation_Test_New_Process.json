@@ -12545,7 +12545,7 @@
         },
         {
           "_postman_id": "d466e802-e678-e576-1543-9dbb23dd29a4",
-          "name": "RA-93 : Verify that Mobile number is stored as sent in VMMP stage DB without any failure reasons copy",
+          "name": "RA-93 : Verify that Work number is stored as sent in VMMP stage DB without any failure reasons copy",
           "event": [
             {
               "listen": "test",
