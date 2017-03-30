@@ -12880,7 +12880,7 @@
         },
         {
           "_postman_id": "99ac3ff9-3b2a-0939-b0c1-a22193df93b5",
-          "name": "RA-93 : Memership Type is incorrect copy",
+          "name": "RA-93 : Memership Type has more than 200 characters",
           "event": [
             {
               "listen": "test",
