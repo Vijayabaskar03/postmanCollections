@@ -12827,7 +12827,7 @@
         },
         {
           "_postman_id": "bd2f32cd-8476-8d0c-4f44-703ab67c57b1",
-          "name": "RA-93 : Verify that Home number is stored as sent in VMMP stage DB without any failure reasons copy",
+          "name": "RA-93 : Verify that VMMP stage DB is updated with a proper failure reason",
           "event": [
             {
               "listen": "test",
