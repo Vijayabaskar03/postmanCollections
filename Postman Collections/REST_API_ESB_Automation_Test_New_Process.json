@@ -9229,14 +9229,12 @@
                   "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
                   "",
                   "var body = JSON.parse(responseBody);",
-                  "try{",
-                  "    tests[\"Verifying that the status is 'registration failed'\"] = body.status === \"registration failed\";",
-                  "    tests[\"Verifying that the failure reason is 'Invalid Fields'\"] = body.failureReason === \"Invalid Fields\";",
-                  "    tests[\"Verifying that the invalid fields are listed in the response\"] = body.invalidFields.state === \"State must be less than or equal to 3 characters\";",
-                  "}",
-                  "catch(err){",
-                  "  tests[\"Data in response does not exist\"] = false;  ",
-                  "}"
+                  "",
+                  "",
+                  "tests[\"Verifying that the request is returing Invalid Field Error Message\"] = body.invalidFields.state === \"state must be less than or equal to 3 characters\";",
+                  "",
+                  "",
+                  ""
                 ]
               }
             },
@@ -10795,14 +10793,12 @@
                   "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
                   "",
                   "var body = JSON.parse(responseBody);",
-                  "try{",
-                  "    tests[\"Verifying that the status is 'registration failed'\"] = body.status === \"registration failed\";",
-                  "    tests[\"Verifying that the failure reason is 'Invalid Fields'\"] = body.failureReason === \"Invalid Fields\";",
-                  "    tests[\"Verifying that the invalid fields are listed in the response\"] = body.invalidFields.state === \"State has invalid characters\";",
-                  "}",
-                  "catch(err){",
-                  "  tests[\"Data in response does not exist\"] = false;  ",
-                  "}"
+                  "",
+                  "",
+                  "tests[\"Verifying that the request is returing Invalid Field Error Message\"] = body.invalidFields.state === \"state must be less than or equal to 3 characters\";",
+                  "",
+                  "",
+                  ""
                 ]
               }
             },
@@ -11023,7 +11019,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":null,\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VICC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
             },
             "description": ""
           },
@@ -11048,7 +11044,7 @@
                   "",
                   "try{",
                   "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "    tests[\"Verifying that Failure reason in staging VMMP DB is Relationship ID has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"state-Missing state\";",
+                  "    tests[\"Verifying that Failure reason in staging VMMP DB is Relationship ID has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"state-State has invalid characters\";",
                   "    tests[\"Verifying that Relationship ID in staging VMMP DB is not null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_STATE === null;",
                   "}",
                   "catch(err){",
