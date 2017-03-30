@@ -10779,7 +10779,7 @@
         },
         {
           "_postman_id": "0332061d-6eba-3350-6cb2-db18dddf41d7",
-          "name": "RA-93 : State has more than 3 characters copy",
+          "name": "RA-93 : State has invalid characters",
           "event": [
             {
               "listen": "test",
