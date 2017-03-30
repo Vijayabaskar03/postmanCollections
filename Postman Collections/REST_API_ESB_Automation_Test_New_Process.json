@@ -7256,7 +7256,7 @@
                   "try{",
                   "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
                   "    tests[\"Verifying that Failure reason in staging VMMP DB is INVALID_RELATIONSHIP\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"INVALID_RELATIONSHIP\";",
-                  "    tests[\"Verifying that Relationship Name in staging VMMP DB is not null\"] = body.getMemberInfoStagingOutput.results[0].RELATIONSHIP_NAME !== null;",
+                  "    tests[\"Verifying that Relationship Name in staging VMMP DB is not null\"] = body.getMemberInfoStagingOutput.results[0].RELATIONSHIP_NAME === \"notARelationship\";",
                   "}",
                   "catch(err){",
                   "  tests[\"Data in response does not exist\"] = false;  ",
