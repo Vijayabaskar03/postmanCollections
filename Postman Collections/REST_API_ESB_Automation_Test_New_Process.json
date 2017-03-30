@@ -3506,7 +3506,7 @@
                   "var body = JSON.parse(responseBody);",
                   "",
                   "tests[\"Verifying that the Status is 'registration failed'\"] =  body.status === \"registration failed\";",
-                  "tests[\"Verifying that the Failure Reason is EMAIL_ADDRESS_EXISTS\"] =  body.failureReaon === \"EMAIL_ADDRESS_EXISTS\";",
+                  "tests[\"Verifying that the Failure Reason is 'A member with these details already exists. If you do not have your login details, please call the AIA Vitality member services team on 1800 848 254.'\"] =  body.failureReaon === \"A member with these details already exists. If you do not have your login details, please call the AIA Vitality member services team on 1800 848 254.\";",
                   "",
                   "",
                   "",
