@@ -9215,7 +9215,7 @@
         },
         {
           "_postman_id": "c3e2364c-9e69-ccb3-a9b8-30f7728da374",
-          "name": "RA-93 : State is stored as blank in VMMP Stage DB when passing invalid values",
+          "name": "RA-93 : State has more than 3 characters",
           "event": [
             {
               "listen": "test",
