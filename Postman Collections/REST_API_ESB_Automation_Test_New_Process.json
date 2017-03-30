@@ -3375,13 +3375,13 @@
                   "\r",
                   "\r",
                   "\r",
-                  "postman.clearEnvironmentVariable(\"Email\");\r",
+                  "// postman.clearEnvironmentVariable(\"Email\");\r",
                   "\r",
-                  "postman.clearEnvironmentVariable(\"lastName\");\r",
+                  "// postman.clearEnvironmentVariable(\"lastName\");\r",
                   "\r",
-                  "postman.clearEnvironmentVariable(\"restMemberId\");\r",
+                  "// postman.clearEnvironmentVariable(\"restMemberId\");\r",
                   "\r",
-                  "postman.clearEnvironmentVariable(\"lastName\");\r",
+                  "// postman.clearEnvironmentVariable(\"lastName\");\r",
                   ""
                 ]
               }
