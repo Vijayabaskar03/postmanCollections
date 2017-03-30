@@ -9229,12 +9229,14 @@
                   "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
                   "",
                   "var body = JSON.parse(responseBody);",
-                  "",
-                  "",
-                  "tests[\"Verifying that the request is returing Invalid Field Error Message\"] = body.invalidFields.state === \"state must be less than or equal to 3 characters\";",
-                  "",
-                  "",
-                  ""
+                  "try{",
+                  "    tests[\"Verifying that the status is 'registration failed'\"] = body.status === \"registration failed\";",
+                  "    tests[\"Verifying that the failure reason is 'Invalid Fields'\"] = body.failureReason === \"Invalid Fields\";",
+                  "    tests[\"Verifying that the invalid fields are listed in the response\"] = body.invalidFields.state === \"State must be less than or equal to 3 characters\";",
+                  "}",
+                  "catch(err){",
+                  "  tests[\"Data in response does not exist\"] = false;  ",
+                  "}"
                 ]
               }
             },
@@ -10793,12 +10795,14 @@
                   "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
                   "",
                   "var body = JSON.parse(responseBody);",
-                  "",
-                  "",
-                  "tests[\"Verifying that the request is returing Invalid Field Error Message\"] = body.invalidFields.state === \"state must be less than or equal to 3 characters\";",
-                  "",
-                  "",
-                  ""
+                  "try{",
+                  "    tests[\"Verifying that the status is 'registration failed'\"] = body.status === \"registration failed\";",
+                  "    tests[\"Verifying that the failure reason is 'Invalid Fields'\"] = body.failureReason === \"Invalid Fields\";",
+                  "    tests[\"Verifying that the invalid fields are listed in the response\"] = body.invalidFields.state === \"State has invalid characters\";",
+                  "}",
+                  "catch(err){",
+                  "  tests[\"Data in response does not exist\"] = false;  ",
+                  "}"
                 ]
               }
             },
@@ -10943,12 +10947,14 @@
                   "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
                   "",
                   "var body = JSON.parse(responseBody);",
-                  "",
-                  "",
-                  "tests[\"Verifying that the request is returing Invalid Field Error Message\"] = body.invalidFields.state === \"state must be less than or equal to 3 characters\";",
-                  "",
-                  "",
-                  ""
+                  "try{",
+                  "    tests[\"Verifying that the status is 'registration failed'\"] = body.status === \"registration failed\";",
+                  "    tests[\"Verifying that the failure reason is 'Invalid Fields'\"] = body.failureReason === \"Invalid Fields\";",
+                  "    tests[\"Verifying that the invalid fields are listed in the response\"] = body.invalidFields.state === \"Missing state\";",
+                  "}",
+                  "catch(err){",
+                  "  tests[\"Data in response does not exist\"] = false;  ",
+                  "}"
                 ]
               }
             },
