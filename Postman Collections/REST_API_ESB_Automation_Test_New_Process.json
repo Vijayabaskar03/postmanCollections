@@ -12878,7 +12878,7 @@
         },
         {
           "_postman_id": "6e8bd7b6-ceaf-d70a-c256-8f293b636f99",
-          "name": "RA-93 : uuid is null copy",
+          "name": "RA-93 : uuid is invalid",
           "event": [
             {
               "listen": "test",
