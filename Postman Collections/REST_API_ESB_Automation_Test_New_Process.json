@@ -12974,7 +12974,7 @@
         },
         {
           "_postman_id": "68eeb2ce-14d0-c1a7-4c25-9947e7e1ea0f",
-          "name": "RA-93 : Verify that the record is created in VMMP stage DB with a proper failure reason copy",
+          "name": "RA-93 : Verify that the record is created in VMMP stage DB with a proper failure reason",
           "event": [
             {
               "listen": "test",
