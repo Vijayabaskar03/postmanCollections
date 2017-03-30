@@ -11853,7 +11853,7 @@
         },
         {
           "_postman_id": "4e5f9d93-04e7-80d1-d305-5b369c1c6745",
-          "name": "RA-93 : Phone number - Mobile number has invalid characters copy",
+          "name": "RA-93 : Phone number - Mobile number has invalid characters",
           "event": [
             {
               "listen": "test",
@@ -11949,7 +11949,7 @@
         },
         {
           "_postman_id": "bd3a4d51-fe6e-dfdd-78d1-25762712c324",
-          "name": "RA-93 : Verify that Phone is stored as blank in VMMP stage DB with failure reason copy",
+          "name": "RA-93 : Verify that Phone is stored as blank in VMMP stage DB with failure reason",
           "event": [
             {
               "listen": "test",
