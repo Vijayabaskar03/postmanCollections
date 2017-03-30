@@ -10226,7 +10226,7 @@
         },
         {
           "_postman_id": "bf488f9c-cd83-777a-451a-0f99fd35251b",
-          "name": "RA-93 : Verify that Address Line 2 is stored as blank in VMMP stage with relevent failure reason stored copy",
+          "name": "RA-93 : Verify that Address Line 2 is stored as blank in VMMP stage with relevent failure reason stored",
           "event": [
             {
               "listen": "test",
@@ -10279,7 +10279,7 @@
         },
         {
           "_postman_id": "5c013abb-820d-dbbb-2c15-784ac31aed36",
-          "name": "RA-93 : Address Line 2 has greater than 100 characters copy",
+          "name": "RA-93 : Address Line 2 is null",
           "event": [
             {
               "listen": "test",
