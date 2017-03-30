@@ -10988,7 +10988,6 @@
                   "//Setting up the lastName to an environment variable",
                   "postman.setEnvironmentVariable(\"lastName\", lastName);",
                   "",
-                  "",
                   "//Incrementing and Setting up the memberID to an environment variable",
                   "// var memberIdNumber = parseInt(environment.memberIdNumber)+1;",
                   "var memberIdNumber = Date.now();",
