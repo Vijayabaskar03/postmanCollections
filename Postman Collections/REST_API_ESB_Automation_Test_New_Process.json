@@ -12415,7 +12415,7 @@
                   "try{",
                   "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"VALID_SHORT_PROCESS\" || body.getMemberInfoStagingOutput.results[0].STATUS === null;",
                   "    tests[\"Verifying that Failure reason in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === null;",
-                  "    tests[\"Verifying that Mobile Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MOBILE === environment.mobileNumber;",
+                  "    tests[\"Verifying that Mobile Phone in staging VMMP DB is not null\"] = body.getMemberInfoStagingOutput.results[0].MOBILE === environment.mobileNumber;",
                   "    tests[\"Verifying that Work Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].WORK_PHONE === null;",
                   "    tests[\"Verifying that Home Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].HOME_PHONE === null;",
                   "}",
