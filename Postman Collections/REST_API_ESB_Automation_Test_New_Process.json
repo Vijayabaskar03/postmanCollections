@@ -11553,7 +11553,7 @@
         },
         {
           "_postman_id": "7811d2dd-ef0a-b096-a5eb-867571a13c4c",
-          "name": "RA-93 : Phone number - Home number has invalid characters copy",
+          "name": "RA-93 : Phone number - Home number has invalid characters",
           "event": [
             {
               "listen": "test",
