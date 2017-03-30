@@ -8669,7 +8669,7 @@
                   "",
                   "try{",
                   "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"VALID_SHORT_PROCESS\" || body.getMemberInfoStagingOutput.results[0].STATUS === null;",
-                  "    tests[\"Verifying that Failure reason in staging VMMP DB is addressLine1 has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === null;",
+                  "    tests[\"Verifying that Failure reason in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === null;",
                   "    tests[\"Verifying that addressLine2 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_ADDRESS2 === null; ",
                   "}",
                   "catch(err){",
