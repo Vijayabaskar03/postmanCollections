@@ -3371,18 +3371,7 @@
                   "else {\r",
                   "    tests[\"Verifying that response is registration failed\"] = body.status === \"registration failed\";\r",
                   "    tests[\"Verifying that response is Invalid relationship\"] = body.failureReason === \"An invalid relationship name has been sent.\";\r",
-                  "}\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "// postman.clearEnvironmentVariable(\"Email\");\r",
-                  "\r",
-                  "// postman.clearEnvironmentVariable(\"lastName\");\r",
-                  "\r",
-                  "// postman.clearEnvironmentVariable(\"restMemberId\");\r",
-                  "\r",
-                  "// postman.clearEnvironmentVariable(\"lastName\");\r",
-                  ""
+                  "}"
                 ]
               }
             },
