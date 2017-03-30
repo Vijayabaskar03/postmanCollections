@@ -11499,7 +11499,7 @@
         },
         {
           "_postman_id": "bd408854-2ace-d262-297d-c2c8decd64c7",
-          "name": "RA-93 : Verify that Phone is stored as blank in VMMP stage DB with failure reason copy",
+          "name": "RA-93 : Verify that Phone is stored as blank in VMMP stage DB with failure reason",
           "event": [
             {
               "listen": "test",
