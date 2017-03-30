@@ -12976,7 +12976,7 @@
         },
         {
           "_postman_id": "7879269a-2987-7aba-c24b-dc91ebf07003",
-          "name": "RA-93 : Verify that Member Type is stored as blank in VMMP stage DB with failure reason copy",
+          "name": "RA-93 : Verify that Member Type is stored as blank in VMMP stage DB with failure reason",
           "event": [
             {
               "listen": "test",
