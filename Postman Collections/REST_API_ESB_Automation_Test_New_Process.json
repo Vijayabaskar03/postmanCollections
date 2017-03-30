@@ -11703,7 +11703,7 @@
         },
         {
           "_postman_id": "308087b6-1110-6e12-2c9a-cbd0a98c3a4d",
-          "name": "RA-93 : Phone number - Work number has invalid characters",
+          "name": "RA-93 : Phone number - Mobile number has invalid characters copy",
           "event": [
             {
               "listen": "test",
