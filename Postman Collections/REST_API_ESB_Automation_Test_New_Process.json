@@ -10495,7 +10495,7 @@
         },
         {
           "_postman_id": "e1f402e1-5923-00b6-6530-593531436b59",
-          "name": "RA-93 : Suburb is has invalid characters copy",
+          "name": "RA-93 : Suburb is null",
           "event": [
             {
               "listen": "test",
