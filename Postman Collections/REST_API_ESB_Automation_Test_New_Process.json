@@ -1866,7 +1866,7 @@
                   "var body = JSON.parse(responseBody);",
                   "",
                   "tests[\"Verifying that Enrollment failed for the Duplicate Member\"] =  body.status === \"registration failed\";",
-                  "tests[\"Verifying that Enrollment failure reason is displayed correctly\"] =  body.failureReaon === \"DUPLICATED_MEMBER\";",
+                  "tests[\"Verifying that Enrollment failure reason is displayed correctly\"] =  body.failureReaon === \"A member with these details already exists. If you do not have your login details, please call the AIA Vitality member services team on 1800 848 254.\";",
                   ""
                 ]
               }
