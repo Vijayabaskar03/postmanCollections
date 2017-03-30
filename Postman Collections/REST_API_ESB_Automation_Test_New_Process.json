@@ -11251,7 +11251,7 @@
         },
         {
           "_postman_id": "3fb638b4-c496-eb70-ecdb-7969a29003e4",
-          "name": "RA-93 : Phone is stored as blank in VMMP Stage DB when passing invalid values",
+          "name": "RA-93 : All 3 phone numbers are blank",
           "event": [
             {
               "listen": "test",
