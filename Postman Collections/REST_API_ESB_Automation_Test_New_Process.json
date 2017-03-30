@@ -12822,6 +12822,60 @@
             "description": ""
           },
           "response": []
+        },
+        {
+          "_postman_id": "bd2f32cd-8476-8d0c-4f44-703ab67c57b1",
+          "name": "RA-93 : Verify that Home number is stored as sent in VMMP stage DB without any failure reasons copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
+                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "try{",
+                  "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"VALID_SHORT_PROCESS\" || body.getMemberInfoStagingOutput.results[0].STATUS === null;",
+                  "    tests[\"Verifying that Failure reason in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === null;",
+                  "    tests[\"Verifying that Mobile Phone in staging VMMP DB is not null\"] = body.getMemberInfoStagingOutput.results[0].MOBILE === null;",
+                  "    tests[\"Verifying that Work Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].WORK_PHONE === null;",
+                  "    tests[\"Verifying that Home Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].HOME_PHONE === environment.homeNumber;",
+                  "}",
+                  "catch(err){",
+                  "  tests[\"Data in response does not exist\"] = false;  ",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{StageDB}}",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"{{Email}}\"} "
+            },
+            "description": ""
+          },
+          "response": []
         }
       ]
     },
