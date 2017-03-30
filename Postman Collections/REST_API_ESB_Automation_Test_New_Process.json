@@ -11094,7 +11094,7 @@
         },
         {
           "_postman_id": "c637ccdd-d7f5-f728-28e0-9b33cffb76ba",
-          "name": "RA-93 : Postcode is null copy",
+          "name": "RA-93 : Postcode has invalid characters",
           "event": [
             {
               "listen": "test",
