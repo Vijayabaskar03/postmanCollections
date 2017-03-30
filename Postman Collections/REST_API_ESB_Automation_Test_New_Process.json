@@ -10939,14 +10939,12 @@
                   "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
                   "",
                   "var body = JSON.parse(responseBody);",
-                  "try{",
-                  "    tests[\"Verifying that the status is 'registration failed'\"] = body.status === \"registration failed\";",
-                  "    tests[\"Verifying that the failure reason is 'Invalid Fields'\"] = body.failureReason === \"Invalid Fields\";",
-                  "    tests[\"Verifying that the invalid fields are listed in the response\"] = body.invalidFields.relationshipName === \"Relationship Name must be less than or equal to 50 characters\";",
-                  "}",
-                  "catch(err){",
-                  "  tests[\"Data in response does not exist\"] = false;  ",
-                  "}"
+                  "",
+                  "",
+                  "",
+                  "tests[\"Verifying that the request is returing Invalid Field Error Message\"] = body.invalidFields.postcode === \"postcode must be less than or equal to 4 characters\";",
+                  "",
+                  ""
                 ]
               }
             },
@@ -10955,10 +10953,9 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "",
                   "//Generating Random Email address to pass into the data so that user duplication does not happen",
                   "function makeEmail() {",
-                  "  var strValues = \"qpotvghysbnxui56z\";",
+                  "  var strValues = \"qpwoeufbncmakhfga597\";",
                   "  var strEmail = \"\";",
                   "  var strTmp;",
                   "  for (var i = 0; i < 10; i++) {",
@@ -10971,30 +10968,34 @@
                   "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
                   "    strEmail = strEmail + strTmp;",
                   "  }",
-                  "  strEmail = strEmail + \"esbpii.com\";",
+                  "  strEmail = strEmail + \".com\"",
                   "  return strEmail;",
                   "}",
                   "",
-                  "",
                   "//Setting up the random email to an environment variable",
                   "postman.setEnvironmentVariable(\"Email\", makeEmail());",
-                  "console.log(\"Email: \"+environment.Email);",
                   "",
+                  "//Generating Random 9 digit number to populate in variables to pass Id set 1 requests",
+                  "var Txt1 = Math.floor(100000000 + Math.random() * 900000000);",
+                  "",
+                  "////Setting up the random numeric to an environment variable for AIA_VITALITY_ID",
+                  "postman.setEnvironmentVariable(\"AIA_VITALITY_ID\", Txt1);",
+                  "",
+                  "//Generating Random 9 digit number to populate in variables to pass Id set 1 requests",
+                  "var Txt2 = Math.floor(100000000 + Math.random() * 900000000);",
+                  "postman.setEnvironmentVariable(\"AIA_CLIENT_NUMBER\", Txt2);",
+                  "",
+                  "//Generating Random name string to pass in first name ",
                   "var firstName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);",
                   "",
                   "//Setting up the firstName to an environment variable",
                   "postman.setEnvironmentVariable(\"firstName\", firstName);",
                   "",
-                  "var lastName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);",
                   "",
-                  "//Setting up the lastName to an environment variable",
-                  "postman.setEnvironmentVariable(\"lastName\", lastName);",
                   "",
-                  "//Incrementing and Setting up the memberID to an environment variable",
-                  "// var memberIdNumber = parseInt(environment.memberIdNumber)+1;",
-                  "var memberIdNumber = Date.now();",
-                  "postman.setEnvironmentVariable(\"memberIdNumber\", memberIdNumber);",
-                  "postman.setEnvironmentVariable(\"memberID\", \"RA\"+memberIdNumber.toString());"
+                  "",
+                  "",
+                  ""
                 ]
               }
             }
@@ -11016,7 +11017,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VICC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"Last\",\r\n    \"gender\":\"F\",\r\n    \"dateOfBirth\":\"10/10/1970\",\r\n    \"email\":\"{{Email}}\",\r\n    \"nominationId\":\"abcd1234\",\r\n    \"address\":{\r\n      \"line1\":\"50 Punt Road\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"31244\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"0404040404\",\r\n      \"homeNumber\":\"0288911784\",\r\n      \"workNumber\":\"0288944514\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n\r\n      \r\n    },\r\n     \r\n    \"vitalityPolicyDetails\":{\r\n\r\n    \r\n \r\n  }\r\n  },\r\n    \r\n     \r\n  \"reasonForJoining\":\"Unknown\",\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"transactionId\":\"abcd1234\"\r\n \r\n}"
             },
             "description": ""
           },
