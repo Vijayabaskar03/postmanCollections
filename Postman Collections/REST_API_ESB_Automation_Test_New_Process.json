@@ -8510,7 +8510,7 @@
                   "try{",
                   "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
                   "    tests[\"Verifying that Failure reason in staging VMMP DB is addressLine2 has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"addrLine2-Address line 2 must be less than or equal to 100 characters\";",
-                  "    tests[\"Verifying that addressLin21 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_ADDRESS2 === null; ",
+                  "    tests[\"Verifying that addressLine2 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_ADDRESS2 === null; ",
                   "}",
                   "catch(err)",
                   "{",
