@@ -12003,7 +12003,7 @@
         },
         {
           "_postman_id": "cd53d74c-afd5-c6f6-11a0-52e9fda335ca",
-          "name": "RA-93 : Phone number - Mobile number has more than 10 digits copy",
+          "name": "RA-93 : Phone number - Home number has more than 10 digits",
           "event": [
             {
               "listen": "test",
