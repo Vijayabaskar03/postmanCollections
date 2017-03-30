@@ -11403,7 +11403,7 @@
         },
         {
           "_postman_id": "26d3923a-05db-d180-eb95-e0d5f969fcc1",
-          "name": "RA-93 : All 3 phone numbers are blank copy",
+          "name": "RA-93 : Phone number - Mobile number has invalid characters",
           "event": [
             {
               "listen": "test",
