@@ -10119,7 +10119,7 @@
         },
         {
           "_postman_id": "56f2a132-60b9-f0a4-8dad-4473f7ca43d2",
-          "name": "RA-93 : Address Line 1 has greater than 100 characters copy",
+          "name": "RA-93 : Address Line 2 has greater than 100 characters",
           "event": [
             {
               "listen": "test",
@@ -10243,7 +10243,7 @@
                   "",
                   "try{",
                   "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "    tests[\"Verifying that Failure reason in staging VMMP DB is addressLine2 has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"addrLine2-Address line 2 has invalid characters\";",
+                  "    tests[\"Verifying that Failure reason in staging VMMP DB is addressLine2 has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"addrLine2-Address line 2 must be less than or equal to 100 characters\";",
                   "    tests[\"Verifying that addressLin21 in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_ADDRESS2 === null; ",
                   "}",
                   "catch(err)",
