@@ -11219,7 +11219,7 @@
                   "",
                   "try{",
                   "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "    tests[\"Verifying that Failure reason in staging VMMP DB is Missing postcode\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"postcode-Missing postcode\";",
+                  "    tests[\"Verifying that Failure reason in staging VMMP DB is Postcode must be numeric\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"postcode-Postcode must be numeric\";",
                   "    tests[\"Verifying that MAILING_POSTCODE in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].RESIDENTIAL_POSTCODE === null;",
                   "}",
                   "catch(err){",
