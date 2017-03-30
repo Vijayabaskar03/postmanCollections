@@ -7153,9 +7153,13 @@
                   "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
                   "",
                   "var body = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Verifying that the status is 'registration failed'\"] = body.status === \"registration failed\";",
-                  "tests[\"Verifying that the failure reason is 'An invalid relationship name has been sent.'\"] = body.failureReason === \"An invalid relationship name has been sent.\";"
+                  "try{",
+                  "    tests[\"Verifying that the status is 'registration failed'\"] = body.status === \"registration failed\";",
+                  "    tests[\"Verifying that the failure reason is 'An invalid relationship name has been sent.'\"] = body.failureReason === \"An invalid relationship name has been sent.\";",
+                  "}",
+                  "catch(err){",
+                  "  tests[\"Data in response does not exist\"] = false;  ",
+                  "}"
                 ]
               }
             },
