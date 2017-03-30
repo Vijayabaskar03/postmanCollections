@@ -13141,7 +13141,7 @@
                   "",
                   "try{",
                   "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "    tests[\"Verifying that Failure reason in staging VMMP DB is Phone has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"memberType-Member Type does not match a valid value. Please re-submit with a valid Member Type.\";",
+                  "    tests[\"Verifying that Failure reason in staging VMMP DB is Phone has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"membershipType-Member Type must exist. Please re-submit with a valid Member Type.\";",
                   "    tests[\"Verifying that Mobile Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MEMBER_TYPE === null;",
                   "}",
                   "catch(err){",
