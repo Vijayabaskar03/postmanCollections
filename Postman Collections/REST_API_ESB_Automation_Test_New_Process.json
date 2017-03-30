@@ -11019,7 +11019,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VICC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":null,\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
             },
             "description": ""
           },
@@ -11027,7 +11027,7 @@
         },
         {
           "_postman_id": "2ad83d77-3607-747c-ca6d-b156e57c1cee",
-          "name": "RA-93 : Verify that State is stored as blank in VMMP stage DB with failure reason copy",
+          "name": "RA-93 : Verify that State is stored as blank in VMMP stage DB with failure reason",
           "event": [
             {
               "listen": "test",
