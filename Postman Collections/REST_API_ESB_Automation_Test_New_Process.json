@@ -12693,7 +12693,7 @@
         },
         {
           "_postman_id": "43c366b8-0b3d-6bca-ef8f-13a98f5dbb39",
-          "name": "RA-93 : Verify that Mobile number is stored as sent in VMMP stage DB without any failure reasons copy copy",
+          "name": "RA-93 : Verify that Home number is stored as sent in VMMP stage DB without any failure reasons",
           "event": [
             {
               "listen": "test",
