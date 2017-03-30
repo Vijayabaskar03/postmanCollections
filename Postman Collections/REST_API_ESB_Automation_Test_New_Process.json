@@ -11666,7 +11666,7 @@
                   "",
                   "try{",
                   "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "    tests[\"Verifying that Failure reason in staging VMMP DB is Phone has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"mobileNumber-Phone number must be numeric\";",
+                  "    tests[\"Verifying that Failure reason in staging VMMP DB is Phone has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"homeNumber-Phone number must be numeric\";",
                   "    tests[\"Verifying that Mobile Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MOBILE === null;",
                   "    tests[\"Verifying that Work Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].WORK_PHONE === null;",
                   "    tests[\"Verifying that Home Phone in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].HOME_PHONE === null;",
@@ -11703,7 +11703,7 @@
         },
         {
           "_postman_id": "308087b6-1110-6e12-2c9a-cbd0a98c3a4d",
-          "name": "RA-93 : Phone number - Mobile number has invalid characters copy",
+          "name": "RA-93 : Phone number - Work number has invalid characters",
           "event": [
             {
               "listen": "test",
@@ -11791,7 +11791,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"abcdefgh\",\r\n      \"homeNumber\":null,\r\n      \"workNumber\":null\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}\r\n"
+              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":null,\r\n      \"homeNumber\":null,\r\n      \"workNumber\":\"abcdefgh\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}\r\n"
             },
             "description": ""
           },
