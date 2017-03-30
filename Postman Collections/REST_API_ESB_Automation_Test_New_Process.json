@@ -11202,7 +11202,7 @@
         },
         {
           "_postman_id": "eb95e33c-5623-00ea-d5dc-7e96cc801ce9",
-          "name": "RA-93 : Verify that Postcode is stored as blank in VMMP stage DB with failure reason copy",
+          "name": "RA-93 : Verify that Postcode is stored as blank in VMMP stage DB with failure reason",
           "event": [
             {
               "listen": "test",
