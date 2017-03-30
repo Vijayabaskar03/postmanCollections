@@ -10877,7 +10877,7 @@
         },
         {
           "_postman_id": "2ec42b51-d96b-8ff7-8826-33fbe8f9586b",
-          "name": "RA-93 : Verify that State is stored as blank in VMMP stage DB with failure reason copy",
+          "name": "RA-93 : Verify that State is stored as blank in VMMP stage DB with failure reason",
           "event": [
             {
               "listen": "test",
