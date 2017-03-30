@@ -12732,7 +12732,7 @@
         },
         {
           "_postman_id": "09d6b89b-17c0-7566-7f04-9a1d0fd9ef0d",
-          "name": "RA-93 :Last name is Member Type as blank in VMMP Stage DB when passing invalid values",
+          "name": "RA-93 : Memership Type is incorrect",
           "event": [
             {
               "listen": "test",
