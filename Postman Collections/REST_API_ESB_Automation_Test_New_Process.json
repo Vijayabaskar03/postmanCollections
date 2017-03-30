@@ -11254,7 +11254,7 @@
         },
         {
           "_postman_id": "e8d47378-81d5-12e5-a5da-cc7313a99d3b",
-          "name": "RA-93 : Postcode has invalid characters copy",
+          "name": "RA-93 : Postcode has more than 4 characters",
           "event": [
             {
               "listen": "test",
