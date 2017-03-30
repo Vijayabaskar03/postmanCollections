@@ -10665,8 +10665,14 @@
                   "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
                   "",
                   "var body = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Verifying that the request is returing Invalid Field Error Message\"] = body.invalidFields.suburb === \"Missing suburb\";"
+                  "try{",
+                  "    tests[\"Verifying that the status is 'registration failed'\"] = body.status === \"registration failed\";",
+                  "    tests[\"Verifying that the failure reason is 'Invalid Fields'\"] = body.failureReason === \"Invalid Fields\";",
+                  "    tests[\"Verifying that the invalid fields are listed in the response\"] = body.invalidFields.suburb === \"Suburb must be less than or equal to 100 characters\";",
+                  "}",
+                  "catch(err){",
+                  "  tests[\"Data in response does not exist\"] = false;  ",
+                  "}"
                 ]
               }
             },
