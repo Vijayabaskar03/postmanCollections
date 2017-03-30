@@ -10495,7 +10495,7 @@
         },
         {
           "_postman_id": "e1f402e1-5923-00b6-6530-593531436b59",
-          "name": "RA-93 : Suburb is has invalid characters copy",
+          "name": "RA-93 : Suburb is null",
           "event": [
             {
               "listen": "test",
@@ -10510,11 +10510,7 @@
                   "",
                   "var body = JSON.parse(responseBody);",
                   "",
-                  "",
-                  "tests[\"Verifying that the request is returing Invalid Field Error Message\"] = body.invalidFields.suburb === \"suburb has invalid characters\";",
-                  "",
-                  "",
-                  ""
+                  "tests[\"Verifying that the request is returing Invalid Field Error Message\"] = body.invalidFields.suburb === \"Missing suburb\";"
                 ]
               }
             },
@@ -10587,7 +10583,67 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"KILO*H&\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}\r\n\r\n\r\n{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"Last\",\r\n    \"gender\":\"F\",\r\n    \"dateOfBirth\":\"10/10/1970\",\r\n    \"email\":\"{{Email}}\",\r\n    \"nominationId\":\"abcd1234\",\r\n    \"address\":{\r\n      \"line1\":\"50 Punt Road\",\r\n      \"suburb\":\"KILO*H&\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"3144\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"0404040404\",\r\n      \"homeNumber\":\"0288911784\",\r\n      \"workNumber\":\"0288944514\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n\r\n      \r\n    },\r\n     \r\n    \"vitalityPolicyDetails\":{\r\n\r\n    \r\n \r\n  }\r\n  },\r\n    \r\n     \r\n  \"reasonForJoining\":\"Unknown\",\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"transactionId\":\"abcd1234\"\r\n \r\n}"
+              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":null,\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}\r\n\r\n\r\n{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"Last\",\r\n    \"gender\":\"F\",\r\n    \"dateOfBirth\":\"10/10/1970\",\r\n    \"email\":\"{{Email}}\",\r\n    \"nominationId\":\"abcd1234\",\r\n    \"address\":{\r\n      \"line1\":\"50 Punt Road\",\r\n      \"suburb\":\"KILO*H&\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"3144\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"0404040404\",\r\n      \"homeNumber\":\"0288911784\",\r\n      \"workNumber\":\"0288944514\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n\r\n      \r\n    },\r\n     \r\n    \"vitalityPolicyDetails\":{\r\n\r\n    \r\n \r\n  }\r\n  },\r\n    \r\n     \r\n  \"reasonForJoining\":\"Unknown\",\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"transactionId\":\"abcd1234\"\r\n \r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "bd13bbd8-958c-283a-2aa1-d20ecb7d8b0e",
+          "name": "RA-93 : Verify that Suburb is stored as blank in VMMP stage DB with failure reason",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
+                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "if (body.getMemberInfoStagingOutput.results[0] !== undefined ){",
+                  "",
+                  "",
+                  "tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
+                  "tests[\"Verifying that Failure reason in staging VMMP DB is Suburb has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"suburb-Missing suburb\";",
+                  "tests[\"Verifying that Suburb in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].MAILING_CITY === null;",
+                  "",
+                  "",
+                  "}",
+                  "else",
+                  "",
+                  "{",
+                  "    ",
+                  "    tests[\"Data does not exist\"] = false;",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{StageDB}}",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"{{Email}}\"} "
             },
             "description": ""
           },
