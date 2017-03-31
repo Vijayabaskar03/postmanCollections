@@ -31445,6 +31445,154 @@
         "description": ""
       },
       "response": []
+    },
+    {
+      "_postman_id": "1c2fc2bf-e17c-9797-85df-7e536f95c3db",
+      "name": "RA-93 : Verify that Last Name is stored as blank in VMMP stage DB with failure reason",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "//Verifying that the service is returning response code 200 ",
+              "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+              "",
+              "//Verifing that the response time is less than what has been declared in enviroenment variable ",
+              "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
+              "",
+              "var body = JSON.parse(responseBody);",
+              "",
+              "try{",
+              "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
+              "    tests[\"Verifying that Failure reason in staging VMMP DB is lastName-Last name cannot contain numbers or special characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"lastName-Last name cannot contain numbers or special characters\";",
+              "    tests[\"Verifying that Title in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].LAST_NAME === null;",
+              "}",
+              "catch(err){",
+              "  tests[\"Data in response does not exist\"] = false;  ",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{StageDB}}",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"{{Email}}\"} "
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "250fcd38-07bf-31ea-5956-c1c868bef270",
+      "name": "RA-93 : MemberID has more than 30 characters",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "//Verifying that the service is returning response code 400 ",
+              "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 400\"] = responseCode.code === 400;",
+              "",
+              "//Verifing that the response time is less than what has been declared in enviroenment variable ",
+              "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
+              "",
+              "var body = JSON.parse(responseBody);",
+              "try{",
+              "    tests[\"Verifying that the status is 'registration failed'\"] = body.status === \"registration failed\";",
+              "    tests[\"Verifying that the failure reason is 'Invalid Fields'\"] = body.failureReason === \"Invalid Fields\";",
+              "    tests[\"Verifying that the invalid fields are listed in the response\"] = body.invalidFields.memberId === \"Member ID must be less than or equal to 30 characters\";",
+              "}",
+              "catch(err){",
+              "  tests[\"Data in response does not exist\"] = false;  ",
+              "}"
+            ]
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "//Generating Random Email address to pass into the data so that user duplication does not happen",
+              "function makeEmail() {",
+              "  var strValues = \"qpotvghysbnxui56z\";",
+              "  var strEmail = \"\";",
+              "  var strTmp;",
+              "  for (var i = 0; i < 10; i++) {",
+              "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+              "    strEmail = strEmail + strTmp;",
+              "  }",
+              "  strTmp = \"\";",
+              "  strEmail = strEmail + \"@\";",
+              "  for (var j = 0; j < 8; j++) {",
+              "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+              "    strEmail = strEmail + strTmp;",
+              "  }",
+              "  strEmail = strEmail + \"esbpii.com\";",
+              "  return strEmail;",
+              "}",
+              "",
+              "//Setting up the random email to an environment variable",
+              "postman.setEnvironmentVariable(\"Email\", makeEmail());",
+              "",
+              "var firstName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);",
+              "",
+              "//Setting up the firstName to an environment variable",
+              "postman.setEnvironmentVariable(\"firstName\", firstName);",
+              "",
+              "var lastName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);",
+              "",
+              "//Setting up the lastName to an environment variable",
+              "postman.setEnvironmentVariable(\"lastName\", lastName);",
+              "",
+              "//Incrementing and Setting up the memberID to an environment variable",
+              "// var memberIdNumber = parseInt(environment.memberIdNumber)+1;",
+              "var memberIdNumber = Date.now();",
+              "postman.setEnvironmentVariable(\"memberIdNumber\", memberIdNumber);",
+              "postman.setEnvironmentVariable(\"memberID\", \"RA\"+memberIdNumber.toString());"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"0123456789012345678901234567890\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+        },
+        "description": ""
+      },
+      "response": []
     }
   ]
 }
