@@ -31149,6 +31149,110 @@
         "description": ""
       },
       "response": []
+    },
+    {
+      "_postman_id": "123a68dc-c83c-a0b3-7271-b668afb55100",
+      "name": "RA-93 : Verify that Title is stored as blank in VMMP stage DB with failure reason",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "//Verifying that the service is returning response code 200 ",
+              "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+              "",
+              "//Verifing that the response time is less than what has been declared in enviroenment variable ",
+              "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
+              "",
+              "var body = JSON.parse(responseBody);",
+              "",
+              "try{",
+              "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
+              "    tests[\"Verifying that Failure reason in staging VMMP DB is title-Title has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"title-Title has invalid characters\";",
+              "    tests[\"Verifying that Title in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].TITLE === null;",
+              "}",
+              "catch(err){",
+              "  tests[\"Data in response does not exist\"] = false;  ",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{StageDB}}",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"{{Email}}\"} "
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "1315433c-1847-3862-5be2-06fee0f758b9",
+      "name": "RA-93 : Verify that Gender is stored as blank in VMMP stage DB with failure reason",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "//Verifying that the service is returning response code 200 ",
+              "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+              "",
+              "//Verifing that the response time is less than what has been declared in enviroenment variable ",
+              "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
+              "",
+              "var body = JSON.parse(responseBody);",
+              "",
+              "try{",
+              "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
+              "    tests[\"Verifying that Failure reason in staging VMMP DB is lastName-Missing last name\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"gender-Gender must be entered\";",
+              "    tests[\"Verifying that Title in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].GENDER === null;",
+              "}",
+              "catch(err){",
+              "  tests[\"Data in response does not exist\"] = false;  ",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{StageDB}}",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"{{Email}}\"} "
+        },
+        "description": ""
+      },
+      "response": []
     }
   ]
 }
