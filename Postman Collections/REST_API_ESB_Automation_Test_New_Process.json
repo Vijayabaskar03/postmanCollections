@@ -21044,6 +21044,27 @@
             "description": ""
           },
           "response": []
+        },
+        {
+          "_postman_id": "35f32ba3-ef2f-21d6-5247-5afb50f7debb",
+          "name": "Termination Request for a single user",
+          "request": {
+            "url": "{{ESBURL}}//rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"134987\"\r\n      },\r\n      {\r\n         \"memberId\":\"2343243\"\r\n      },\r\n      {\r\n         \"memberId\":\"293874\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
         }
       ]
     },
