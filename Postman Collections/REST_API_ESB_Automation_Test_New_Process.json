@@ -21026,7 +21026,7 @@
       "item": [
         {
           "_postman_id": "4ef52762-5053-ef24-774a-b17ac3f71537",
-          "name": "RA-147: Verifing user does not exist in UMS copy",
+          "name": "RA-147: Verifing user does not exist in UMS",
           "event": [
             {
               "listen": "test",
