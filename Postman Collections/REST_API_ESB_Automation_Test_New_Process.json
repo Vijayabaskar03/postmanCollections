@@ -21605,8 +21605,8 @@
           "response": []
         },
         {
-          "_postman_id": "4b82d616-b860-7c72-355a-0b6b56e6de57",
-          "name": "Termination Request for multiple users",
+          "_postman_id": "35f32ba3-ef2f-21d6-5247-5afb50f7debb",
+          "name": "Termination Request for a single user",
           "request": {
             "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
             "method": "POST",
@@ -21631,8 +21631,8 @@
           "response": []
         },
         {
-          "_postman_id": "35f32ba3-ef2f-21d6-5247-5afb50f7debb",
-          "name": "Termination Request for a single user",
+          "_postman_id": "4b82d616-b860-7c72-355a-0b6b56e6de57",
+          "name": "Termination Request for multiple users",
           "request": {
             "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
             "method": "POST",
