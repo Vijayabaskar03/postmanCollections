@@ -26445,6 +26445,60 @@
             "description": "A/C:\r\nGiven that members activated their membership\r\nWhen ESB gets the action\r\nThen their membership will be activated in UMS"
           },
           "response": []
+        },
+        {
+          "_postman_id": "2871afc7-c778-29b0-5fa0-0e60db8b3491",
+          "name": "RA-153: Activate member - New Process copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "",
+                  "//tests[\"Verifying that Activation is successfull\"] =  body.status === \"Activation Successful\";",
+                  "",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+            },
+            "description": ""
+          },
+          "response": []
         }
       ]
     },
