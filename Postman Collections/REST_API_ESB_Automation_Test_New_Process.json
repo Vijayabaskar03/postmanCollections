@@ -21020,6 +21020,12 @@
       ]
     },
     {
+      "_postman_id": "54be0860-9a28-fc99-0122-cf3c88d44b8c",
+      "name": "RA-228: PendingTermination of REST members - mark for termination",
+      "description": "",
+      "item": []
+    },
+    {
       "_postman_id": "77d24589-8a26-2f75-88f5-85b941e3ba9f",
       "name": "RA-2 : Members need membership ID",
       "description": "As a member\r\nI want to have Vitality ID numbers\r\nSo that I can enroll to vitality",
