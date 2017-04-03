@@ -21047,7 +21047,7 @@
         },
         {
           "_postman_id": "35f32ba3-ef2f-21d6-5247-5afb50f7debb",
-          "name": "Termination Request for a single user",
+          "name": "Termination Request for a Single user",
           "request": {
             "url": "{{ESBURL}}//rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
             "method": "POST",
