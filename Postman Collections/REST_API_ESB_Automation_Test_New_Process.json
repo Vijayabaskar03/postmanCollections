@@ -21028,18 +21028,23 @@
           "_postman_id": "4b82d616-b860-7c72-355a-0b6b56e6de57",
           "name": "{{ESBURL}}//rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
           "request": {
-            "url": "{{ESBURL}}//rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
             "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
                 "value": "application/json",
                 "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"134987\"\r\n      },\r\n      {\r\n         \"memberId\":\"2343243\"\r\n      },\r\n      {\r\n         \"memberId\":\"293874\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
+              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"{{memberID}}\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
             },
             "description": ""
           },
@@ -21049,15 +21054,6 @@
           "_postman_id": "35f32ba3-ef2f-21d6-5247-5afb50f7debb",
           "name": "Termination Request for a single user",
           "request": {
-            "auth": {
-              "type": "basic",
-              "basic": {
-                "username": "Administrator",
-                "password": "manage",
-                "saveHelperData": true,
-                "showPassword": false
-              }
-            },
             "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
             "method": "POST",
             "header": [
