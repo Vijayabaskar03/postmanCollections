@@ -21123,7 +21123,7 @@
         },
         {
           "_postman_id": "eb42e7f0-8fdd-a092-0e31-5ac634bed974",
-          "name": "RA-153: Enrolling a Member - New Process copy",
+          "name": "RA-153: Enrolling a Member - New Process",
           "event": [
             {
               "listen": "test",
@@ -21497,7 +21497,7 @@
         },
         {
           "_postman_id": "80c96583-84d0-c213-6fd7-0daecc606541",
-          "name": "Wait for enrollment to finish copy",
+          "name": "Wait for enrollment to finish",
           "request": {
             "auth": {
               "type": "basic",
@@ -21524,7 +21524,7 @@
         },
         {
           "_postman_id": "f87f015b-e995-c236-e192-64ab5ce88ab6",
-          "name": "RA-147 : Verifing user has been added to UMS and is InActive Status copy",
+          "name": "RA-147 : Verifing user has been added to UMS and is InActive Status",
           "event": [
             {
               "listen": "test",
