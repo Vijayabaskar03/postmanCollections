@@ -21025,6 +21025,103 @@
       "description": "",
       "item": [
         {
+          "_postman_id": "4ef52762-5053-ef24-774a-b17ac3f71537",
+          "name": "RA-147: Verifing user does not exist in UMS copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonObject = xml2Json(responseBody);\r",
+                  "\r",
+                  "\r",
+                  "try{\r",
+                  "\r",
+                  "\r",
+                  "tests[\"Verifying that User status is Inactive\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userStatus === \"I\" ;\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "}\r",
+                  "\r",
+                  "catch(err){\r",
+                  "    \r",
+                  "  tests[\"User does not exist in UMS\"] = true;  \r",
+                  "}\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Generating Random Email address to pass into the data so that user duplication does not happen",
+                  "function makeEmail() {",
+                  "  var strValues = \"qpotvghysbnxui56z\";",
+                  "  var strEmail = \"\";",
+                  "  var strTmp;",
+                  "  for (var i = 0; i < 10; i++) {",
+                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+                  "    strEmail = strEmail + strTmp;",
+                  "  }",
+                  "  strTmp = \"\";",
+                  "  strEmail = strEmail + \"@\";",
+                  "  for (var j = 0; j < 8; j++) {",
+                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+                  "    strEmail = strEmail + strTmp;",
+                  "  }",
+                  "  strEmail = strEmail + \"esbpii.com\";",
+                  "  return strEmail;",
+                  "}",
+                  "",
+                  "//Setting up the random email to an environment variable",
+                  "postman.setEnvironmentVariable(\"Email\", makeEmail());",
+                  "",
+                  "var firstName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);",
+                  "",
+                  "//Setting up the firstName to an environment variable",
+                  "postman.setEnvironmentVariable(\"firstName\", firstName);",
+                  "",
+                  "var lastName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);",
+                  "",
+                  "//Setting up the lastName to an environment variable",
+                  "postman.setEnvironmentVariable(\"lastName\", lastName);",
+                  "",
+                  "//Incrementing and Setting up the memberID to an environment variable",
+                  "// var memberIdNumber = parseInt(environment.memberIdNumber)+1;",
+                  "var memberIdNumber = Date.now();",
+                  "postman.setEnvironmentVariable(\"memberIdNumber\", memberIdNumber);",
+                  "postman.setEnvironmentVariable(\"memberID\", \"RA\"+memberIdNumber.toString());"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{UmsURL}}/{{UMSContext}}/UsermanagementService",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/xml",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.usermanagement.aiaa.com.au\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <ser:searchUserRequest>\r\n         <source>VITALITY</source>\r\n         <userType></userType>\r\n         <userDetails>\r\n            <userName></userName>\r\n            <userId></userId>\r\n            <userDN></userDN>\r\n            <email>{{Email}}</email>\r\n            <givenName></givenName>\r\n            <surname></surname>\r\n            <webChannel></webChannel>\r\n            <token></token>\r\n            <fundIdentifier></fundIdentifier>\r\n            <eligibilityAssessorEmail></eligibilityAssessorEmail>\r\n            <activationURL></activationURL>\r\n            <consentURL></consentURL>\r\n            <!--1 or more repetitions:-->\r\n            <userRolesList></userRolesList>\r\n            <title></title>\r\n            <dateOfBirth></dateOfBirth>\r\n            <gender></gender>\r\n            <addressLine1></addressLine1>\r\n            <addressLine2></addressLine2>\r\n            <suburb></suburb>\r\n            <state></state>\r\n            <postcode></postcode>\r\n            <country></country>\r\n            <mobilePhone></mobilePhone>\r\n            <workPhone></workPhone>\r\n            <homePhone></homePhone>\r\n            <fax></fax>\r\n            <isRetailLifeInsured></isRetailLifeInsured>\r\n            <passwordRequestDate></passwordRequestDate>\r\n            <password></password>\r\n            <passwordRequestCount></passwordRequestCount>\r\n            <aiaProposalNumber></aiaProposalNumber>\r\n            <aiaProposalWritingAdviser></aiaProposalWritingAdviser>\r\n            <aiaCCAppTnCAcceptedDate></aiaCCAppTnCAcceptedDate>\r\n            <aiaCCAppTnCVersion></aiaCCAppTnCVersion>\r\n            <!--1 or more repetitions:-->\r\n            <userGroupsList></userGroupsList>\r\n            <!--1 or more repetitions:-->\r\n            <userGroupsDNList></userGroupsDNList>\r\n            <memberType></memberType>\r\n            <residentialPostcode></residentialPostcode>\r\n            <userStatus></userStatus>\r\n            <aiaClientNumber></aiaClientNumber>\r\n            <aiaVitalityMemberNumber></aiaVitalityMemberNumber>\r\n            <aiaDsyPolicyNumber></aiaDsyPolicyNumber>\r\n            <aiaVitalityCobrandingInfo></aiaVitalityCobrandingInfo>\r\n         </userDetails>\r\n      </ser:searchUserRequest>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>\r\n\r\n"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
           "_postman_id": "eb42e7f0-8fdd-a092-0e31-5ac634bed974",
           "name": "RA-153: Enrolling a Member - New Process copy",
           "event": [
@@ -21663,103 +21760,6 @@
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "4ef52762-5053-ef24-774a-b17ac3f71537",
-          "name": "RA-147: Verifing user does not exist in UMS copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonObject = xml2Json(responseBody);\r",
-                  "\r",
-                  "\r",
-                  "try{\r",
-                  "\r",
-                  "\r",
-                  "tests[\"Verifying that User status is Inactive\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userStatus === \"I\" ;\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "}\r",
-                  "\r",
-                  "catch(err){\r",
-                  "    \r",
-                  "  tests[\"User does not exist in UMS\"] = true;  \r",
-                  "}\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  ""
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Generating Random Email address to pass into the data so that user duplication does not happen",
-                  "function makeEmail() {",
-                  "  var strValues = \"qpotvghysbnxui56z\";",
-                  "  var strEmail = \"\";",
-                  "  var strTmp;",
-                  "  for (var i = 0; i < 10; i++) {",
-                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
-                  "    strEmail = strEmail + strTmp;",
-                  "  }",
-                  "  strTmp = \"\";",
-                  "  strEmail = strEmail + \"@\";",
-                  "  for (var j = 0; j < 8; j++) {",
-                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
-                  "    strEmail = strEmail + strTmp;",
-                  "  }",
-                  "  strEmail = strEmail + \"esbpii.com\";",
-                  "  return strEmail;",
-                  "}",
-                  "",
-                  "//Setting up the random email to an environment variable",
-                  "postman.setEnvironmentVariable(\"Email\", makeEmail());",
-                  "",
-                  "var firstName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);",
-                  "",
-                  "//Setting up the firstName to an environment variable",
-                  "postman.setEnvironmentVariable(\"firstName\", firstName);",
-                  "",
-                  "var lastName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);",
-                  "",
-                  "//Setting up the lastName to an environment variable",
-                  "postman.setEnvironmentVariable(\"lastName\", lastName);",
-                  "",
-                  "//Incrementing and Setting up the memberID to an environment variable",
-                  "// var memberIdNumber = parseInt(environment.memberIdNumber)+1;",
-                  "var memberIdNumber = Date.now();",
-                  "postman.setEnvironmentVariable(\"memberIdNumber\", memberIdNumber);",
-                  "postman.setEnvironmentVariable(\"memberID\", \"RA\"+memberIdNumber.toString());"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "url": "{{UmsURL}}/{{UMSContext}}/UsermanagementService",
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "text/xml",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.usermanagement.aiaa.com.au\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <ser:searchUserRequest>\r\n         <source>VITALITY</source>\r\n         <userType></userType>\r\n         <userDetails>\r\n            <userName></userName>\r\n            <userId></userId>\r\n            <userDN></userDN>\r\n            <email>{{Email}}</email>\r\n            <givenName></givenName>\r\n            <surname></surname>\r\n            <webChannel></webChannel>\r\n            <token></token>\r\n            <fundIdentifier></fundIdentifier>\r\n            <eligibilityAssessorEmail></eligibilityAssessorEmail>\r\n            <activationURL></activationURL>\r\n            <consentURL></consentURL>\r\n            <!--1 or more repetitions:-->\r\n            <userRolesList></userRolesList>\r\n            <title></title>\r\n            <dateOfBirth></dateOfBirth>\r\n            <gender></gender>\r\n            <addressLine1></addressLine1>\r\n            <addressLine2></addressLine2>\r\n            <suburb></suburb>\r\n            <state></state>\r\n            <postcode></postcode>\r\n            <country></country>\r\n            <mobilePhone></mobilePhone>\r\n            <workPhone></workPhone>\r\n            <homePhone></homePhone>\r\n            <fax></fax>\r\n            <isRetailLifeInsured></isRetailLifeInsured>\r\n            <passwordRequestDate></passwordRequestDate>\r\n            <password></password>\r\n            <passwordRequestCount></passwordRequestCount>\r\n            <aiaProposalNumber></aiaProposalNumber>\r\n            <aiaProposalWritingAdviser></aiaProposalWritingAdviser>\r\n            <aiaCCAppTnCAcceptedDate></aiaCCAppTnCAcceptedDate>\r\n            <aiaCCAppTnCVersion></aiaCCAppTnCVersion>\r\n            <!--1 or more repetitions:-->\r\n            <userGroupsList></userGroupsList>\r\n            <!--1 or more repetitions:-->\r\n            <userGroupsDNList></userGroupsDNList>\r\n            <memberType></memberType>\r\n            <residentialPostcode></residentialPostcode>\r\n            <userStatus></userStatus>\r\n            <aiaClientNumber></aiaClientNumber>\r\n            <aiaVitalityMemberNumber></aiaVitalityMemberNumber>\r\n            <aiaDsyPolicyNumber></aiaDsyPolicyNumber>\r\n            <aiaVitalityCobrandingInfo></aiaVitalityCobrandingInfo>\r\n         </userDetails>\r\n      </ser:searchUserRequest>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>\r\n\r\n"
             },
             "description": ""
           },
