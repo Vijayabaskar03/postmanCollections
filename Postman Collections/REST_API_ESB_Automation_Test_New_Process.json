@@ -21026,7 +21026,7 @@
       "item": [
         {
           "_postman_id": "4b82d616-b860-7c72-355a-0b6b56e6de57",
-          "name": "{{ESBURL}}//rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
+          "name": "Termination Request for multiple users",
           "request": {
             "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
             "method": "POST",
@@ -21044,7 +21044,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"134987\"\r\n      },\r\n      {\r\n         \"memberId\":\"2343243\"\r\n      },\r\n      {\r\n         \"memberId\":\"293874\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
+              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"{{memberID}}\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
             },
             "description": ""
           },
