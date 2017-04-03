@@ -21028,17 +21028,12 @@
           "_postman_id": "4b82d616-b860-7c72-355a-0b6b56e6de57",
           "name": "{{ESBURL}}//rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
           "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
+            "url": "{{ESBURL}}//rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
             "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
                 "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
                 "description": ""
               }
             ],
