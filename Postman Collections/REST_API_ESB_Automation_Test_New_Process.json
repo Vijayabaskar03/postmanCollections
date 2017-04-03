@@ -26838,6 +26838,356 @@
             },
             "description": ""
           },
+          "response": [
+            {
+              "id": "3d4529dd-2aac-44bd-7517-3e13f1502d5b",
+              "name": "response 2",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:14:07 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "237",
+              "body": "{\"token\":\"a77eb61e-5dd3-4680-931e-49122ab21153\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "639d40f8-ce99-5415-4642-ff475057c1c8",
+              "name": "response 3",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:14:17 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "1830",
+              "body": "{\"token\":\"1ed2d16e-9fc9-46ed-af8e-49e5b5207e79\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "8c52491b-6f51-52cd-05ad-36f015ff9284",
+              "name": "error",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive",
+                  "name": "Connection",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "name": "Content-Type",
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 14 Dec 2016 00:42:55 GMT",
+                  "name": "Date",
+                  "description": ""
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": ""
+                },
+                {
+                  "key": "X-Backside-Transport",
+                  "value": "OK OK",
+                  "name": "X-Backside-Transport",
+                  "description": ""
+                },
+                {
+                  "key": "X-Client-IP",
+                  "value": "10.61.38.184",
+                  "name": "X-Client-IP",
+                  "description": ""
+                },
+                {
+                  "key": "X-Global-Transaction-ID",
+                  "value": "348720",
+                  "name": "X-Global-Transaction-ID",
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": "1537",
+              "body": "{\"response\":{}}"
+            },
+            {
+              "id": "cd895cd5-46e3-fd93-014d-4f9d89a433aa",
+              "name": "response 1",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"test street1\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:13:56 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "215",
+              "body": "{\"token\":\"39b8615a-307d-419f-a503-4d4fa6c7021d\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            }
+          ]
+        },
+        {
+          "_postman_id": "80c96583-84d0-c213-6fd7-0daecc606541",
+          "name": "Wait for enrollment to finish copy",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=200",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {},
+            "description": ""
+          },
           "response": []
         }
       ]
