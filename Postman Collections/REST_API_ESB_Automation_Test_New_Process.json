@@ -21023,7 +21023,29 @@
       "_postman_id": "54be0860-9a28-fc99-0122-cf3c88d44b8c",
       "name": "RA-228: PendingTermination of REST members - mark for termination",
       "description": "",
-      "item": []
+      "item": [
+        {
+          "_postman_id": "4b82d616-b860-7c72-355a-0b6b56e6de57",
+          "name": "{{ESBURL}}//rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
+          "request": {
+            "url": "{{ESBURL}}//rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"134987\"\r\n      },\r\n      {\r\n         \"memberId\":\"2343243\"\r\n      },\r\n      {\r\n         \"memberId\":\"293874\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        }
+      ]
     },
     {
       "_postman_id": "77d24589-8a26-2f75-88f5-85b941e3ba9f",
