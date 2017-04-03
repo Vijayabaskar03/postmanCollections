@@ -24989,7 +24989,7 @@
         },
         {
           "_postman_id": "a47b100f-b55f-002a-e0cf-2d6677450f05",
-          "name": "RA-261 : Trigger Bulk Push Notification 3 Entity Numbers copy",
+          "name": "RA-261 : Trigger Bulk Push Notification 3 Entity Numbers for Curretn Week Success",
           "event": [
             {
               "listen": "test",
