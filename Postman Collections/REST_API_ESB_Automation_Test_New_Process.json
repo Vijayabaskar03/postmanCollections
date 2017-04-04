@@ -21026,7 +21026,7 @@
       "item": [
         {
           "_postman_id": "4ef52762-5053-ef24-774a-b17ac3f71537",
-          "name": "RA-147: Verifing user does not exist in UMS copy",
+          "name": "RA-147: Verifing user does not exist in UMS",
           "event": [
             {
               "listen": "test",
@@ -21123,7 +21123,7 @@
         },
         {
           "_postman_id": "eb42e7f0-8fdd-a092-0e31-5ac634bed974",
-          "name": "RA-153: Enrolling a Member - New Process copy",
+          "name": "RA-153: Enrolling a Member - New Process",
           "event": [
             {
               "listen": "test",
@@ -21605,8 +21605,8 @@
           "response": []
         },
         {
-          "_postman_id": "4b82d616-b860-7c72-355a-0b6b56e6de57",
-          "name": "Termination Request for multiple users",
+          "_postman_id": "35f32ba3-ef2f-21d6-5247-5afb50f7debb",
+          "name": "Termination Request for a single user",
           "request": {
             "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
             "method": "POST",
@@ -21631,8 +21631,8 @@
           "response": []
         },
         {
-          "_postman_id": "35f32ba3-ef2f-21d6-5247-5afb50f7debb",
-          "name": "Termination Request for a single user",
+          "_postman_id": "4b82d616-b860-7c72-355a-0b6b56e6de57",
+          "name": "Termination Request for multiple users",
           "request": {
             "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
             "method": "POST",
@@ -25532,7 +25532,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"currentWeek\":\"{{currentMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"previousWeek\":\"{{previousMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"0123456\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"250\"\r\n         }\r\n      }\r\n   ]\r\n}"
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"currentWeek\":\"{{currentMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId2}}\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"previousWeek\":\"{{previousMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"0123456\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"250\"\r\n         }\r\n      }\r\n   ]\r\n}"
             },
             "description": ""
           },
