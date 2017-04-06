@@ -24435,7 +24435,7 @@
         },
         {
           "_postman_id": "acdf6e4e-491f-8ab6-2f24-752adb5d689e",
-          "name": "RA-147 : Verifing user has been added to UMS and is InActive Status 2",
+          "name": "RA-147 : Verifying user has been added to UMS and is InActive Status 2",
           "event": [
             {
               "listen": "test",
