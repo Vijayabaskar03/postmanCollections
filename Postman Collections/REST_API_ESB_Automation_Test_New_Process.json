@@ -32092,7 +32092,7 @@
                 "showPassword": false
               }
             },
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.resendActivationMail.v1",
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.resendActivationMail.v1",
             "method": "PUT",
             "header": [
               {
