@@ -27448,33 +27448,6 @@
             "description": "A/C:\r\nGiven that members activated their membership\r\nWhen ESB gets the action\r\nThen their membership will be activated in UMS"
           },
           "response": []
-        },
-        {
-          "_postman_id": "7602dbb0-0ed5-c4a7-bc4c-6711828e24e5",
-          "name": "Wait for enrollment to finish copy",
-          "request": {
-            "auth": {
-              "type": "basic",
-              "basic": {
-                "username": "Administrator",
-                "password": "manage",
-                "saveHelperData": true,
-                "showPassword": false
-              }
-            },
-            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=200",
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {},
-            "description": ""
-          },
-          "response": []
         }
       ]
     },
