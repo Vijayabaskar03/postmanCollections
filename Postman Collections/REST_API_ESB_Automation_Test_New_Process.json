@@ -14,7 +14,7 @@
       "item": [
         {
           "_postman_id": "456bc79d-f480-4d2d-4c03-711f0128fc04",
-          "name": "RA-147: Verifing user does not exist in UMS",
+          "name": "RA-147: Verifying user does not exist in UMS",
           "event": [
             {
               "listen": "test",
