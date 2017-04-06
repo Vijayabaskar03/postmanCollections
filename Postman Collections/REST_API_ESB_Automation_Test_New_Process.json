@@ -31084,7 +31084,7 @@
                 "showPassword": false
               }
             },
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
             "method": "POST",
             "header": [
               {
@@ -31118,7 +31118,7 @@
                     "showPassword": false
                   }
                 },
-                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
                 "method": "POST",
                 "header": [
                   {
@@ -31203,7 +31203,7 @@
                     "showPassword": false
                   }
                 },
-                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
                 "method": "POST",
                 "header": [
                   {
@@ -31282,7 +31282,7 @@
                     "showPassword": false
                   }
                 },
-                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
                 "method": "POST",
                 "header": [
                   {
@@ -31361,7 +31361,7 @@
                     "showPassword": false
                   }
                 },
-                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
                 "method": "POST",
                 "header": [
                   {
