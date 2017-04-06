@@ -12202,7 +12202,7 @@
             }
           ],
           "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
             "method": "POST",
             "header": [
               {
@@ -12350,7 +12350,7 @@
             }
           ],
           "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
             "method": "POST",
             "header": [
               {
@@ -12500,7 +12500,7 @@
             }
           ],
           "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
             "method": "POST",
             "header": [
               {
@@ -12647,7 +12647,7 @@
             }
           ],
           "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
             "method": "POST",
             "header": [
               {
@@ -12794,7 +12794,7 @@
             }
           ],
           "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
             "method": "POST",
             "header": [
               {
@@ -12942,7 +12942,7 @@
             }
           ],
           "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
             "method": "POST",
             "header": [
               {
@@ -13090,7 +13090,7 @@
             }
           ],
           "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.ws.enrollMember.v1",
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
             "method": "POST",
             "header": [
               {
