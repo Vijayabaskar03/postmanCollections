@@ -23894,7 +23894,7 @@
         },
         {
           "_postman_id": "9eee9cc3-b7c6-e8a7-b6b5-a2b1e3cd6adb",
-          "name": "RA-147 : Verifing user has been added to UMS and is activated 2",
+          "name": "RA-147 : Verifying user has been added to UMS and is activated 2",
           "event": [
             {
               "listen": "test",
