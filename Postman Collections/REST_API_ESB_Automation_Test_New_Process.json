@@ -21605,6 +21605,32 @@
           "response": []
         },
         {
+          "_postman_id": "35f32ba3-ef2f-21d6-5247-5afb50f7debb",
+          "name": "Termination Request for a single user",
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"{{memberID}}\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
           "_postman_id": "8e0f3a05-97a2-ed29-8010-3c03cf24e3a1",
           "name": "RA-144: Verifying that all the PENDINGTERMIANTIONDATE is updated 1 copy",
           "event": [
@@ -21673,32 +21699,6 @@
               "raw": "{\"email\":\"{{Email}}\"} "
             },
             "description": "A/C :\n\nDup check passed:\nGiven that a record is of a unique member \nWhen dup check runs\nThen VMMP core table member's record will be updated with the member's details"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "35f32ba3-ef2f-21d6-5247-5afb50f7debb",
-          "name": "Termination Request for a single user",
-          "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"{{memberID}}\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
-            },
-            "description": ""
           },
           "response": []
         },
