@@ -22312,7 +22312,7 @@
           "_postman_id": "b7f5e51b-58be-26c5-2bef-406db530d403",
           "name": "Cancel Termination Request for a single user",
           "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.cancelTermination.v1 ",
             "method": "POST",
             "header": [
               {
