@@ -24435,7 +24435,6 @@
                   "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
                   "",
                   "var jsonData = JSON.parse(responseBody);",
-                  "tests[\"Verifying that the overall result is SUCCESS\"] = jsonData.result === \"SUCCESS\";",
                   "",
                   "tests[\"Verifying that the over all result is SUCCESS\"] = jsonData.response.status === \"success\";",
                   "tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.response.member[0].memberId === environment.memberID;",
