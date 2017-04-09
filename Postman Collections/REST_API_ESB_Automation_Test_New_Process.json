@@ -22358,7 +22358,7 @@
                   "",
                   "//Setting up the random email to an environment variable",
                   "postman.setEnvironmentVariable(\"Email\", makeEmail());",
-                  "postman.setEnvironmentVariable(\"Email2\", makeEmail());",
+                  "postman.setEnvironmentVariable(\"Email2\", environment.Email);",
                   "console.log(\"Email: \"+environment.Email);",
                   "",
                   "",
