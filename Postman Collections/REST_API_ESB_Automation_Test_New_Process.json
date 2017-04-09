@@ -25616,7 +25616,7 @@
         },
         {
           "_postman_id": "138a1ac6-4309-31b7-3bfa-09da2954f18d",
-          "name": "Wait for Termination to finish copy",
+          "name": "Wait for Termination to finish",
           "request": {
             "auth": {
               "type": "basic",
