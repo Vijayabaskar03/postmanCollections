@@ -24425,6 +24425,26 @@
         {
           "_postman_id": "35f32ba3-ef2f-21d6-5247-5afb50f7debb",
           "name": "Termination Request for a single user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "tests[\"Verifying that the overall result is SUCCESS\"] = jsonData.result === \"SUCCESS\";",
+                  "",
+                  "tests[\"Verifying that the individual result is SUCCESS\"] = jsonData.response.status === \"success\";",
+                  "tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.response.member[0].memberId === environment.memberID;",
+                  "tests[\"Verifying that the appropriate Relationship Name is returned\"] = jsonData.response.member[0].status === \"success\";",
+                  ""
+                ]
+              }
+            }
+          ],
           "request": {
             "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
             "method": "POST",
