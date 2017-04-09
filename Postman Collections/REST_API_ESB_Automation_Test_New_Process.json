@@ -21231,7 +21231,7 @@
                   "",
                   "//Setting up the random email to an environment variable",
                   "postman.setEnvironmentVariable(\"Email\", makeEmail());",
-                  "postman.setEnvironmentVariable(\"Email1\", makeEmail());",
+                  "postman.setEnvironmentVariable(\"Email1\", environment.Email);",
                   "console.log(\"Email: \"+environment.Email);",
                   "",
                   "var firstName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);",
