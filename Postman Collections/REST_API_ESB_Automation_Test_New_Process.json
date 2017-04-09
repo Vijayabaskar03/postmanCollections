@@ -24450,7 +24450,7 @@
         },
         {
           "_postman_id": "8e0f3a05-97a2-ed29-8010-3c03cf24e3a1",
-          "name": "RA-144: Verifying that all the PENDINGTERMIANTIONDATE is updated 1 copy",
+          "name": "RA-144: Verifying that all the PENDINGTERMIANTIONDATE is updated",
           "event": [
             {
               "listen": "test",
