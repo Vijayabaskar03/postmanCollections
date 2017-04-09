@@ -23390,7 +23390,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"{{memberID}}\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
+              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"{{memberID1}}\"\r\n      },\r\n      {\r\n         \"memberId\":\"{{memberID2}}\"\r\n      },\r\n      {\r\n         \"memberId\":\"{{memberID3}}\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
             },
             "description": ""
           },
