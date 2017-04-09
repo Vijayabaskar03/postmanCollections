@@ -9505,22 +9505,14 @@
                   "",
                   "var body = JSON.parse(responseBody);",
                   "",
-                  "if (body.getMemberInfoStagingOutput.results[0] !== undefined ){",
-                  "",
-                  "",
-                  "tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "tests[\"Verifying that Failure reason in staging VMMP DB is Title has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"title-title must be less than or equal to 10 characters\";",
-                  "tests[\"Verifying that Title in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].TITLE === null;",
-                  "",
-                  "",
+                  "try{",
+                  "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
+                  "    tests[\"Verifying that Failure reason in staging VMMP DB is title-Title must be entered\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"title-Title must be entered\";",
+                  "    tests[\"Verifying that Title in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].TITLE === null;",
                   "}",
-                  "else",
-                  "",
-                  "{",
-                  "    ",
-                  "    tests[\"Data does not exist\"] = false;",
-                  "}",
-                  ""
+                  "catch(err){",
+                  "  tests[\"Data in response does not exist\"] = false;  ",
+                  "}"
                 ]
               }
             }
