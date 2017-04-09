@@ -24093,33 +24093,6 @@
           "response": []
         },
         {
-          "_postman_id": "090207ca-fd95-27a5-6116-1f5310f4a351",
-          "name": "Wait for activation to finish 3",
-          "request": {
-            "auth": {
-              "type": "basic",
-              "basic": {
-                "username": "Administrator",
-                "password": "manage",
-                "saveHelperData": true,
-                "showPassword": false
-              }
-            },
-            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=180",
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {},
-            "description": ""
-          },
-          "response": []
-        },
-        {
           "_postman_id": "2a332169-e02f-68fd-4da2-30a8284382eb",
           "name": "RA-147 : Verifying user has been added to UMS and is activated 3",
           "event": [
