@@ -24091,50 +24091,6 @@
             "description": "A/C:\r\nGiven that members activated their membership\r\nWhen ESB gets the action\r\nThen their membership will be activated in UMS"
           },
           "response": []
-        },
-        {
-          "_postman_id": "947d5871-7c1c-27f2-7be8-fedb7c703f24",
-          "name": "RA-261 : Trigger Push Notification for Weekly Target Communication invalid Entity No",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 404\"] = responseCode.code === 404;",
-                  "",
-                  "var body = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Verifying that the notification is not triggered\"] =  body.status === \"notification failed\";",
-                  "",
-                  "tests[\"Verifying that the failure reason is 'Not Found'\"] =  body.failureReaon === \"Not Found\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"123456\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"250\"\r\n         }\r\n      }\r\n   ]\r\n}"
-            },
-            "description": ""
-          },
-          "response": []
         }
       ]
     },
