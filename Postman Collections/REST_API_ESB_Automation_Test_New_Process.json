@@ -22309,6 +22309,32 @@
           "response": []
         },
         {
+          "_postman_id": "b7f5e51b-58be-26c5-2bef-406db530d403",
+          "name": "Termination Request for a single user copy",
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"{{memberID}}\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
           "_postman_id": "31ef3eed-95f5-57da-eb13-b675b3f0a16b",
           "name": "RA-153: Enrolling a Member - New Process 2",
           "event": [
@@ -23398,32 +23424,6 @@
             "body": {
               "mode": "raw",
               "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"{{memberID1}}\"\r\n      },\r\n      {\r\n         \"memberId\":\"{{memberID2}}\"\r\n      },\r\n      {\r\n         \"memberId\":\"{{memberID3}}\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "b7f5e51b-58be-26c5-2bef-406db530d403",
-          "name": "Termination Request for a single user copy",
-          "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"{{memberID}}\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
             },
             "description": ""
           },
