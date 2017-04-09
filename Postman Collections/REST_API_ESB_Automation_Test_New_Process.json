@@ -6661,8 +6661,7 @@
                   "}",
                   "catch(err){",
                   "  tests[\"Data in response does not exist\"] = false;  ",
-                  "}",
-                  ""
+                  "}"
                 ]
               }
             }
@@ -7486,7 +7485,7 @@
                 "exec": [
                   "//Generating Random Email address to pass into the data so that user duplication does not happen",
                   "function makeEmail() {",
-                  "  var strValues = \"qpwoeufbncmakhfga597\";",
+                  "  var strValues = \"qpotvghysbnxui56z\";",
                   "  var strEmail = \"\";",
                   "  var strTmp;",
                   "  for (var i = 0; i < 10; i++) {",
@@ -7499,34 +7498,29 @@
                   "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
                   "    strEmail = strEmail + strTmp;",
                   "  }",
-                  "  strEmail = strEmail + \".com\"",
+                  "  strEmail = strEmail + \"esbpii.com\";",
                   "  return strEmail;",
                   "}",
                   "",
                   "//Setting up the random email to an environment variable",
                   "postman.setEnvironmentVariable(\"Email\", makeEmail());",
                   "",
-                  "//Generating Random 9 digit number to populate in variables to pass Id set 1 requests",
-                  "var Txt1 = Math.floor(100000000 + Math.random() * 900000000);",
-                  "",
-                  "////Setting up the random numeric to an environment variable for AIA_VITALITY_ID",
-                  "postman.setEnvironmentVariable(\"AIA_VITALITY_ID\", Txt1);",
-                  "",
-                  "//Generating Random 9 digit number to populate in variables to pass Id set 1 requests",
-                  "var Txt2 = Math.floor(100000000 + Math.random() * 900000000);",
-                  "postman.setEnvironmentVariable(\"AIA_CLIENT_NUMBER\", Txt2);",
-                  "",
-                  "//Generating Random name string to pass in first name ",
                   "var firstName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);",
                   "",
                   "//Setting up the firstName to an environment variable",
                   "postman.setEnvironmentVariable(\"firstName\", firstName);",
                   "",
+                  "var lastName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);",
+                  "",
+                  "//Setting up the lastName to an environment variable",
+                  "postman.setEnvironmentVariable(\"lastName\", lastName);",
                   "",
                   "",
-                  "",
-                  "",
-                  ""
+                  "//Incrementing and Setting up the memberID to an environment variable",
+                  "// var memberIdNumber = parseInt(environment.memberIdNumber)+1;",
+                  "var memberIdNumber = Date.now();",
+                  "postman.setEnvironmentVariable(\"memberIdNumber\", memberIdNumber);",
+                  "postman.setEnvironmentVariable(\"memberID\", \"RA\"+memberIdNumber.toString());"
                 ]
               }
             }
