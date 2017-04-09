@@ -21998,7 +21998,7 @@
     },
     {
       "_postman_id": "80af17d0-3c82-5da9-201c-047d7766092f",
-      "name": "RA-261 : ESB API for push notification",
+      "name": "RA-228: PendingTermination of REST members - mark for termination",
       "description": "",
       "item": [
         {
