@@ -23561,33 +23561,6 @@
           "response": []
         },
         {
-          "_postman_id": "6a7892e0-9dc0-9da2-ff9c-96c1d14c91fc",
-          "name": "Wait for activation to finish 2",
-          "request": {
-            "auth": {
-              "type": "basic",
-              "basic": {
-                "username": "Administrator",
-                "password": "manage",
-                "saveHelperData": true,
-                "showPassword": false
-              }
-            },
-            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=120",
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {},
-            "description": ""
-          },
-          "response": []
-        },
-        {
           "_postman_id": "9eee9cc3-b7c6-e8a7-b6b5-a2b1e3cd6adb",
           "name": "RA-147 : Verifying user has been added to UMS and is activated 2",
           "event": [
