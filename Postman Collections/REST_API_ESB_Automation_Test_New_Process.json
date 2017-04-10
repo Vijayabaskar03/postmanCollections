@@ -25587,7 +25587,6 @@
                   "    tests[\"Verifying that the status is still ACTIVATED\"] = body.memberships[0].status.name === \"ACTIVATED\";",
                   "}",
                   "catch(err){",
-                  "    ",
                   "    tests[\"Data does not exist\"] = false;",
                   "}",
                   "",
