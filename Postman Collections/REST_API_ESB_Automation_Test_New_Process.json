@@ -25986,7 +25986,7 @@
                   "    // tests[\"Verifying that Relationship Id in Core VMMP DB is as passed\"] = body.relationship.name === environment.relationshipName;",
                   "    ",
                   "    tests[\"Verifying that the pendingTerminationDate is updated\"] = body.memberships[0].pendingTerminationDate === undefined;",
-                  "    tests[\"Verifying that the status is still ACTIVATED\"] = body.memberships[0].status.name === \"ACTIVATED\";",
+                  "    tests[\"Verifying that the status is still AWAITING_ACTIVATION\"] = body.memberships[0].status.name === \"AWAITING_ACTIVATION\";",
                   "}",
                   "catch(err){",
                   "    ",
