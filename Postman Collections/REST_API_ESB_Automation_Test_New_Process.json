@@ -24396,33 +24396,6 @@
           "response": []
         },
         {
-          "_postman_id": "138a1ac6-4309-31b7-3bfa-09da2954f18d",
-          "name": "Wait for Termination to finish",
-          "request": {
-            "auth": {
-              "type": "basic",
-              "basic": {
-                "username": "Administrator",
-                "password": "manage",
-                "saveHelperData": true,
-                "showPassword": false
-              }
-            },
-            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=30",
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {},
-            "description": ""
-          },
-          "response": []
-        },
-        {
           "_postman_id": "35f32ba3-ef2f-21d6-5247-5afb50f7debb",
           "name": "Termination Request for a single user",
           "event": [
@@ -24463,6 +24436,33 @@
               "mode": "raw",
               "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"{{memberID}}\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
             },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "138a1ac6-4309-31b7-3bfa-09da2954f18d",
+          "name": "Wait for Termination to finish",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=30",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {},
             "description": ""
           },
           "response": []
