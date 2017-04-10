@@ -26032,7 +26032,7 @@
         },
         {
           "_postman_id": "2e579709-91c3-8d16-1759-27a3bb0486d2",
-          "name": "RA-228 : Mark For Termination copy",
+          "name": "RA-228 : Mark For Termination - Invalid Member ID",
           "event": [
             {
               "listen": "test",
