@@ -26823,7 +26823,7 @@
         },
         {
           "_postman_id": "2574c8b2-3b29-0695-8988-4a6aa98adc41",
-          "name": "RA-144: Verifying that all the PENDINGTERMIANTIONDATE value is removed 1 copy",
+          "name": "RA-144: Verifying that all the PENDINGTERMIANTIONDATE value is removed 2",
           "event": [
             {
               "listen": "test",
@@ -26895,7 +26895,7 @@
         },
         {
           "_postman_id": "e498fbda-82fb-57a3-37d4-f3aba6adf16f",
-          "name": "RA-144: Verifying that all the PENDINGTERMIANTIONDATE value is removed 1 copy",
+          "name": "RA-144: Verifying that all the PENDINGTERMIANTIONDATE value is removed 3",
           "event": [
             {
               "listen": "test",
@@ -26943,7 +26943,7 @@
                 "showPassword": false
               }
             },
-            "url": "{{VmmpUrl}}/restapi-vitality-member-management-service/registration/members/{{Email1}}",
+            "url": "{{VmmpUrl}}/restapi-vitality-member-management-service/registration/members/",
             "method": "GET",
             "header": [
               {
