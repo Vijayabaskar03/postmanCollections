@@ -25959,62 +25959,6 @@
           "response": []
         },
         {
-          "_postman_id": "ee0aa839-85c6-0ac4-4386-1946afac6c80",
-          "name": "RA-144: Upating VMMP status to Terminated",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
-                  "",
-                  "var jsonData = JSON.parse(responseBody);",
-                  "tests[\"Verifying that the status of the member has been updated to AWAITING ACTIVATION\"] = jsonData.memberships[0].status.name === \"TERMINATED\";"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "var aiaClientNumber = (Math.random()*100000000000000000).toString().substr(0,4);",
-                  "postman.setEnvironmentVariable(\"aiaClientNumber\",aiaClientNumber);",
-                  "",
-                  "var aiaVitalityMemberNumber = (Math.random()*100000000000000000).toString().substr(0,5);",
-                  "postman.setEnvironmentVariable(\"aiaVitalityMemberNumber\",aiaVitalityMemberNumber);",
-                  "",
-                  "var aiaDsyPolicyNumber = (Math.random()*100000000000000000).toString().substr(0,6);",
-                  "postman.setEnvironmentVariable(\"aiaDsyPolicyNumber\",aiaDsyPolicyNumber);",
-                  "",
-                  "var aiaVitalityId = (Math.random()*100000000000000000).toString().substr(0,7);",
-                  "postman.setEnvironmentVariable(\"aiaVitalityId\",aiaVitalityId);",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "url": "{{VmmpUrl}}/{{VMMPContext}}/registration/members/{{Email}}",
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"status\" : \"TERMINATED\",\r\n  \"failureReason\" : null\r\n}"
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
           "_postman_id": "e498fbda-82fb-57a3-37d4-f3aba6adf16f",
           "name": "RA-144: Verifying that all the PENDINGTERMIANTIONDATE value is removed 3",
           "event": [
@@ -26083,6 +26027,62 @@
               "raw": "{\"email\":\"{{Email}}\"} "
             },
             "description": "A/C :\n\nDup check passed:\nGiven that a record is of a unique member \nWhen dup check runs\nThen VMMP core table member's record will be updated with the member's details"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ee0aa839-85c6-0ac4-4386-1946afac6c80",
+          "name": "RA-144: Upating VMMP status to Terminated",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "tests[\"Verifying that the status of the member has been updated to AWAITING ACTIVATION\"] = jsonData.memberships[0].status.name === \"TERMINATED\";"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var aiaClientNumber = (Math.random()*100000000000000000).toString().substr(0,4);",
+                  "postman.setEnvironmentVariable(\"aiaClientNumber\",aiaClientNumber);",
+                  "",
+                  "var aiaVitalityMemberNumber = (Math.random()*100000000000000000).toString().substr(0,5);",
+                  "postman.setEnvironmentVariable(\"aiaVitalityMemberNumber\",aiaVitalityMemberNumber);",
+                  "",
+                  "var aiaDsyPolicyNumber = (Math.random()*100000000000000000).toString().substr(0,6);",
+                  "postman.setEnvironmentVariable(\"aiaDsyPolicyNumber\",aiaDsyPolicyNumber);",
+                  "",
+                  "var aiaVitalityId = (Math.random()*100000000000000000).toString().substr(0,7);",
+                  "postman.setEnvironmentVariable(\"aiaVitalityId\",aiaVitalityId);",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{VmmpUrl}}/{{VMMPContext}}/registration/members/{{Email}}",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\" : \"TERMINATED\",\r\n  \"failureReason\" : null\r\n}"
+            },
+            "description": ""
           },
           "response": []
         },
