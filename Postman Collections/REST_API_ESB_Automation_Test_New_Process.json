@@ -26326,7 +26326,7 @@
         },
         {
           "_postman_id": "7fbe3c8d-4500-700e-570b-7b4b308e0ff8",
-          "name": "RA-228 : Mark For Termination - Invalid Relationship Name copy",
+          "name": "RA-267 : Cancel pending termination - Invalid Relationship Name",
           "event": [
             {
               "listen": "test",
