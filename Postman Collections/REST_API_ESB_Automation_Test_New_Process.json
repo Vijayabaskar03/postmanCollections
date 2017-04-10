@@ -23917,12 +23917,7 @@
                   "//Verifying that the service is returning response code 200 ",
                   "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
                   "",
-                  "var body = JSON.parse(responseBody);",
-                  "",
-                  "",
-                  "//tests[\"Verifying that Activation is successfull\"] =  body.status === \"Activation Successful\";",
-                  "",
-                  ""
+                  "var body = JSON.parse(responseBody);"
                 ]
               }
             }
