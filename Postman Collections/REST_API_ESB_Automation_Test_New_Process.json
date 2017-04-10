@@ -25508,21 +25508,15 @@
                   "",
                   "try{",
                   "    tests[\"Verifying that Email in Core VMMP DB is as passed\"] = body.email === environment.Email1;",
-                  "    // tests[\"Verifying that First Name in Core VMMP DB is as passed\"] = body.firstName === environment.firstName;",
-                  "    // tests[\"Verifying that Last Name in Core VMMP DB is as passed\"] = body.lastName === environment.lastName;",
-                  "    // tests[\"Verifying that Gender in Core VMMP DB is as passed\"] = body.gender === \"M\";",
-                  "    // tests[\"Verifying that DOB in Core VMMP DB is as passed\"] = Date.create(body.dateOfBirth).is(Date.create(environment.vmmpDOB));",
-                  "    // tests[\"Verifying that Relationship Id in Core VMMP DB is as passed\"] = body.relationship.name === environment.relationshipName;",
+                  "    tests[\"Verifying that the Member ID is matching\"] = body.memberships[0].nominationNo === environment.memberID1;",
+                  "    tests[\"Verifying that Relationship Id in Core VMMP DB is as passed\"] = body.relationship.name === environment.relationshipName;",
                   "    ",
                   "    tests[\"Verifying that the pendingTerminationDate is updated\"] = body.memberships[0].pendingTerminationDate !== undefined;",
                   "    tests[\"Verifying that the status is still ACTIVATED\"] = body.memberships[0].status.name === \"ACTIVATED\";",
                   "}",
                   "catch(err){",
-                  "    ",
                   "    tests[\"Data does not exist\"] = false;",
-                  "}",
-                  "",
-                  ""
+                  "}"
                 ]
               }
             }
