@@ -26029,6 +26029,54 @@
             "description": "A/C :\n\nDup check passed:\nGiven that a record is of a unique member \nWhen dup check runs\nThen VMMP core table member's record will be updated with the member's details"
           },
           "response": []
+        },
+        {
+          "_postman_id": "2e579709-91c3-8d16-1759-27a3bb0486d2",
+          "name": "RA-228 : Mark For Termination copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "try {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "    tests[\"Verifying that the over all result is SUCCESS\"] = jsonData.response.status === \"success\";",
+                  "    tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.response.member[0].memberId === environment.memberID;",
+                  "    tests[\"Verifying that the individual result is SUCCESS\"] = jsonData.response.member[0].status === \"success\";",
+                  "} catch (err) {",
+                  "    tests[\"Data in response does not exist\"] = false;",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"{{memberID}}\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
         }
       ]
     },
