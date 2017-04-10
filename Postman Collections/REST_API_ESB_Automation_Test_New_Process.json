@@ -25928,7 +25928,7 @@
                 "showPassword": false
               }
             },
-            "url": "{{VmmpUrl}}/restapi-vitality-member-management-service/registration/members/",
+            "url": "{{VmmpUrl}}/restapi-vitality-member-management-service/registration/members/{{Email3}}",
             "method": "GET",
             "header": [
               {
