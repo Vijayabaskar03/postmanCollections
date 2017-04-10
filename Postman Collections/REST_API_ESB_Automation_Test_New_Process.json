@@ -24513,6 +24513,28 @@
         {
           "_postman_id": "b7f5e51b-58be-26c5-2bef-406db530d403",
           "name": "Cancel Termination Request for a single user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "try {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "    tests[\"Verifying that the over all result is SUCCESS\"] = jsonData.response.status === \"success\";",
+                  "    tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.response.member[0].memberId === environment.memberID;",
+                  "    tests[\"Verifying that the individual result is SUCCESS\"] = jsonData.response.member[0].status === \"success\";",
+                  "} catch (err) {",
+                  "    tests[\"Data in response does not exist\"] = false;",
+                  "}"
+                ]
+              }
+            }
+          ],
           "request": {
             "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.cancelTermination.v1 ",
             "method": "POST",
