@@ -25409,7 +25409,7 @@
         },
         {
           "_postman_id": "4b82d616-b860-7c72-355a-0b6b56e6de57",
-          "name": "Termination Request for multiple users",
+          "name": "RA-228 : Mark For Termination - Bulk",
           "request": {
             "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
             "method": "POST",
