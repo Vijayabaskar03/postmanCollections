@@ -25960,7 +25960,7 @@
         },
         {
           "_postman_id": "ee0aa839-85c6-0ac4-4386-1946afac6c80",
-          "name": "RA-144: Upating VMMP status to Terminated copy",
+          "name": "RA-144: Upating VMMP status to Terminated",
           "event": [
             {
               "listen": "test",
