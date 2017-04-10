@@ -26772,7 +26772,7 @@
                 "showPassword": false
               }
             },
-            "url": "{{VmmpUrl}}/restapi-vitality-member-management-service/registration/members/{{Email}}",
+            "url": "{{VmmpUrl}}/restapi-vitality-member-management-service/registration/members/{{Email1}}",
             "method": "GET",
             "header": [
               {
