@@ -24512,7 +24512,7 @@
         },
         {
           "_postman_id": "b7f5e51b-58be-26c5-2bef-406db530d403",
-          "name": "Cancel Termination Request for a single user",
+          "name": "RA-267 : Cancel pending termination",
           "event": [
             {
               "listen": "test",
