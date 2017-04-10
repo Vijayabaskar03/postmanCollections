@@ -26449,7 +26449,7 @@
             }
           ],
           "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.cancelTermination.v1",
             "method": "POST",
             "header": [
               {
