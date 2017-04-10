@@ -28023,6 +28023,144 @@
             "description": ""
           },
           "response": []
+        },
+        {
+          "_postman_id": "be525e26-2901-6e9d-ee10-096eea18b131",
+          "name": "RA-261 : Trigger Push Notification for Weekly Target Communication",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"250\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "cfc7fac2-8ba0-56a9-65d7-f2f03d5b43e6",
+          "name": "Clear weekly target in Marketo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d74e9958-9799-c5e5-92f0-f2436c8afb4f",
+          "name": "RA-153: Activate member - New Process 2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "",
+                  "//tests[\"Verifying that Activation is successfull\"] =  body.status === \"Activation Successful\";",
+                  "",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+            },
+            "description": ""
+          },
+          "response": []
         }
       ]
     },
