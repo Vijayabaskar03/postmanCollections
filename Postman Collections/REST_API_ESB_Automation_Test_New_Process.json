@@ -30262,6 +30262,4074 @@
       ]
     },
     {
+      "_postman_id": "d1ea6f8d-e63f-8cc2-ec4b-f821d9321e85",
+      "name": "RA-261 : ESB API for push notification copy",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "12332446-e3f1-7d22-fd8f-a6ba6d9ab51a",
+          "name": "RA-153: Enrolling a Member - New Process",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "",
+                  "",
+                  "tests[\"Verifying that Enrolment is successfull\"] =  body.status === \"Data Accepted\";",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "//Generating Random Email address to pass into the data so that user duplication does not happen",
+                  "function makeEmail() {",
+                  "  var strValues = \"qpotvghysbnxui56z\";",
+                  "  var strEmail = \"\";",
+                  "  var strTmp;",
+                  "  for (var i = 0; i < 10; i++) {",
+                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+                  "    strEmail = strEmail + strTmp;",
+                  "  }",
+                  "  strTmp = \"\";",
+                  "  strEmail = strEmail + \"@\";",
+                  "  for (var j = 0; j < 8; j++) {",
+                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+                  "    strEmail = strEmail + strTmp;",
+                  "  }",
+                  "  strEmail = strEmail + \"esbpii.com\";",
+                  "  return strEmail;",
+                  "}",
+                  "",
+                  "",
+                  "//Setting up the random email to an environment variable",
+                  "postman.setEnvironmentVariable(\"Email\", makeEmail());",
+                  "console.log(\"Email: \"+environment.Email);",
+                  "",
+                  "var firstName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);",
+                  "",
+                  "//Setting up the firstName to an environment variable",
+                  "postman.setEnvironmentVariable(\"firstName\", firstName);",
+                  "console.log(\"firstName: \"+environment.firstName);",
+                  "",
+                  "var lastName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);",
+                  "",
+                  "//Setting up the lastName to an environment variable",
+                  "postman.setEnvironmentVariable(\"lastName\", lastName);",
+                  "console.log(\"lastName: \"+environment.lastName);",
+                  "",
+                  "",
+                  "//Incrementing and Setting up the memberID to an environment variable",
+                  "// var memberIdNumber = parseInt(environment.memberIdNumber)+1;",
+                  "var memberIdNumber = Date.now();",
+                  "console.log(memberIdNumber);",
+                  "postman.setEnvironmentVariable(\"memberIdNumber\", memberIdNumber);",
+                  "postman.setEnvironmentVariable(\"memberID\", \"RA\"+memberIdNumber.toString());",
+                  "console.log(\"memberID :\"+environment.memberID);",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "id": "7fabf68f-6c2a-417e-bc08-37500b299481",
+              "name": "response 3",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:14:17 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "1830",
+              "body": "{\"token\":\"1ed2d16e-9fc9-46ed-af8e-49e5b5207e79\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "813da190-5c0c-3ee1-788c-dc82867ff90b",
+              "name": "response 1",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:13:56 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "215",
+              "body": "{\"token\":\"39b8615a-307d-419f-a503-4d4fa6c7021d\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "ae0585f1-ca4c-d492-657b-dd754dc7a0b9",
+              "name": "response 2",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:14:07 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "237",
+              "body": "{\"token\":\"a77eb61e-5dd3-4680-931e-49122ab21153\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "ae25aa9d-fc31-f99a-294a-d3cf686dd813",
+              "name": "error",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive",
+                  "name": "Connection",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "name": "Content-Type",
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 14 Dec 2016 00:42:55 GMT",
+                  "name": "Date",
+                  "description": ""
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": ""
+                },
+                {
+                  "key": "X-Backside-Transport",
+                  "value": "OK OK",
+                  "name": "X-Backside-Transport",
+                  "description": ""
+                },
+                {
+                  "key": "X-Client-IP",
+                  "value": "10.61.38.184",
+                  "name": "X-Client-IP",
+                  "description": ""
+                },
+                {
+                  "key": "X-Global-Transaction-ID",
+                  "value": "348720",
+                  "name": "X-Global-Transaction-ID",
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": "1537",
+              "body": "{\"response\":{}}"
+            }
+          ]
+        },
+        {
+          "_postman_id": "917eca36-4b23-daa2-c4be-74784ae22bfa",
+          "name": "Wait for enrolment to finish",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "{{password_ESB}}",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=200",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {},
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "46183cd2-479c-61c5-e7d6-5e098a45a44e",
+          "name": "RA-147 : Verifying user has been added to UMS and is InActive Status",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonObject = xml2Json(responseBody);\r",
+                  "\r",
+                  "try\r",
+                  "{\r",
+                  "\r",
+                  "\r",
+                  "tests[\"Verifying that User status is Not Activated\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userStatus === \"I\";\r",
+                  "\r",
+                  "tests[\"Verifying that User ID is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userId === environment.Email ;\r",
+                  "\r",
+                  "tests[\"Verifying that Email is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.email === environment.Email ;\r",
+                  "\r",
+                  "tests[\"Verifying that First Name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.givenName === environment.firstName ;\r",
+                  "\r",
+                  "tests[\"Verifying that Last name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.surname === environment.lastName ;\r",
+                  "\r",
+                  "tests[\"Verifying that Member Type is as passed to UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.memberType === \"GROUP\" ;\r",
+                  "\r",
+                  "tests[\"Verifying that User Groups List is VITALITY_AWAITING_ACTIVATION\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userGroupsList === \"VITALITY_AWAITING_ACTIVATION\" ;\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "//Setting up the token to an environment variable to be used in subsequent requests\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"umsToken\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.token);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"aiaClientNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaClientNumber);\r",
+                  "postman.setEnvironmentVariable(\"aiaVitalityMemberNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityMemberNumber);\r",
+                  "postman.setEnvironmentVariable(\"aiaDsyPolicyNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaDsyPolicyNumber);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"aiaVitalityId\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityId);\r",
+                  "\r",
+                  "\r",
+                  "}\r",
+                  "\r",
+                  "\r",
+                  "catch(err){\r",
+                  "    \r",
+                  "  tests[\"Data in response does not exist\"] = false;  \r",
+                  "\r",
+                  "\r",
+                  "}\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{UmsURL}}/{{UMSContext}}/UsermanagementService",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/xml",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.usermanagement.aiaa.com.au\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <ser:searchUserRequest>\n         <source>VITALITY</source>\n         <userType></userType>\n         <userDetails>\n            <userName></userName>\n            <userId></userId>\n            <userDN></userDN>\n            <email>{{Email}}</email>\n            <givenName></givenName>\n            <surname></surname>\n            <webChannel></webChannel>\n            <token></token>\n            <fundIdentifier></fundIdentifier>\n            <eligibilityAssessorEmail></eligibilityAssessorEmail>\n            <activationURL></activationURL>\n            <consentURL></consentURL>\n            <!--1 or more repetitions:-->\n            <userRolesList></userRolesList>\n            <title></title>\n            <dateOfBirth></dateOfBirth>\n            <gender></gender>\n            <addressLine1></addressLine1>\n            <addressLine2></addressLine2>\n            <suburb></suburb>\n            <state></state>\n            <postcode></postcode>\n            <country></country>\n            <mobilePhone></mobilePhone>\n            <workPhone></workPhone>\n            <homePhone></homePhone>\n            <fax></fax>\n            <isRetailLifeInsured></isRetailLifeInsured>\n            <passwordRequestDate></passwordRequestDate>\n            <password></password>\n            <passwordRequestCount></passwordRequestCount>\n            <aiaProposalNumber></aiaProposalNumber>\n            <aiaProposalWritingAdviser></aiaProposalWritingAdviser>\n            <aiaCCAppTnCAcceptedDate></aiaCCAppTnCAcceptedDate>\n            <aiaCCAppTnCVersion></aiaCCAppTnCVersion>\n            <!--1 or more repetitions:-->\n            <userGroupsList></userGroupsList>\n            <!--1 or more repetitions:-->\n            <userGroupsDNList></userGroupsDNList>\n            <memberType></memberType>\n            <residentialPostcode></residentialPostcode>\n            <userStatus></userStatus>\n            <aiaClientNumber></aiaClientNumber>\n            <aiaVitalityMemberNumber></aiaVitalityMemberNumber>\n            <aiaDsyPolicyNumber></aiaDsyPolicyNumber>\n            <aiaVitalityCobrandingInfo></aiaVitalityCobrandingInfo>\n         </userDetails>\n      </ser:searchUserRequest>\n   </soapenv:Body>\n</soapenv:Envelope>\n\n"
+            },
+            "description": "A/C:\r\nGiven that members activated their membership\r\nWhen ESB gets the action\r\nThen their membership will be activated in UMS"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a54b6233-1ea8-e650-6803-ce59f97a1a11",
+          "name": "RA-153: Activate member - New Process",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "",
+                  "//tests[\"Verifying that Activation is successfull\"] =  body.status === \"Activation Successful\";",
+                  "",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "id": "0de3d3d1-b1a0-6601-9d25-4127be49725b",
+              "name": "response 1",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:13:56 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "215",
+              "body": "{\"token\":\"39b8615a-307d-419f-a503-4d4fa6c7021d\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "2cfe47be-4506-67ee-4f2a-d954cfb41c1e",
+              "name": "error",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive",
+                  "name": "Connection",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "name": "Content-Type",
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 14 Dec 2016 00:42:55 GMT",
+                  "name": "Date",
+                  "description": ""
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": ""
+                },
+                {
+                  "key": "X-Backside-Transport",
+                  "value": "OK OK",
+                  "name": "X-Backside-Transport",
+                  "description": ""
+                },
+                {
+                  "key": "X-Client-IP",
+                  "value": "10.61.38.184",
+                  "name": "X-Client-IP",
+                  "description": ""
+                },
+                {
+                  "key": "X-Global-Transaction-ID",
+                  "value": "348720",
+                  "name": "X-Global-Transaction-ID",
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": "1537",
+              "body": "{\"response\":{}}"
+            },
+            {
+              "id": "4b206ee8-fff4-60f4-b649-2a7279ab7656",
+              "name": "response 2",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:14:07 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "237",
+              "body": "{\"token\":\"a77eb61e-5dd3-4680-931e-49122ab21153\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "c982c980-3080-1889-6efe-b3c13fbd9001",
+              "name": "response 3",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:14:17 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "1830",
+              "body": "{\"token\":\"1ed2d16e-9fc9-46ed-af8e-49e5b5207e79\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            }
+          ]
+        },
+        {
+          "_postman_id": "642cbd6c-4008-a1b7-845c-b88f51fdebd3",
+          "name": "Wait for activation to finish",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=120",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {},
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "943d145c-a703-5fea-fa30-f6965e96ea5c",
+          "name": "RA-147 : Verifying user has been added to UMS and is activated",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonObject = xml2Json(responseBody);\r",
+                  "\r",
+                  "try\r",
+                  "{\r",
+                  "\r",
+                  "\r",
+                  "tests[\"Verifying that User status is  Activated\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userStatus === \"A\";\r",
+                  "\r",
+                  "tests[\"Verifying that User ID is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userId === environment.Email ;\r",
+                  "\r",
+                  "tests[\"Verifying that Email is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.email === environment.Email ;\r",
+                  "\r",
+                  "tests[\"Verifying that First Name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.givenName === environment.firstName ;\r",
+                  "\r",
+                  "tests[\"Verifying that Last name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.surname === environment.lastName ;\r",
+                  "\r",
+                  "tests[\"Verifying that Member Type is as passed to UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.memberType === \"GROUP\" ;\r",
+                  "\r",
+                  "tests[\"Verifying that User Groups List is VITALITY_ACTIVE\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userGroupsList === \"VITALITY_ACTIVE\" ;\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "//Setting up the token to an environment variable to be used in subsequent requests\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"umsToken\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.token);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"aiaClientNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaClientNumber);\r",
+                  "postman.setEnvironmentVariable(\"aiaVitalityMemberNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityMemberNumber);\r",
+                  "postman.setEnvironmentVariable(\"aiaDsyPolicyNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaDsyPolicyNumber);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"aiaVitalityId\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityId);\r",
+                  "\r",
+                  "\r",
+                  "}\r",
+                  "\r",
+                  "\r",
+                  "catch(err){\r",
+                  "    \r",
+                  "  tests[\"Data in response does not exist\"] = false;  \r",
+                  "\r",
+                  "\r",
+                  "}\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{UmsURL}}/{{UMSContext}}/UsermanagementService",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/xml",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.usermanagement.aiaa.com.au\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <ser:searchUserRequest>\r\n         <source>VITALITY</source>\r\n         <userType></userType>\r\n         <userDetails>\r\n            <userName></userName>\r\n            <userId></userId>\r\n            <userDN></userDN>\r\n            <email>{{Email}}</email>\r\n            <givenName></givenName>\r\n            <surname></surname>\r\n            <webChannel></webChannel>\r\n            <token></token>\r\n            <fundIdentifier></fundIdentifier>\r\n            <eligibilityAssessorEmail></eligibilityAssessorEmail>\r\n            <activationURL></activationURL>\r\n            <consentURL></consentURL>\r\n            <!--1 or more repetitions:-->\r\n            <userRolesList></userRolesList>\r\n            <title></title>\r\n            <dateOfBirth></dateOfBirth>\r\n            <gender></gender>\r\n            <addressLine1></addressLine1>\r\n            <addressLine2></addressLine2>\r\n            <suburb></suburb>\r\n            <state></state>\r\n            <postcode></postcode>\r\n            <country></country>\r\n            <mobilePhone></mobilePhone>\r\n            <workPhone></workPhone>\r\n            <homePhone></homePhone>\r\n            <fax></fax>\r\n            <isRetailLifeInsured></isRetailLifeInsured>\r\n            <passwordRequestDate></passwordRequestDate>\r\n            <password></password>\r\n            <passwordRequestCount></passwordRequestCount>\r\n            <aiaProposalNumber></aiaProposalNumber>\r\n            <aiaProposalWritingAdviser></aiaProposalWritingAdviser>\r\n            <aiaCCAppTnCAcceptedDate></aiaCCAppTnCAcceptedDate>\r\n            <aiaCCAppTnCVersion></aiaCCAppTnCVersion>\r\n            <!--1 or more repetitions:-->\r\n            <userGroupsList></userGroupsList>\r\n            <!--1 or more repetitions:-->\r\n            <userGroupsDNList></userGroupsDNList>\r\n            <memberType></memberType>\r\n            <residentialPostcode></residentialPostcode>\r\n            <userStatus></userStatus>\r\n            <aiaClientNumber></aiaClientNumber>\r\n            <aiaVitalityMemberNumber></aiaVitalityMemberNumber>\r\n            <aiaDsyPolicyNumber></aiaDsyPolicyNumber>\r\n            <aiaVitalityCobrandingInfo></aiaVitalityCobrandingInfo>\r\n         </userDetails>\r\n      </ser:searchUserRequest>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>\r\n\r\n"
+            },
+            "description": "A/C:\r\nGiven that members activated their membership\r\nWhen ESB gets the action\r\nThen their membership will be activated in UMS"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "26a2c906-94f5-5f74-9250-a5c97443ac12",
+          "name": "RA-153: Enrolling a Member - New Process 2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "",
+                  "",
+                  "tests[\"Verifying that Enrolment is successfull\"] =  body.status === \"Data Accepted\";",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "//Generating Random Email address to pass into the data so that user duplication does not happen",
+                  "function makeEmail() {",
+                  "  var strValues = \"qpotvghysbnxui56z\";",
+                  "  var strEmail = \"\";",
+                  "  var strTmp;",
+                  "  for (var i = 0; i < 10; i++) {",
+                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+                  "    strEmail = strEmail + strTmp;",
+                  "  }",
+                  "  strTmp = \"\";",
+                  "  strEmail = strEmail + \"@\";",
+                  "  for (var j = 0; j < 8; j++) {",
+                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+                  "    strEmail = strEmail + strTmp;",
+                  "  }",
+                  "  strEmail = strEmail + \"esbpii.com\";",
+                  "  return strEmail;",
+                  "}",
+                  "",
+                  "",
+                  "//Setting up the random email to an environment variable",
+                  "postman.setEnvironmentVariable(\"Email\", makeEmail());",
+                  "console.log(\"Email: \"+environment.Email);",
+                  "",
+                  "var firstName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);",
+                  "",
+                  "//Setting up the firstName to an environment variable",
+                  "postman.setEnvironmentVariable(\"firstName\", firstName);",
+                  "console.log(\"firstName: \"+environment.firstName);",
+                  "",
+                  "var lastName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);",
+                  "",
+                  "//Setting up the lastName to an environment variable",
+                  "postman.setEnvironmentVariable(\"lastName\", lastName);",
+                  "console.log(\"lastName: \"+environment.lastName);",
+                  "",
+                  "",
+                  "//Incrementing and Setting up the memberID to an environment variable",
+                  "// var memberIdNumber = parseInt(environment.memberIdNumber)+1;",
+                  "var memberIdNumber = Date.now();",
+                  "console.log(memberIdNumber);",
+                  "postman.setEnvironmentVariable(\"memberIdNumber\", memberIdNumber);",
+                  "postman.setEnvironmentVariable(\"memberID\", \"RA\"+memberIdNumber.toString());",
+                  "console.log(\"memberID :\"+environment.memberID);",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "id": "089a4b16-a824-dc3a-e647-249914da3cde",
+              "name": "response 1",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:13:56 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "215",
+              "body": "{\"token\":\"39b8615a-307d-419f-a503-4d4fa6c7021d\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "4f551bb6-74e8-dbf2-a4f5-e159cc6859a4",
+              "name": "response 2",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:14:07 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "237",
+              "body": "{\"token\":\"a77eb61e-5dd3-4680-931e-49122ab21153\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "88434f6e-653a-bbd0-5eb3-b44a4494223c",
+              "name": "response 3",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:14:17 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "1830",
+              "body": "{\"token\":\"1ed2d16e-9fc9-46ed-af8e-49e5b5207e79\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "9665c2c3-9329-9060-2502-9f77a9406f50",
+              "name": "error",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive",
+                  "name": "Connection",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "name": "Content-Type",
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 14 Dec 2016 00:42:55 GMT",
+                  "name": "Date",
+                  "description": ""
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": ""
+                },
+                {
+                  "key": "X-Backside-Transport",
+                  "value": "OK OK",
+                  "name": "X-Backside-Transport",
+                  "description": ""
+                },
+                {
+                  "key": "X-Client-IP",
+                  "value": "10.61.38.184",
+                  "name": "X-Client-IP",
+                  "description": ""
+                },
+                {
+                  "key": "X-Global-Transaction-ID",
+                  "value": "348720",
+                  "name": "X-Global-Transaction-ID",
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": "1537",
+              "body": "{\"response\":{}}"
+            }
+          ]
+        },
+        {
+          "_postman_id": "f87f36ac-f05e-7add-a866-c033c7f8b5b4",
+          "name": "Wait for enrolment to finish 2",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "{{password_ESB}}",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=200",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {},
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "6e0ed7dc-c245-3821-a3f5-4ebef8386b4e",
+          "name": "RA-147 : Verifying user has been added to UMS and is InActive Status 2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonObject = xml2Json(responseBody);\r",
+                  "\r",
+                  "try\r",
+                  "{\r",
+                  "    tests[\"Verifying that User status is Not Activated\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userStatus === \"I\";\r",
+                  "    \r",
+                  "    tests[\"Verifying that User ID is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userId === environment.Email ;\r",
+                  "    \r",
+                  "    tests[\"Verifying that Email is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.email === environment.Email ;\r",
+                  "    \r",
+                  "    tests[\"Verifying that First Name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.givenName === environment.firstName ;\r",
+                  "    \r",
+                  "    tests[\"Verifying that Last name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.surname === environment.lastName ;\r",
+                  "    \r",
+                  "    tests[\"Verifying that Member Type is as passed to UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.memberType === \"GROUP\" ;\r",
+                  "    \r",
+                  "    tests[\"Verifying that User Groups List is VITALITY_AWAITING_ACTIVATION\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userGroupsList === \"VITALITY_AWAITING_ACTIVATION\" ;\r",
+                  "    \r",
+                  "    \r",
+                  "    //Setting up the token to an environment variable to be used in subsequent requests\r",
+                  "    \r",
+                  "    postman.setEnvironmentVariable(\"umsToken\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.token);\r",
+                  "    \r",
+                  "    postman.setEnvironmentVariable(\"aiaClientNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaClientNumber);\r",
+                  "    postman.setEnvironmentVariable(\"aiaVitalityMemberNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityMemberNumber);\r",
+                  "    postman.setEnvironmentVariable(\"aiaDsyPolicyNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaDsyPolicyNumber);\r",
+                  "    \r",
+                  "    postman.setEnvironmentVariable(\"aiaVitalityId2\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityId);\r",
+                  "}\r",
+                  "\r",
+                  "catch(err){\r",
+                  "  tests[\"Data in response does not exist\"] = false;  \r",
+                  "}\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{UmsURL}}/{{UMSContext}}/UsermanagementService",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/xml",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.usermanagement.aiaa.com.au\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <ser:searchUserRequest>\n         <source>VITALITY</source>\n         <userType></userType>\n         <userDetails>\n            <userName></userName>\n            <userId></userId>\n            <userDN></userDN>\n            <email>{{Email}}</email>\n            <givenName></givenName>\n            <surname></surname>\n            <webChannel></webChannel>\n            <token></token>\n            <fundIdentifier></fundIdentifier>\n            <eligibilityAssessorEmail></eligibilityAssessorEmail>\n            <activationURL></activationURL>\n            <consentURL></consentURL>\n            <!--1 or more repetitions:-->\n            <userRolesList></userRolesList>\n            <title></title>\n            <dateOfBirth></dateOfBirth>\n            <gender></gender>\n            <addressLine1></addressLine1>\n            <addressLine2></addressLine2>\n            <suburb></suburb>\n            <state></state>\n            <postcode></postcode>\n            <country></country>\n            <mobilePhone></mobilePhone>\n            <workPhone></workPhone>\n            <homePhone></homePhone>\n            <fax></fax>\n            <isRetailLifeInsured></isRetailLifeInsured>\n            <passwordRequestDate></passwordRequestDate>\n            <password></password>\n            <passwordRequestCount></passwordRequestCount>\n            <aiaProposalNumber></aiaProposalNumber>\n            <aiaProposalWritingAdviser></aiaProposalWritingAdviser>\n            <aiaCCAppTnCAcceptedDate></aiaCCAppTnCAcceptedDate>\n            <aiaCCAppTnCVersion></aiaCCAppTnCVersion>\n            <!--1 or more repetitions:-->\n            <userGroupsList></userGroupsList>\n            <!--1 or more repetitions:-->\n            <userGroupsDNList></userGroupsDNList>\n            <memberType></memberType>\n            <residentialPostcode></residentialPostcode>\n            <userStatus></userStatus>\n            <aiaClientNumber></aiaClientNumber>\n            <aiaVitalityMemberNumber></aiaVitalityMemberNumber>\n            <aiaDsyPolicyNumber></aiaDsyPolicyNumber>\n            <aiaVitalityCobrandingInfo></aiaVitalityCobrandingInfo>\n         </userDetails>\n      </ser:searchUserRequest>\n   </soapenv:Body>\n</soapenv:Envelope>\n\n"
+            },
+            "description": "A/C:\r\nGiven that members activated their membership\r\nWhen ESB gets the action\r\nThen their membership will be activated in UMS"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "79e18404-3031-3ce6-01f8-e07a614f27d4",
+          "name": "RA-153: Activate member - New Process 2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "",
+                  "//tests[\"Verifying that Activation is successfull\"] =  body.status === \"Activation Successful\";",
+                  "",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "id": "0506d48f-b733-9160-7441-8211b70d6b38",
+              "name": "response 3",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:14:17 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "1830",
+              "body": "{\"token\":\"1ed2d16e-9fc9-46ed-af8e-49e5b5207e79\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "59fd057d-286e-fd05-bcef-d1b607356e7f",
+              "name": "response 1",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:13:56 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "215",
+              "body": "{\"token\":\"39b8615a-307d-419f-a503-4d4fa6c7021d\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "85a40559-99c9-ffb3-fc26-41f56f854860",
+              "name": "error",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive",
+                  "name": "Connection",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "name": "Content-Type",
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 14 Dec 2016 00:42:55 GMT",
+                  "name": "Date",
+                  "description": ""
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": ""
+                },
+                {
+                  "key": "X-Backside-Transport",
+                  "value": "OK OK",
+                  "name": "X-Backside-Transport",
+                  "description": ""
+                },
+                {
+                  "key": "X-Client-IP",
+                  "value": "10.61.38.184",
+                  "name": "X-Client-IP",
+                  "description": ""
+                },
+                {
+                  "key": "X-Global-Transaction-ID",
+                  "value": "348720",
+                  "name": "X-Global-Transaction-ID",
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": "1537",
+              "body": "{\"response\":{}}"
+            },
+            {
+              "id": "a1bbb1bf-0b97-1250-a9d2-36e31e976769",
+              "name": "response 2",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:14:07 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "237",
+              "body": "{\"token\":\"a77eb61e-5dd3-4680-931e-49122ab21153\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            }
+          ]
+        },
+        {
+          "_postman_id": "7390cfde-c0a6-7bcb-e885-5d09ce64171a",
+          "name": "Wait for activation to finish 2",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=120",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {},
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "34b65bbb-dcf9-fad4-301d-75c72345accd",
+          "name": "RA-147 : Verifying user has been added to UMS and is activated 2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonObject = xml2Json(responseBody);\r",
+                  "\r",
+                  "try\r",
+                  "{\r",
+                  "\r",
+                  "\r",
+                  "tests[\"Verifying that User status is  Activated\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userStatus === \"A\";\r",
+                  "\r",
+                  "tests[\"Verifying that User ID is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userId === environment.Email ;\r",
+                  "\r",
+                  "tests[\"Verifying that Email is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.email === environment.Email ;\r",
+                  "\r",
+                  "tests[\"Verifying that First Name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.givenName === environment.firstName ;\r",
+                  "\r",
+                  "tests[\"Verifying that Last name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.surname === environment.lastName ;\r",
+                  "\r",
+                  "tests[\"Verifying that Member Type is as passed to UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.memberType === \"GROUP\" ;\r",
+                  "\r",
+                  "tests[\"Verifying that User Groups List is VITALITY_ACTIVE\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userGroupsList === \"VITALITY_ACTIVE\" ;\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "//Setting up the token to an environment variable to be used in subsequent requests\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"umsToken\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.token);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"aiaClientNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaClientNumber);\r",
+                  "postman.setEnvironmentVariable(\"aiaVitalityMemberNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityMemberNumber);\r",
+                  "postman.setEnvironmentVariable(\"aiaDsyPolicyNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaDsyPolicyNumber);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"aiaVitalityId2\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityId);\r",
+                  "\r",
+                  "\r",
+                  "}\r",
+                  "\r",
+                  "\r",
+                  "catch(err){\r",
+                  "    \r",
+                  "  tests[\"Data in response does not exist\"] = false;  \r",
+                  "\r",
+                  "\r",
+                  "}\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{UmsURL}}/{{UMSContext}}/UsermanagementService",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/xml",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.usermanagement.aiaa.com.au\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <ser:searchUserRequest>\r\n         <source>VITALITY</source>\r\n         <userType></userType>\r\n         <userDetails>\r\n            <userName></userName>\r\n            <userId></userId>\r\n            <userDN></userDN>\r\n            <email>{{Email}}</email>\r\n            <givenName></givenName>\r\n            <surname></surname>\r\n            <webChannel></webChannel>\r\n            <token></token>\r\n            <fundIdentifier></fundIdentifier>\r\n            <eligibilityAssessorEmail></eligibilityAssessorEmail>\r\n            <activationURL></activationURL>\r\n            <consentURL></consentURL>\r\n            <!--1 or more repetitions:-->\r\n            <userRolesList></userRolesList>\r\n            <title></title>\r\n            <dateOfBirth></dateOfBirth>\r\n            <gender></gender>\r\n            <addressLine1></addressLine1>\r\n            <addressLine2></addressLine2>\r\n            <suburb></suburb>\r\n            <state></state>\r\n            <postcode></postcode>\r\n            <country></country>\r\n            <mobilePhone></mobilePhone>\r\n            <workPhone></workPhone>\r\n            <homePhone></homePhone>\r\n            <fax></fax>\r\n            <isRetailLifeInsured></isRetailLifeInsured>\r\n            <passwordRequestDate></passwordRequestDate>\r\n            <password></password>\r\n            <passwordRequestCount></passwordRequestCount>\r\n            <aiaProposalNumber></aiaProposalNumber>\r\n            <aiaProposalWritingAdviser></aiaProposalWritingAdviser>\r\n            <aiaCCAppTnCAcceptedDate></aiaCCAppTnCAcceptedDate>\r\n            <aiaCCAppTnCVersion></aiaCCAppTnCVersion>\r\n            <!--1 or more repetitions:-->\r\n            <userGroupsList></userGroupsList>\r\n            <!--1 or more repetitions:-->\r\n            <userGroupsDNList></userGroupsDNList>\r\n            <memberType></memberType>\r\n            <residentialPostcode></residentialPostcode>\r\n            <userStatus></userStatus>\r\n            <aiaClientNumber></aiaClientNumber>\r\n            <aiaVitalityMemberNumber></aiaVitalityMemberNumber>\r\n            <aiaDsyPolicyNumber></aiaDsyPolicyNumber>\r\n            <aiaVitalityCobrandingInfo></aiaVitalityCobrandingInfo>\r\n         </userDetails>\r\n      </ser:searchUserRequest>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>\r\n\r\n"
+            },
+            "description": "A/C:\r\nGiven that members activated their membership\r\nWhen ESB gets the action\r\nThen their membership will be activated in UMS"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "4b23ba14-549b-faf2-88fa-cbdaea147835",
+          "name": "RA-153: Enrolling a Member - New Process 3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "",
+                  "",
+                  "tests[\"Verifying that Enrolment is successfull\"] =  body.status === \"Data Accepted\";",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "//Generating Random Email address to pass into the data so that user duplication does not happen",
+                  "function makeEmail() {",
+                  "  var strValues = \"qpotvghysbnxui56z\";",
+                  "  var strEmail = \"\";",
+                  "  var strTmp;",
+                  "  for (var i = 0; i < 10; i++) {",
+                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+                  "    strEmail = strEmail + strTmp;",
+                  "  }",
+                  "  strTmp = \"\";",
+                  "  strEmail = strEmail + \"@\";",
+                  "  for (var j = 0; j < 8; j++) {",
+                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+                  "    strEmail = strEmail + strTmp;",
+                  "  }",
+                  "  strEmail = strEmail + \"esbpii.com\";",
+                  "  return strEmail;",
+                  "}",
+                  "",
+                  "",
+                  "//Setting up the random email to an environment variable",
+                  "postman.setEnvironmentVariable(\"Email\", makeEmail());",
+                  "console.log(\"Email: \"+environment.Email);",
+                  "",
+                  "var firstName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);",
+                  "",
+                  "//Setting up the firstName to an environment variable",
+                  "postman.setEnvironmentVariable(\"firstName\", firstName);",
+                  "console.log(\"firstName: \"+environment.firstName);",
+                  "",
+                  "var lastName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);",
+                  "",
+                  "//Setting up the lastName to an environment variable",
+                  "postman.setEnvironmentVariable(\"lastName\", lastName);",
+                  "console.log(\"lastName: \"+environment.lastName);",
+                  "",
+                  "",
+                  "//Incrementing and Setting up the memberID to an environment variable",
+                  "// var memberIdNumber = parseInt(environment.memberIdNumber)+1;",
+                  "var memberIdNumber = Date.now();",
+                  "console.log(memberIdNumber);",
+                  "postman.setEnvironmentVariable(\"memberIdNumber\", memberIdNumber);",
+                  "postman.setEnvironmentVariable(\"memberID\", \"RA\"+memberIdNumber.toString());",
+                  "console.log(\"memberID :\"+environment.memberID);",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "id": "27d9de19-3317-74f1-5624-fb6a01847dbd",
+              "name": "error",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive",
+                  "name": "Connection",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "name": "Content-Type",
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 14 Dec 2016 00:42:55 GMT",
+                  "name": "Date",
+                  "description": ""
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": ""
+                },
+                {
+                  "key": "X-Backside-Transport",
+                  "value": "OK OK",
+                  "name": "X-Backside-Transport",
+                  "description": ""
+                },
+                {
+                  "key": "X-Client-IP",
+                  "value": "10.61.38.184",
+                  "name": "X-Client-IP",
+                  "description": ""
+                },
+                {
+                  "key": "X-Global-Transaction-ID",
+                  "value": "348720",
+                  "name": "X-Global-Transaction-ID",
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": "1537",
+              "body": "{\"response\":{}}"
+            },
+            {
+              "id": "6fdc3c32-3804-4888-4884-88cdd3d7e180",
+              "name": "response 2",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:14:07 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "237",
+              "body": "{\"token\":\"a77eb61e-5dd3-4680-931e-49122ab21153\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "a43ce42f-4240-7ce4-b522-5d805d9301bf",
+              "name": "response 3",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:14:17 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "1830",
+              "body": "{\"token\":\"1ed2d16e-9fc9-46ed-af8e-49e5b5207e79\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "da55ba6b-9176-6a31-ce85-4fa729e3ad6e",
+              "name": "response 1",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.enrollMember.v1",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"member\":{\r\n    \"title\":\"Mr\",\r\n    \"firstName\":\"{{firstName}}\",\r\n    \"lastName\":\"{{lastName}}\",\r\n    \"gender\":\"M\",\r\n    \"dateOfBirth\":\"{{dateOfBirth}}\",\r\n    \"email\":\"{{Email}}\",\r\n    \"memberId\":\"{{memberID}}\",\r\n    \"address\":{\r\n      \"line1\":\"{{memberIdNumber}} Test Street\",\r\n      \"suburb\":\"Wiseman's Ferry\",\r\n      \"state\":\"VIC\",\r\n      \"country\":\"Australia\",\r\n      \"postcode\":\"{{postcode}}\"\r\n    },\r\n    \"phone\":{\r\n      \"mobileNumber\":\"{{mobileNumber}}\",\r\n      \"homeNumber\":\"{{homeNumber}}\",\r\n      \"workNumber\":\"{{workNumber}}\"\r\n    },\r\n    \"membership\":{\r\n      \"membershipType\":\"GROUP\"\r\n    }\r\n  },\r\n  \"acceptTnC\":\"Y\",\r\n  \"relationshipName\": \"{{relationshipName}}\",\r\n  \"uuid\":\"{{$guid}}\"\r\n}"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:13:56 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "215",
+              "body": "{\"token\":\"39b8615a-307d-419f-a503-4d4fa6c7021d\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            }
+          ]
+        },
+        {
+          "_postman_id": "b8a26d5d-cc4e-089c-4164-100739a10d1b",
+          "name": "Wait for enrolment to finish 3",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "{{password_ESB}}",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=200",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {},
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f0c1af6b-36a5-59c0-04f7-027fe6933c3d",
+          "name": "RA-147 : Verifying user has been added to UMS and is InActive Status 2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonObject = xml2Json(responseBody);\r",
+                  "\r",
+                  "try\r",
+                  "{\r",
+                  "    tests[\"Verifying that User status is Not Activated\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userStatus === \"I\";\r",
+                  "    \r",
+                  "    tests[\"Verifying that User ID is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userId === environment.Email ;\r",
+                  "    \r",
+                  "    tests[\"Verifying that Email is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.email === environment.Email ;\r",
+                  "    \r",
+                  "    tests[\"Verifying that First Name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.givenName === environment.firstName ;\r",
+                  "    \r",
+                  "    tests[\"Verifying that Last name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.surname === environment.lastName ;\r",
+                  "    \r",
+                  "    tests[\"Verifying that Member Type is as passed to UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.memberType === \"GROUP\" ;\r",
+                  "    \r",
+                  "    tests[\"Verifying that User Groups List is VITALITY_AWAITING_ACTIVATION\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userGroupsList === \"VITALITY_AWAITING_ACTIVATION\" ;\r",
+                  "    \r",
+                  "    \r",
+                  "    //Setting up the token to an environment variable to be used in subsequent requests\r",
+                  "    \r",
+                  "    postman.setEnvironmentVariable(\"umsToken\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.token);\r",
+                  "    \r",
+                  "    postman.setEnvironmentVariable(\"aiaClientNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaClientNumber);\r",
+                  "    postman.setEnvironmentVariable(\"aiaVitalityMemberNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityMemberNumber);\r",
+                  "    postman.setEnvironmentVariable(\"aiaDsyPolicyNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaDsyPolicyNumber);\r",
+                  "    \r",
+                  "    postman.setEnvironmentVariable(\"aiaVitalityId3\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityId);\r",
+                  "}\r",
+                  "\r",
+                  "catch(err){\r",
+                  "  tests[\"Data in response does not exist\"] = false;  \r",
+                  "}\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{UmsURL}}/{{UMSContext}}/UsermanagementService",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/xml",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.usermanagement.aiaa.com.au\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <ser:searchUserRequest>\n         <source>VITALITY</source>\n         <userType></userType>\n         <userDetails>\n            <userName></userName>\n            <userId></userId>\n            <userDN></userDN>\n            <email>{{Email}}</email>\n            <givenName></givenName>\n            <surname></surname>\n            <webChannel></webChannel>\n            <token></token>\n            <fundIdentifier></fundIdentifier>\n            <eligibilityAssessorEmail></eligibilityAssessorEmail>\n            <activationURL></activationURL>\n            <consentURL></consentURL>\n            <!--1 or more repetitions:-->\n            <userRolesList></userRolesList>\n            <title></title>\n            <dateOfBirth></dateOfBirth>\n            <gender></gender>\n            <addressLine1></addressLine1>\n            <addressLine2></addressLine2>\n            <suburb></suburb>\n            <state></state>\n            <postcode></postcode>\n            <country></country>\n            <mobilePhone></mobilePhone>\n            <workPhone></workPhone>\n            <homePhone></homePhone>\n            <fax></fax>\n            <isRetailLifeInsured></isRetailLifeInsured>\n            <passwordRequestDate></passwordRequestDate>\n            <password></password>\n            <passwordRequestCount></passwordRequestCount>\n            <aiaProposalNumber></aiaProposalNumber>\n            <aiaProposalWritingAdviser></aiaProposalWritingAdviser>\n            <aiaCCAppTnCAcceptedDate></aiaCCAppTnCAcceptedDate>\n            <aiaCCAppTnCVersion></aiaCCAppTnCVersion>\n            <!--1 or more repetitions:-->\n            <userGroupsList></userGroupsList>\n            <!--1 or more repetitions:-->\n            <userGroupsDNList></userGroupsDNList>\n            <memberType></memberType>\n            <residentialPostcode></residentialPostcode>\n            <userStatus></userStatus>\n            <aiaClientNumber></aiaClientNumber>\n            <aiaVitalityMemberNumber></aiaVitalityMemberNumber>\n            <aiaDsyPolicyNumber></aiaDsyPolicyNumber>\n            <aiaVitalityCobrandingInfo></aiaVitalityCobrandingInfo>\n         </userDetails>\n      </ser:searchUserRequest>\n   </soapenv:Body>\n</soapenv:Envelope>\n\n"
+            },
+            "description": "A/C:\r\nGiven that members activated their membership\r\nWhen ESB gets the action\r\nThen their membership will be activated in UMS"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "149acf34-bf71-6c24-0ac7-e5059ce8f71b",
+          "name": "RA-153: Activate member - New Process 3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "",
+                  "//tests[\"Verifying that Activation is successfull\"] =  body.status === \"Activation Successful\";",
+                  "",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "id": "4dcfdd55-f48e-5c1d-c1c5-04d9a7193c49",
+              "name": "response 1",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:13:56 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "215",
+              "body": "{\"token\":\"39b8615a-307d-419f-a503-4d4fa6c7021d\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "52582d51-85d8-a1af-3509-50c8ee725569",
+              "name": "error",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive",
+                  "name": "Connection",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "name": "Content-Type",
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 14 Dec 2016 00:42:55 GMT",
+                  "name": "Date",
+                  "description": ""
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": ""
+                },
+                {
+                  "key": "X-Backside-Transport",
+                  "value": "OK OK",
+                  "name": "X-Backside-Transport",
+                  "description": ""
+                },
+                {
+                  "key": "X-Client-IP",
+                  "value": "10.61.38.184",
+                  "name": "X-Client-IP",
+                  "description": ""
+                },
+                {
+                  "key": "X-Global-Transaction-ID",
+                  "value": "348720",
+                  "name": "X-Global-Transaction-ID",
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": "1537",
+              "body": "{\"response\":{}}"
+            },
+            {
+              "id": "6876c797-be9e-35c1-4434-6a7ee3f31230",
+              "name": "response 2",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:14:07 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "237",
+              "body": "{\"token\":\"a77eb61e-5dd3-4680-931e-49122ab21153\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            },
+            {
+              "id": "6fd1d3e8-5345-5fe8-5409-930f85729e1b",
+              "name": "response 3",
+              "originalRequest": {
+                "auth": {
+                  "type": "basic",
+                  "basic": {
+                    "username": "Administrator",
+                    "password": "manage",
+                    "saveHelperData": true,
+                    "showPassword": false
+                  }
+                },
+                "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+                },
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "text",
+              "header": [
+                {
+                  "description": "",
+                  "key": "Connection",
+                  "name": "Connection",
+                  "value": "close"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Language",
+                  "name": "Content-Language",
+                  "value": "en-US"
+                },
+                {
+                  "description": "",
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "description": "",
+                  "key": "Date",
+                  "name": "Date",
+                  "value": "Mon, 14 Nov 2016 03:14:17 GMT"
+                },
+                {
+                  "description": "",
+                  "key": "Transfer-Encoding",
+                  "name": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "description": "",
+                  "key": "X-UA-Compatible",
+                  "name": "X-UA-Compatible",
+                  "value": "IE=Edge"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "1830",
+              "body": "{\"token\":\"1ed2d16e-9fc9-46ed-af8e-49e5b5207e79\",\"validNoOfDays\":\"77\",\"result\":\"SUCCESS\"}"
+            }
+          ]
+        },
+        {
+          "_postman_id": "ea644dfe-ec3b-c07f-5d7d-0babea07241c",
+          "name": "Wait for activation to finish 3",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=180",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {},
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "c4c71451-6199-3d76-34c2-ae1e0dbd0c23",
+          "name": "RA-147 : Verifying user has been added to UMS and is activated 3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonObject = xml2Json(responseBody);\r",
+                  "\r",
+                  "try\r",
+                  "{\r",
+                  "\r",
+                  "\r",
+                  "tests[\"Verifying that User status is  Activated\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userStatus === \"A\";\r",
+                  "\r",
+                  "tests[\"Verifying that User ID is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userId === environment.Email ;\r",
+                  "\r",
+                  "tests[\"Verifying that Email is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.email === environment.Email ;\r",
+                  "\r",
+                  "tests[\"Verifying that First Name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.givenName === environment.firstName ;\r",
+                  "\r",
+                  "tests[\"Verifying that Last name is as passed in UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.surname === environment.lastName ;\r",
+                  "\r",
+                  "tests[\"Verifying that Member Type is as passed to UMS\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.memberType === \"GROUP\" ;\r",
+                  "\r",
+                  "tests[\"Verifying that User Groups List is VITALITY_ACTIVE\"] = jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.userGroupsList === \"VITALITY_ACTIVE\" ;\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "//Setting up the token to an environment variable to be used in subsequent requests\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"umsToken\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.token);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"aiaClientNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaClientNumber);\r",
+                  "postman.setEnvironmentVariable(\"aiaVitalityMemberNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityMemberNumber);\r",
+                  "postman.setEnvironmentVariable(\"aiaDsyPolicyNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaDsyPolicyNumber);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"aiaVitalityId3\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityId);\r",
+                  "\r",
+                  "\r",
+                  "}\r",
+                  "\r",
+                  "\r",
+                  "catch(err){\r",
+                  "    \r",
+                  "  tests[\"Data in response does not exist\"] = false;  \r",
+                  "\r",
+                  "\r",
+                  "}\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{UmsURL}}/{{UMSContext}}/UsermanagementService",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/xml",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.usermanagement.aiaa.com.au\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <ser:searchUserRequest>\r\n         <source>VITALITY</source>\r\n         <userType></userType>\r\n         <userDetails>\r\n            <userName></userName>\r\n            <userId></userId>\r\n            <userDN></userDN>\r\n            <email>{{Email}}</email>\r\n            <givenName></givenName>\r\n            <surname></surname>\r\n            <webChannel></webChannel>\r\n            <token></token>\r\n            <fundIdentifier></fundIdentifier>\r\n            <eligibilityAssessorEmail></eligibilityAssessorEmail>\r\n            <activationURL></activationURL>\r\n            <consentURL></consentURL>\r\n            <!--1 or more repetitions:-->\r\n            <userRolesList></userRolesList>\r\n            <title></title>\r\n            <dateOfBirth></dateOfBirth>\r\n            <gender></gender>\r\n            <addressLine1></addressLine1>\r\n            <addressLine2></addressLine2>\r\n            <suburb></suburb>\r\n            <state></state>\r\n            <postcode></postcode>\r\n            <country></country>\r\n            <mobilePhone></mobilePhone>\r\n            <workPhone></workPhone>\r\n            <homePhone></homePhone>\r\n            <fax></fax>\r\n            <isRetailLifeInsured></isRetailLifeInsured>\r\n            <passwordRequestDate></passwordRequestDate>\r\n            <password></password>\r\n            <passwordRequestCount></passwordRequestCount>\r\n            <aiaProposalNumber></aiaProposalNumber>\r\n            <aiaProposalWritingAdviser></aiaProposalWritingAdviser>\r\n            <aiaCCAppTnCAcceptedDate></aiaCCAppTnCAcceptedDate>\r\n            <aiaCCAppTnCVersion></aiaCCAppTnCVersion>\r\n            <!--1 or more repetitions:-->\r\n            <userGroupsList></userGroupsList>\r\n            <!--1 or more repetitions:-->\r\n            <userGroupsDNList></userGroupsDNList>\r\n            <memberType></memberType>\r\n            <residentialPostcode></residentialPostcode>\r\n            <userStatus></userStatus>\r\n            <aiaClientNumber></aiaClientNumber>\r\n            <aiaVitalityMemberNumber></aiaVitalityMemberNumber>\r\n            <aiaDsyPolicyNumber></aiaDsyPolicyNumber>\r\n            <aiaVitalityCobrandingInfo></aiaVitalityCobrandingInfo>\r\n         </userDetails>\r\n      </ser:searchUserRequest>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>\r\n\r\n"
+            },
+            "description": "A/C:\r\nGiven that members activated their membership\r\nWhen ESB gets the action\r\nThen their membership will be activated in UMS"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d47bae48-759c-db8d-2d63-676915da3b89",
+          "name": "RA-261 : Trigger Push Notification for Current Week's success",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";",
+                  "",
+                  "postman.clearEnvironmentVariable(\"currentMonday\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var currentMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "currentMonday.setDate(currentMonday.getDate() - (currentMonday.getDay() + 6) % 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"currentMonday\", currentMonday.toISOString());"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"currentWeek\":\"{{currentMonday}}\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "0973f2f0-e7a5-d189-2aa6-c309bc666865",
+          "name": "RA-261 : Trigger Push Notification for Previous Week's success",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";",
+                  "",
+                  "postman.clearEnvironmentVariable(\"previousMonday\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var previousMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "previousMonday.setDate(previousMonday.getDate() - (previousMonday.getDay() + 6) % 7);\r",
+                  "// set to previous Monday\r",
+                  "previousMonday.setDate(previousMonday.getDate() - 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"previousMonday\", previousMonday.toISOString());"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"previousWeek\":\"{{previousMonday}}\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8869ffca-cfc3-6279-4e41-a1f667b3b6b3",
+          "name": "Clear weekly target in Marketo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "b162d823-8ebf-b2e8-0bc9-76e994ed1fe8",
+          "name": "RA-261 : Trigger Push Notification for Weekly Target Communication",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"250\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a71c54c0-2269-556a-4505-b2acaa157e58",
+          "name": "Clear weekly target in Marketo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId2}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId3}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e8ff4361-cb36-1ad3-f97a-0cb5ed038a31",
+          "name": "RA-261 : Trigger Bulk Push Notification Same Entity Number",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";",
+                  "",
+                  "postman.clearEnvironmentVariable(\"currentMonday\");",
+                  "postman.clearEnvironmentVariable(\"previousMonday\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var currentMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "currentMonday.setDate(currentMonday.getDate() - (currentMonday.getDay() + 6) % 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"currentMonday\", currentMonday.toISOString());\r",
+                  "\r",
+                  "var previousMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "previousMonday.setDate(previousMonday.getDate() - (previousMonday.getDay() + 6) % 7);\r",
+                  "// set to previous Monday\r",
+                  "previousMonday.setDate(previousMonday.getDate() - 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"previousMonday\", previousMonday.toISOString());\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"currentWeek\":\"{{currentMonday}}\",\r\n            \"previousWeek\":\"{{previousMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId2}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"250\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d93e70ad-2451-d3aa-4171-39b90e14eb85",
+          "name": "RA-261 : Trigger Push Notification for Current Week's invalid Entity No",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 404\"] = responseCode.code === 404;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is not triggered\"] =  body.status === \"notification failed\";",
+                  "",
+                  "tests[\"Verifying that the failure reason is 'Not Found'\"] =  body.failureReaon === \"Not Found\";",
+                  "",
+                  "postman.clearEnvironmentVariable(\"currentMonday\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var currentMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "currentMonday.setDate(currentMonday.getDate() - (currentMonday.getDay() + 6) % 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"currentMonday\", currentMonday.toISOString());"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"123456\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"currentWeek\":\"{{currentMonday}}\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "52963a01-8920-7496-f75d-3df9678bb0be",
+          "name": "RA-261 : Trigger Push Notification for Previous Week's success invalid Entity No",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 404\"] = responseCode.code === 404;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is not triggered\"] =  body.status === \"notification failed\";",
+                  "",
+                  "tests[\"Verifying that the failure reason is 'Not Found'\"] =  body.failureReaon === \"Not Found\";",
+                  "",
+                  "postman.clearEnvironmentVariable(\"previousMonday\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var previousMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "previousMonday.setDate(previousMonday.getDate() - (previousMonday.getDay() + 6) % 7);\r",
+                  "// set to previous Monday\r",
+                  "previousMonday.setDate(previousMonday.getDate() - 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"previousMonday\", previousMonday.toISOString());"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"123456\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"previousWeek\":\"{{previousMonday}}\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d33333f6-6fed-4042-dfb2-10cfbe659037",
+          "name": "RA-261 : Trigger Push Notification for Weekly Target Communication invalid Entity No",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 404\"] = responseCode.code === 404;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is not triggered\"] =  body.status === \"notification failed\";",
+                  "",
+                  "tests[\"Verifying that the failure reason is 'Not Found'\"] =  body.failureReaon === \"Not Found\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"123456\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"250\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "bc87f55d-2745-2bb8-63fa-166cc5b81543",
+          "name": "RA-261 : Trigger Bulk Push Notification Atleast one is valid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";",
+                  "",
+                  "tests[\"Verifying the failure\"] = body.failure[0].has(\"entityNumber: 0123456 was not found. No notification was sent to Marketo.\");",
+                  "",
+                  "postman.clearEnvironmentVariable(\"currentMonday\");",
+                  "postman.clearEnvironmentVariable(\"previousMonday\");",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var currentMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "currentMonday.setDate(currentMonday.getDate() - (currentMonday.getDay() + 6) % 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"currentMonday\", currentMonday.toISOString());\r",
+                  "\r",
+                  "var previousMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "previousMonday.setDate(previousMonday.getDate() - (previousMonday.getDay() + 6) % 7);\r",
+                  "// set to previous Monday\r",
+                  "previousMonday.setDate(previousMonday.getDate() - 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"previousMonday\", previousMonday.toISOString());\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"currentWeek\":\"{{currentMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId2}}\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"previousWeek\":\"{{previousMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"0123456\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"250\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "67a82200-6fec-0fb9-232d-c5224f860664",
+          "name": "RA-261 : Trigger Bulk Push Notification All are invalid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 404\"] = responseCode.code === 404;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is not triggered\"] =  body.status === \"notification failed\";",
+                  "",
+                  "tests[\"Verifying that the failure reason is 'Not Found'\"] =  body.failureReaon === \"Not Found\";",
+                  "",
+                  "postman.clearEnvironmentVariable(\"currentMonday\");",
+                  "postman.clearEnvironmentVariable(\"previousMonday\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var currentMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "currentMonday.setDate(currentMonday.getDate() - (currentMonday.getDay() + 6) % 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"currentMonday\", currentMonday.toISOString());\r",
+                  "\r",
+                  "var previousMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "previousMonday.setDate(previousMonday.getDate() - (previousMonday.getDay() + 6) % 7);\r",
+                  "// set to previous Monday\r",
+                  "previousMonday.setDate(previousMonday.getDate() - 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"previousMonday\", previousMonday.toISOString());\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"123456\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"currentWeek\":\"{{currentMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"123456\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"previousWeek\":\"{{previousMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"123456\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"250\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7b894ea7-d8ea-4522-847e-4a966b429838",
+          "name": "RA-261 : Trigger Bulk Push Notification 3 Entity Numbers",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";",
+                  "",
+                  "postman.clearEnvironmentVariable(\"currentMonday\");",
+                  "postman.clearEnvironmentVariable(\"previousMonday\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var currentMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "currentMonday.setDate(currentMonday.getDate() - (currentMonday.getDay() + 6) % 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"currentMonday\", currentMonday.toISOString());\r",
+                  "\r",
+                  "var previousMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "previousMonday.setDate(previousMonday.getDate() - (previousMonday.getDay() + 6) % 7);\r",
+                  "// set to previous Monday\r",
+                  "previousMonday.setDate(previousMonday.getDate() - 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"previousMonday\", previousMonday.toISOString());\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"currentWeek\":\"{{currentMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId2}}\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"previousWeek\":\"{{previousMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId3}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"250\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "02c4dbdd-81f5-407f-8603-6e4a9d08378d",
+          "name": "RA-261 : Trigger Bulk Push Notification 3 Entity Numbers for Curretn Week Success",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";",
+                  "",
+                  "postman.clearEnvironmentVariable(\"currentMonday\");",
+                  "postman.clearEnvironmentVariable(\"previousMonday\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var currentMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "currentMonday.setDate(currentMonday.getDate() - (currentMonday.getDay() + 6) % 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"currentMonday\", currentMonday.toISOString());\r",
+                  "\r",
+                  "var previousMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "previousMonday.setDate(previousMonday.getDate() - (previousMonday.getDay() + 6) % 7);\r",
+                  "// set to previous Monday\r",
+                  "previousMonday.setDate(previousMonday.getDate() - 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"previousMonday\", previousMonday.toISOString());\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"currentWeek\":\"{{currentMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId2}}\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"currentWeek\":\"{{currentMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId3}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"currentWeek\":\"{{currentMonday}}\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ce390314-6c57-1c63-727e-0c4e0296db9f",
+          "name": "RA-261 : Trigger Bulk Push Notification 3 Entity Numbers for Previous Week Success",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";",
+                  "",
+                  "postman.clearEnvironmentVariable(\"currentMonday\");",
+                  "postman.clearEnvironmentVariable(\"previousMonday\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var currentMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "currentMonday.setDate(currentMonday.getDate() - (currentMonday.getDay() + 6) % 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"currentMonday\", currentMonday.toISOString());\r",
+                  "\r",
+                  "var previousMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "previousMonday.setDate(previousMonday.getDate() - (previousMonday.getDay() + 6) % 7);\r",
+                  "// set to previous Monday\r",
+                  "previousMonday.setDate(previousMonday.getDate() - 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"previousMonday\", previousMonday.toISOString());\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"previousWeek\":\"{{previousMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId2}}\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"previousWeek\":\"{{previousMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId3}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"previousWeek\":\"{{previousMonday}}\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2e0a4d26-c417-4161-c990-4e3c363e5739",
+          "name": "Clear weekly target in Marketo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId2}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId3}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "73367c1b-5c21-aaa0-09a8-d4014cf947fe",
+          "name": "RA-261 : Trigger Bulk Push Notification 3 Entity Numbers for Weekly Target Notification",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";",
+                  "",
+                  "postman.clearEnvironmentVariable(\"currentMonday\");",
+                  "postman.clearEnvironmentVariable(\"previousMonday\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var currentMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "currentMonday.setDate(currentMonday.getDate() - (currentMonday.getDay() + 6) % 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"currentMonday\", currentMonday.toISOString());\r",
+                  "\r",
+                  "var previousMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "previousMonday.setDate(previousMonday.getDate() - (previousMonday.getDay() + 6) % 7);\r",
+                  "// set to previous Monday\r",
+                  "previousMonday.setDate(previousMonday.getDate() - 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"previousMonday\", previousMonday.toISOString());\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"250\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId2}}\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"250\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId3}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"250\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "aa4db50c-dccc-4c0a-87d3-a90301cd9373",
+          "name": "RA-261 : Trigger Bulk Push Notification 3 Entity Numbers for Weekly Target Notification copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";",
+                  "",
+                  "postman.clearEnvironmentVariable(\"currentMonday\");",
+                  "postman.clearEnvironmentVariable(\"previousMonday\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var currentMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "currentMonday.setDate(currentMonday.getDate() - (currentMonday.getDay() + 6) % 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"currentMonday\", currentMonday.toISOString());\r",
+                  "\r",
+                  "var previousMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "previousMonday.setDate(previousMonday.getDate() - (previousMonday.getDay() + 6) % 7);\r",
+                  "// set to previous Monday\r",
+                  "previousMonday.setDate(previousMonday.getDate() - 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"previousMonday\", previousMonday.toISOString());\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n               \"notificationMessage\":[  \r\n                  {  \r\n                     \"entityNumber\":\"5501537699\",\r\n                     \"transactionId\":\"284c22bb-c32f-46eb-8b9a-2cb3a7ea7d04\",\r\n                     \"notification\":{  \r\n                        \"targetPoints\":\"250\"\r\n                     }\r\n                  },\r\n                  {  \r\n                     \"entityNumber\":\"5501537806\",\r\n                     \"uuid\":\"eb95babe-2844-408b-b1dc-3eb32a7bd90e\",\r\n                     \"notification\":{  \r\n                        \"targetPoints\":\"250\"\r\n                     }\r\n                  },\r\n                  {  \r\n                     \"entityNumber\":\"5501537822\",\r\n                     \"transactionId\":\"b3203b62-96c7-4d6e-9ffc-766f13d6e0fd\",\r\n                     \"notification\":{  \r\n                        \"targetPoints\":\"250\"\r\n                     }\r\n                  }\r\n               ]\r\n            }"
+            },
+            "description": ""
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "_postman_id": "f97de6ed-2a50-372b-216f-f345c4fb224f",
       "name": "RA-263 : Resend Activation Email",
       "description": "",
