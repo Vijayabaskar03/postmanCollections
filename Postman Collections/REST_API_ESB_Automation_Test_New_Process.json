@@ -9653,73 +9653,6 @@
           "response": []
         },
         {
-          "_postman_id": "a6fd1574-fd38-2f68-d8d1-6ee800fdbf60",
-          "name": "RA-93 : Verify that Last name is stored as blank in VMMP stage DB with failure reason as INVALID",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
-                  "",
-                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
-                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
-                  "",
-                  "",
-                  "",
-                  "var body = JSON.parse(responseBody);",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "if (body.getMemberInfoStagingOutput.results[0] !== undefined ){",
-                  "",
-                  "",
-                  "",
-                  "tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "tests[\"Verifying that Failure reason in staging VMMP DB is Last name has invalid characters\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"lastName-lastName must contain only alphabets and \\\\-\\\\ or \\\\ ' \\\\\";",
-                  "tests[\"Verifying that Last name in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].LAST_NAME === null;",
-                  "",
-                  "}",
-                  "else",
-                  "",
-                  "{",
-                  "    ",
-                  "    tests[\"Data does not exist\"] = false;",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "url": "{{StageDB}}",
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"email\":\"{{Email}}\"} "
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
           "_postman_id": "0332061d-6eba-3350-6cb2-db18dddf41d7",
           "name": "RA-93 : State has invalid characters",
           "event": [
@@ -14985,7 +14918,7 @@
         },
         {
           "_postman_id": "7582b332-dd94-0571-e2bd-7047ac94d999",
-          "name": "RA-93 : Terma and Conditions not accepted",
+          "name": "RA-93 : Terms and Conditions not accepted",
           "event": [
             {
               "listen": "test",
