@@ -25997,7 +25997,7 @@
         },
         {
           "_postman_id": "4323d1d6-493f-80e4-56ab-7aea151d5f4b",
-          "name": "RA-228 : Mark For Termination - Bulk copy",
+          "name": "RA-267 : Cancel pending termination - Bulk",
           "request": {
             "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
             "method": "POST",
