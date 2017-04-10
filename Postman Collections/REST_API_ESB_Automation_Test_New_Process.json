@@ -26080,7 +26080,7 @@
         },
         {
           "_postman_id": "040da8c1-cac9-9709-0b6d-93f8db090585",
-          "name": "RA-228 : Mark For Termination - Invalid Relationship name",
+          "name": "RA-228 : Mark For Termination - Invalid Relationship Name",
           "event": [
             {
               "listen": "test",
