@@ -25588,9 +25588,7 @@
                   "}",
                   "catch(err){",
                   "    tests[\"Data does not exist\"] = false;",
-                  "}",
-                  "",
-                  ""
+                  "}"
                 ]
               }
             }
