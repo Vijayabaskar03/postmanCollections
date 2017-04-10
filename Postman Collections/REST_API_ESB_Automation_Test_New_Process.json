@@ -26266,7 +26266,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"relationshipName\":\"NotARelationshipName\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"SomeDummyID\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
+              "raw": "{\r\n   \"relationshipName\":null,\r\n   \"member\":[\r\n      {\r\n         \"memberId\":null\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
             },
             "description": ""
           },
