@@ -26193,7 +26193,8 @@
                   "",
                   "    tests[\"Verifying that the over all result is SUCCESS\"] = jsonData.response.status === \"success\";",
                   "    tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.response.member[0].memberId === environment.memberID;",
-                  "    tests[\"Verifying that the individual result is SUCCESS\"] = jsonData.response.member[0].status === \"success\";",
+                  "    tests[\"Verifying that the individual result is FAILURE\"] = jsonData.response.member[0].status === \"failure\";",
+                  "    tests[\"Verifying that the reason is'No Relationship Name provided'\"] = jsonData.response.member[0].reason === \"No Relationship Name provided\";",
                   "} catch (err) {",
                   "    tests[\"Data in response does not exist\"] = false;",
                   "}"
