@@ -26723,35 +26723,8 @@
           "response": []
         },
         {
-          "_postman_id": "090207ca-fd95-27a5-6116-1f5310f4a351",
-          "name": "Wait for activation to finish 3",
-          "request": {
-            "auth": {
-              "type": "basic",
-              "basic": {
-                "username": "Administrator",
-                "password": "manage",
-                "saveHelperData": true,
-                "showPassword": false
-              }
-            },
-            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=180",
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {},
-            "description": ""
-          },
-          "response": []
-        },
-        {
           "_postman_id": "0b7e6fd1-cbc5-34a7-53bf-f4c07f7d1720",
-          "name": "RA-144: Verifying that all the PENDINGTERMIANTIONDATE value is removed copy",
+          "name": "RA-144: Verifying that all the PENDINGTERMIANTIONDATE value is removed 1",
           "event": [
             {
               "listen": "test",
@@ -26799,7 +26772,7 @@
                 "showPassword": false
               }
             },
-            "url": "{{VmmpUrl}}/restapi-vitality-member-management-service/registration/members/{{Email}}",
+            "url": "{{VmmpUrl}}/restapi-vitality-member-management-service/registration/members/{{Email1}}",
             "method": "GET",
             "header": [
               {
@@ -26823,7 +26796,7 @@
         },
         {
           "_postman_id": "4a60a5f4-465a-0951-869a-d715d2cb82d4",
-          "name": "Wait for Cancel Termination to finish copy",
+          "name": "Wait for Cancel Termination to finish",
           "request": {
             "auth": {
               "type": "basic",
@@ -26834,7 +26807,7 @@
                 "showPassword": false
               }
             },
-            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=30",
+            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=80",
             "method": "GET",
             "header": [
               {
@@ -26845,6 +26818,150 @@
             ],
             "body": {},
             "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2574c8b2-3b29-0695-8988-4a6aa98adc41",
+          "name": "RA-144: Verifying that all the PENDINGTERMIANTIONDATE value is removed 2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "//Verifing that the response time is less than the value declared in global  variable ",
+                  "tests[\"Response time is less than \" + globals.responseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < globals.responseTime;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "//console.log(environment.restMemberId+\"aiaPiiData\");",
+                  "",
+                  "try{",
+                  "    tests[\"Verifying that Email in Core VMMP DB is as passed\"] = body.email === environment.Email1;",
+                  "    // tests[\"Verifying that First Name in Core VMMP DB is as passed\"] = body.firstName === environment.firstName;",
+                  "    // tests[\"Verifying that Last Name in Core VMMP DB is as passed\"] = body.lastName === environment.lastName;",
+                  "    // tests[\"Verifying that Gender in Core VMMP DB is as passed\"] = body.gender === \"M\";",
+                  "    // tests[\"Verifying that DOB in Core VMMP DB is as passed\"] = Date.create(body.dateOfBirth).is(Date.create(environment.vmmpDOB));",
+                  "    // tests[\"Verifying that Relationship Id in Core VMMP DB is as passed\"] = body.relationship.name === environment.relationshipName;",
+                  "    ",
+                  "    tests[\"Verifying that the pendingTerminationDate is updated\"] = body.memberships[0].pendingTerminationDate === undefined;",
+                  "    tests[\"Verifying that the status is still ACTIVATED\"] = body.memberships[0].status.name === \"ACTIVATED\";",
+                  "}",
+                  "catch(err){",
+                  "    ",
+                  "    tests[\"Data does not exist\"] = false;",
+                  "}",
+                  "",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{VmmpUrl}}/restapi-vitality-member-management-service/registration/members/{{Email1}}",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"{{Email}}\"} "
+            },
+            "description": "A/C :\n\nDup check passed:\nGiven that a record is of a unique member \nWhen dup check runs\nThen VMMP core table member's record will be updated with the member's details"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e498fbda-82fb-57a3-37d4-f3aba6adf16f",
+          "name": "RA-144: Verifying that all the PENDINGTERMIANTIONDATE value is removed 3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "//Verifing that the response time is less than the value declared in global  variable ",
+                  "tests[\"Response time is less than \" + globals.responseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < globals.responseTime;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "//console.log(environment.restMemberId+\"aiaPiiData\");",
+                  "",
+                  "try{",
+                  "    tests[\"Verifying that Email in Core VMMP DB is as passed\"] = body.email === environment.Email1;",
+                  "    // tests[\"Verifying that First Name in Core VMMP DB is as passed\"] = body.firstName === environment.firstName;",
+                  "    // tests[\"Verifying that Last Name in Core VMMP DB is as passed\"] = body.lastName === environment.lastName;",
+                  "    // tests[\"Verifying that Gender in Core VMMP DB is as passed\"] = body.gender === \"M\";",
+                  "    // tests[\"Verifying that DOB in Core VMMP DB is as passed\"] = Date.create(body.dateOfBirth).is(Date.create(environment.vmmpDOB));",
+                  "    // tests[\"Verifying that Relationship Id in Core VMMP DB is as passed\"] = body.relationship.name === environment.relationshipName;",
+                  "    ",
+                  "    tests[\"Verifying that the pendingTerminationDate is updated\"] = body.memberships[0].pendingTerminationDate === undefined;",
+                  "    tests[\"Verifying that the status is still ACTIVATED\"] = body.memberships[0].status.name === \"ACTIVATED\";",
+                  "}",
+                  "catch(err){",
+                  "    ",
+                  "    tests[\"Data does not exist\"] = false;",
+                  "}",
+                  "",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{VmmpUrl}}/restapi-vitality-member-management-service/registration/members/{{Email1}}",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"{{Email}}\"} "
+            },
+            "description": "A/C :\n\nDup check passed:\nGiven that a record is of a unique member \nWhen dup check runs\nThen VMMP core table member's record will be updated with the member's details"
           },
           "response": []
         }
