@@ -26575,6 +26575,55 @@
             "description": ""
           },
           "response": []
+        },
+        {
+          "_postman_id": "eae68670-e3cd-cb87-e920-47496686d942",
+          "name": "RA-228 : Mark For Termination - Invalid Member ID copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "try {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "    tests[\"Verifying that the over all result is SUCCESS\"] = jsonData.response.status === \"success\";",
+                  "    tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.response.member[0].memberId === \"SomeDummyMemberID\";",
+                  "    tests[\"Verifying that the individual result is FAILURE\"] = jsonData.response.member[0].status === \"failure\";",
+                  "    tests[\"Verifying that the reason is'User not found'\"] = jsonData.response.member[0].reason === \"User not found\";",
+                  "} catch (err) {",
+                  "    tests[\"Data in response does not exist\"] = false;",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"SomeDummyMemberID\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
         }
       ]
     },
