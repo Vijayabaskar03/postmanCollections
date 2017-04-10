@@ -25772,7 +25772,7 @@
                 "showPassword": false
               }
             },
-            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=80",
+            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=30",
             "method": "GET",
             "header": [
               {
