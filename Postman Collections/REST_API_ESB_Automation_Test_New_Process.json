@@ -26277,7 +26277,7 @@
         },
         {
           "_postman_id": "317204f1-0f8c-cf04-226f-6afd052bc43e",
-          "name": "RA-228 : Mark For Termination - Invalid Member ID copy",
+          "name": "RA-267 : Cancel pending termination - Invalid Member ID",
           "event": [
             {
               "listen": "test",
