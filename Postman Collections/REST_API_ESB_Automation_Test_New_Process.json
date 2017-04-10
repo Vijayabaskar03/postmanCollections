@@ -25978,7 +25978,7 @@
                   "//console.log(environment.restMemberId+\"aiaPiiData\");",
                   "",
                   "try{",
-                  "    tests[\"Verifying that Email in Core VMMP DB is as passed\"] = body.email === environment.Email1;",
+                  "    tests[\"Verifying that Email in Core VMMP DB is as passed\"] = body.email === environment.Email3;",
                   "    // tests[\"Verifying that First Name in Core VMMP DB is as passed\"] = body.firstName === environment.firstName;",
                   "    // tests[\"Verifying that Last Name in Core VMMP DB is as passed\"] = body.lastName === environment.lastName;",
                   "    // tests[\"Verifying that Gender in Core VMMP DB is as passed\"] = body.gender === \"M\";",
