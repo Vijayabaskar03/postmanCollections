@@ -24389,7 +24389,7 @@
         },
         {
           "_postman_id": "67357ba2-c829-fae7-de65-f9725621379b",
-          "name": "RA-267 : Cancel pending termination copy",
+          "name": "RA-267 : Duplicate request to Cancel pending termination",
           "event": [
             {
               "listen": "test",
