@@ -24923,7 +24923,7 @@
                   "console.log(memberIdNumber);",
                   "postman.setEnvironmentVariable(\"memberIdNumber\", memberIdNumber);",
                   "postman.setEnvironmentVariable(\"memberID\", \"RA\"+memberIdNumber.toString());",
-                  "postman.setEnvironmentVariable(\"memberID3\", memberID);",
+                  "postman.setEnvironmentVariable(\"memberID3\", environment.memberID);",
                   "console.log(\"memberID :\"+environment.memberID);",
                   ""
                 ]
