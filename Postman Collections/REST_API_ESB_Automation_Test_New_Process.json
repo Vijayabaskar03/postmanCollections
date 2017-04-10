@@ -26402,7 +26402,36 @@
         },
         {
           "_postman_id": "4b82d616-b860-7c72-355a-0b6b56e6de57",
-          "name": "Termination Request for multiple users",
+          "name": "RA-228 : Mark For Termination - Bulk",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 \r",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;\r",
+                  "try {\r",
+                  "    var jsonData = JSON.parse(responseBody);\r",
+                  "    tests[\"Verifying that the over all result is SUCCESS\"] = jsonData.response.status === \"success\";\r",
+                  "    \r",
+                  "    tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.response.member[0].memberId === environment.memberID1;\r",
+                  "    tests[\"Verifying that the individual result is SUCCESS\"] = jsonData.response.member[0].status === \"success\";\r",
+                  "    \r",
+                  "    tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.response.member[1].memberId === environment.memberID2;\r",
+                  "    tests[\"Verifying that the individual result is SUCCESS\"] = jsonData.response.member[1].status === \"success\";\r",
+                  "    \r",
+                  "    tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.response.member[2].memberId === environment.memberID3;\r",
+                  "    tests[\"Verifying that the individual result is SUCCESS\"] = jsonData.response.member[2].status === \"success\";\r",
+                  "} catch (err) {\r",
+                  "    tests[\"Data in response does not exist\"] = false;\r",
+                  "}\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
           "request": {
             "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.termination.v1 ",
             "method": "POST",
@@ -26420,7 +26449,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"{{memberID}}\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
+              "raw": "{\n  \"relationshipName\": \"GRESTFUNDMEMBER\",\n  \"member\": [\n    {\n      \"memberId\": \"{{memberID1}}\"\n    },\n    {\n      \"memberId\": \"{{memberID2}}\"\n    },\n    {\n      \"memberId\": \"{{memberID3}}\"\n    }\n  ],\n  \"uuid\": \"{{$guid}}\"\n}"
             },
             "description": ""
           },
