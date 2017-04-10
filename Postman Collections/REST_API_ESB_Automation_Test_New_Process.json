@@ -24365,7 +24365,7 @@
         },
         {
           "_postman_id": "35f32ba3-ef2f-21d6-5247-5afb50f7debb",
-          "name": "Termination Request for a single user",
+          "name": "RA-228 : Mark For Termination",
           "event": [
             {
               "listen": "test",
