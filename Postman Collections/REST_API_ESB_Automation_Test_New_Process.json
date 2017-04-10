@@ -27120,6 +27120,214 @@
             "description": ""
           },
           "response": []
+        },
+        {
+          "_postman_id": "3f61bb81-f515-0431-2093-0c26b45a9711",
+          "name": "RA-261 : Trigger Bulk Push Notification 3 Entity Numbers",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";",
+                  "",
+                  "postman.clearEnvironmentVariable(\"currentMonday\");",
+                  "postman.clearEnvironmentVariable(\"previousMonday\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var currentMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "currentMonday.setDate(currentMonday.getDate() - (currentMonday.getDay() + 6) % 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"currentMonday\", currentMonday.toISOString());\r",
+                  "\r",
+                  "var previousMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "previousMonday.setDate(previousMonday.getDate() - (previousMonday.getDay() + 6) % 7);\r",
+                  "// set to previous Monday\r",
+                  "previousMonday.setDate(previousMonday.getDate() - 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"previousMonday\", previousMonday.toISOString());\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"currentWeek\":\"{{currentMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId2}}\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"previousWeek\":\"{{previousMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId3}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"250\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "45f5a5ab-7531-7b8f-f730-bf0d08f9d164",
+          "name": "RA-261 : Trigger Push Notification for Previous Week's success",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";",
+                  "",
+                  "postman.clearEnvironmentVariable(\"previousMonday\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var previousMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "previousMonday.setDate(previousMonday.getDate() - (previousMonday.getDay() + 6) % 7);\r",
+                  "// set to previous Monday\r",
+                  "previousMonday.setDate(previousMonday.getDate() - 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"previousMonday\", previousMonday.toISOString());"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"previousWeek\":\"{{previousMonday}}\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "6a7892e0-9dc0-9da2-ff9c-96c1d14c91fc",
+          "name": "Wait for activation to finish 2",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=120",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {},
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "82ad9e84-c9a9-2442-d716-829cced8a19e",
+          "name": "RA-153: Activate member - New Process 3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "",
+                  "//tests[\"Verifying that Activation is successfull\"] =  body.status === \"Activation Successful\";",
+                  "",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{ESBURL}}/rest/aiaVitalityMember/pub/activation",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"password\": \"Welcome123\",\r\n   \"reasonForJoining\": \"I am actively trying to maintain or improve my health\",\r\n   \"email\": \"{{Email}}\",\r\n   \"token\": \"{{umsToken}}\"   \r\n}\r\n"
+            },
+            "description": ""
+          },
+          "response": []
         }
       ]
     },
