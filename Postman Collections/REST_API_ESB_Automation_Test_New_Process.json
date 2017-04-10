@@ -27082,6 +27082,33 @@
             "description": "A/C :\n\nDup check passed:\nGiven that a record is of a unique member \nWhen dup check runs\nThen VMMP core table member's record will be updated with the member's details"
           },
           "response": []
+        },
+        {
+          "_postman_id": "4a60a5f4-465a-0951-869a-d715d2cb82d4",
+          "name": "Wait for Cancel Termination to finish copy",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=30",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {},
+            "description": ""
+          },
+          "response": []
         }
       ]
     },
