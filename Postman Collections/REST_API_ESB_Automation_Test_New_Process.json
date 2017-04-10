@@ -28556,6 +28556,124 @@
             "description": ""
           },
           "response": []
+        },
+        {
+          "_postman_id": "f3067e74-3efe-cc0c-f6e0-41e57421521d",
+          "name": "RA-261 : Trigger Push Notification for Current Week's success",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";",
+                  "",
+                  "postman.clearEnvironmentVariable(\"currentMonday\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var currentMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "currentMonday.setDate(currentMonday.getDate() - (currentMonday.getDay() + 6) % 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"currentMonday\", currentMonday.toISOString());"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"currentWeek\":\"{{currentMonday}}\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "fa3f2188-a07a-5cca-7cbb-e83d79d6f6b4",
+          "name": "RA-261 : Trigger Push Notification for Previous Week's success invalid Entity No",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 404\"] = responseCode.code === 404;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is not triggered\"] =  body.status === \"notification failed\";",
+                  "",
+                  "tests[\"Verifying that the failure reason is 'Not Found'\"] =  body.failureReaon === \"Not Found\";",
+                  "",
+                  "postman.clearEnvironmentVariable(\"previousMonday\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var previousMonday = new Date();\r",
+                  "// set to Monday of this week\r",
+                  "previousMonday.setDate(previousMonday.getDate() - (previousMonday.getDay() + 6) % 7);\r",
+                  "// set to previous Monday\r",
+                  "previousMonday.setDate(previousMonday.getDate() - 7);\r",
+                  "\r",
+                  "postman.setEnvironmentVariable(\"previousMonday\", previousMonday.toISOString());"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"123456\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"previousWeek\":\"{{previousMonday}}\"\r\n         }\r\n      }\r\n   ]\r\n}"
+            },
+            "description": ""
+          },
+          "response": []
         }
       ]
     },
