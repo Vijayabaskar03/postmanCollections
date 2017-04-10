@@ -26627,7 +26627,7 @@
         },
         {
           "_postman_id": "157488b2-aaf5-f79c-f5a5-77070debf4e5",
-          "name": "RA-228 : Mark For Termination - Member already Terminated copy",
+          "name": "RA-267 : Cancel pending termination - Member already Terminated",
           "event": [
             {
               "listen": "test",
