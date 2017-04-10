@@ -26424,7 +26424,7 @@
         },
         {
           "_postman_id": "3144f95a-0773-c380-6fbf-34670940c08e",
-          "name": "RA-228 : Mark For Termination - Relationship Name is NULL copy",
+          "name": "RA-267 : Cancel pending termination - Relationship Name is NULL",
           "event": [
             {
               "listen": "test",
