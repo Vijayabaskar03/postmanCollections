@@ -26375,7 +26375,7 @@
         },
         {
           "_postman_id": "6051b69f-29f2-b1e7-2390-b8c6300344ef",
-          "name": "RA-228 : Mark For Termination - Member ID is NULL copy",
+          "name": "RA-267 : Cancel pending termination - Member ID is NULL",
           "event": [
             {
               "listen": "test",
