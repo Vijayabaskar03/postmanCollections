@@ -26128,7 +26128,7 @@
         },
         {
           "_postman_id": "51a1a469-6176-628c-d829-62d5ed98294a",
-          "name": "RA-228 : Mark For Termination - Invalid Member ID copy",
+          "name": "RA-228 : Mark For Termination - Invalid Member ID and Relationship Name",
           "event": [
             {
               "listen": "test",
