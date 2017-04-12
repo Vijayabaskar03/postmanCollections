@@ -37238,19 +37238,19 @@
           "response": []
         },
         {
-          "_postman_id": "acb12f1c-b69e-edd0-ce4d-43aefb834d99",
-          "name": "Wait for enrolment to finish copy",
+          "_postman_id": "32f2a440-2338-5d51-6981-90956c7945ba",
+          "name": "Wait for activation to finish copy",
           "request": {
             "auth": {
               "type": "basic",
               "basic": {
                 "username": "Administrator",
-                "password": "{{password_ESB}}",
+                "password": "manage",
                 "saveHelperData": true,
                 "showPassword": false
               }
             },
-            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=200",
+            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=120",
             "method": "GET",
             "header": [
               {
