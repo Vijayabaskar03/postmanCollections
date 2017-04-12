@@ -37236,60 +37236,6 @@
             "description": "Generated from a curl request: \ncurl -X POST -H \\\"Content-Type: application/json\\\" -H \\\"Authorization: Basic QWRtaW5pc3RyYXRvcjoxUDF0eXRoMw==\\\" -H \\\"Cache-Control: no-cache\\\" -H \\\"Postman-Token: c6d5e0d6-fb3b-87ac-27e3-a43dfd0b64af\\\" -d '{\\\"email\\\":\\\"um@um.com\\\"}' \\\"http://%7B%7Bbaseurl%7D%7D/rest/aiaVitalityMembershipEnrollment.ws.resendActivationMail.v1\\\""
           },
           "response": []
-        },
-        {
-          "_postman_id": "acb12f1c-b69e-edd0-ce4d-43aefb834d99",
-          "name": "Wait for enrolment to finish copy",
-          "request": {
-            "auth": {
-              "type": "basic",
-              "basic": {
-                "username": "Administrator",
-                "password": "{{password_ESB}}",
-                "saveHelperData": true,
-                "showPassword": false
-              }
-            },
-            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=200",
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {},
-            "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "32f2a440-2338-5d51-6981-90956c7945ba",
-          "name": "Wait for activation to finish copy",
-          "request": {
-            "auth": {
-              "type": "basic",
-              "basic": {
-                "username": "Administrator",
-                "password": "manage",
-                "saveHelperData": true,
-                "showPassword": false
-              }
-            },
-            "url": "{{testPackageURL}}/rest/restTestPackage.ws.sleep?seconds=120",
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {},
-            "description": ""
-          },
-          "response": []
         }
       ]
     },
