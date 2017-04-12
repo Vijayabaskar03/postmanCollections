@@ -37236,66 +37236,6 @@
             "description": "Generated from a curl request: \ncurl -X POST -H \\\"Content-Type: application/json\\\" -H \\\"Authorization: Basic QWRtaW5pc3RyYXRvcjoxUDF0eXRoMw==\\\" -H \\\"Cache-Control: no-cache\\\" -H \\\"Postman-Token: c6d5e0d6-fb3b-87ac-27e3-a43dfd0b64af\\\" -d '{\\\"email\\\":\\\"um@um.com\\\"}' \\\"http://%7B%7Bbaseurl%7D%7D/rest/aiaVitalityMembershipEnrollment.ws.resendActivationMail.v1\\\""
           },
           "response": []
-        },
-        {
-          "_postman_id": "2e2d06ce-b0e9-7af0-b1d3-12f84373f2a7",
-          "name": "RA-263 : ESB Resend Activation Email copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
-                  "",
-                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
-                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
-                  "",
-                  "var body = JSON.parse(responseBody);",
-                  "try{",
-                  "    tests[\"Verifying that the status is 'activation email successfully resent to \"+environment.Email+\"'\"] =  body.status === \"activation email successfully resent to \"+environment.Email;",
-                  "}",
-                  "",
-                  "catch(err){",
-                  "    tests[\"Data in response does not exist\"] = false;  ",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "basic",
-              "basic": {
-                "username": "Administrator",
-                "password": "manage",
-                "saveHelperData": true,
-                "showPassword": false
-              }
-            },
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipEnrollment.rs.resendActivationMail.v1",
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"memberId\":\"{{memberID}}\",\r\n    \"relationshipName\":\"{{relationshipName}}\",\r\n    \"uuid\":\"{{$guid}}\"\r\n}\r\n"
-            },
-            "description": "Generated from a curl request: \ncurl -X POST -H \\\"Content-Type: application/json\\\" -H \\\"Authorization: Basic QWRtaW5pc3RyYXRvcjoxUDF0eXRoMw==\\\" -H \\\"Cache-Control: no-cache\\\" -H \\\"Postman-Token: c6d5e0d6-fb3b-87ac-27e3-a43dfd0b64af\\\" -d '{\\\"email\\\":\\\"um@um.com\\\"}' \\\"http://%7B%7Bbaseurl%7D%7D/rest/aiaVitalityMembershipEnrollment.ws.resendActivationMail.v1\\\""
-          },
-          "response": []
         }
       ]
     },
