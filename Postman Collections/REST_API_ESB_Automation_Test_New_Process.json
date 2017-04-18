@@ -37276,7 +37276,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"123456\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"currentWeek\":\"{{currentMonday}}\"\r\n         }\r\n      }\r\n   ]\r\n}"
+              "raw": "{\n  \"notificationMessage\": [\n    {\n      \"entityNumber\": \"123456\",\n      \"transactionId\": \"{{$guid}}\",\n      \"notification\": {\n        \"pointsToTarget\": \"100\"\n      }\n    }\n  ]\n}"
             },
             "description": ""
           },
