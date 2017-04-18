@@ -38012,7 +38012,7 @@
         },
         {
           "_postman_id": "18d30fd2-9cc1-e97a-0e94-ab7f4a818871",
-          "name": "Clear weekly target in Marketo copy",
+          "name": "Clear pointsToTarget in Marketo",
           "event": [
             {
               "listen": "test",
