@@ -37182,48 +37182,6 @@
           "response": []
         },
         {
-          "_postman_id": "e8ff4361-cb36-1ad3-f97a-0cb5ed038a31",
-          "name": "RA-270 : Trigger bulk In-app Notification for 100 points",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
-                  "",
-                  "var body = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"100\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId2}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"100\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId3}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"100\"\r\n         }\r\n      }\r\n   ]\r\n}"
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
           "_postman_id": "d93e70ad-2451-d3aa-4171-39b90e14eb85",
           "name": "RA-270 : Trigger In-app Notification for 100 points - invalid Entity No",
           "event": [
