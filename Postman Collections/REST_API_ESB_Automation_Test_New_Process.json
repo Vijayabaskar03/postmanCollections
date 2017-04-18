@@ -37156,6 +37156,48 @@
           "response": []
         },
         {
+          "_postman_id": "74660988-0ab1-a54b-d924-f22bef9f29aa",
+          "name": "Clear pointsToTarget in Marketo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "var body = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notificationMessage\": [\n    {\n      \"entityNumber\": \"{{aiaVitalityId}}\",\n      \"transactionId\": \"{{$guid}}\",\n      \"notification\": {\n        \"pointsToTarget\": \"\"\n      }\n    }\n  ]\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
           "_postman_id": "e8ff4361-cb36-1ad3-f97a-0cb5ed038a31",
           "name": "RA-261 : Trigger Bulk Push Notification Same Entity Number",
           "event": [
@@ -37948,48 +37990,6 @@
             "body": {
               "mode": "raw",
               "raw": "{\n  \"notificationMessage\": [\n    {\n      \"entityNumber\": \"{{aiaVitalityId}}\",\n      \"transactionId\": \"{{$guid}}\",\n      \"notification\": {\n        \"pointsToTarget\": \"\"\n      }\n    },\n    {\n      \"entityNumber\": \"{{aiaVitalityId2}}\",\n      \"transactionId\": \"{{$guid}}\",\n      \"notification\": {\n        \"pointsToTarget\": \"\"\n      }\n    },\n    {\n      \"entityNumber\": \"{{aiaVitalityId3}}\",\n      \"transactionId\": \"{{$guid}}\",\n      \"notification\": {\n        \"pointsToTarget\": \"\"\n      }\n    }\n  ]\n}"
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "74660988-0ab1-a54b-d924-f22bef9f29aa",
-          "name": "Clear pointsToTarget in Marketo",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
-                  "",
-                  "var body = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityBenefits.rs.notification.v1",
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"notificationMessage\": [\n    {\n      \"entityNumber\": \"{{aiaVitalityId}}\",\n      \"transactionId\": \"{{$guid}}\",\n      \"notification\": {\n        \"pointsToTarget\": \"\"\n      }\n    }\n  ]\n}"
             },
             "description": ""
           },
