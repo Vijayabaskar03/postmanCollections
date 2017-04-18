@@ -37063,7 +37063,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTerget\":\"100\"\r\n         }\r\n      }\r\n   ]\r\n}"
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"100\"\r\n         }\r\n      }\r\n   ]\r\n}"
             },
             "description": ""
           },
