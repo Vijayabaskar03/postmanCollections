@@ -29185,7 +29185,7 @@
     },
     {
       "_postman_id": "b4ad3493-8c3d-9231-8370-8f5d0222189d",
-      "name": "RA-228 & RA-267 : ESB APIs to Mark for Termination and Cancel Pending Termination copy",
+      "name": "RA-249 : ESB API to update member details",
       "description": "",
       "item": [
         {
