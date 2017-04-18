@@ -45013,7 +45013,7 @@
     },
     {
       "_postman_id": "76c7bbb2-6781-78c0-d4fa-cc5ca669eebe",
-      "name": "http://aaiwklt021512.aia.biz:5555/rest/aiaVitalityMembershipMaintenance.rs.updateMemberInfo.v1 copy",
+      "name": "ESB API to update member details",
       "request": {
         "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.updateMemberInfo.v1",
         "method": "PUT",
