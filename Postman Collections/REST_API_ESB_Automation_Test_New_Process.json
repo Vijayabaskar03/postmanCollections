@@ -37767,7 +37767,7 @@
         },
         {
           "_postman_id": "0bd595c4-20e6-3d60-760f-ef3e130465ac",
-          "name": "Clear pointsToTarget in Marketo - Bulk copy",
+          "name": "Clear pointsToTarget in Marketo - Bulk",
           "event": [
             {
               "listen": "test",
