@@ -34447,7 +34447,7 @@
                   "postman.setEnvironmentVariable(\"aiaVitalityMemberNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityMemberNumber);\r",
                   "postman.setEnvironmentVariable(\"aiaDsyPolicyNumber\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaDsyPolicyNumber);\r",
                   "\r",
-                  "postman.setEnvironmentVariable(\"aiaVitalityId\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityId);\r",
+                  "postman.setEnvironmentVariable(\"aiaVitalityId1\",jsonObject['soapenv:Envelope']['soapenv:Body']['ns2:searchUserResponse'].userDetails.aiaVitalityId);\r",
                   "\r",
                   "\r",
                   "}\r",
