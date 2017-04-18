@@ -37395,7 +37395,7 @@
         },
         {
           "_postman_id": "65b1029a-6331-d23d-e00f-eae5ee320e21",
-          "name": "RA-261 : Trigger Bulk Push Notification 3 Entity Numbers 50 points",
+          "name": "RA-270 : Trigger bulk In-app Notification for 50 points - 3 Entity Numbers",
           "event": [
             {
               "listen": "test",
