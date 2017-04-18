@@ -35472,16 +35472,7 @@
                   "\r",
                   "catch(err){\r",
                   "  tests[\"Data in response does not exist\"] = false;  \r",
-                  "}\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  ""
+                  "}"
                 ]
               }
             }
