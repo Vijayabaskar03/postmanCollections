@@ -33946,7 +33946,7 @@
     },
     {
       "_postman_id": "d1ea6f8d-e63f-8cc2-ec4b-f821d9321e85",
-      "name": "RA-270 : In-App Notification for active benefit",
+      "name": "RA-270 : ESB API to trigger In-App Notifications for active benefits",
       "description": "",
       "item": [
         {
