@@ -37298,12 +37298,7 @@
                   "",
                   "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";",
                   "",
-                  "tests[\"Verifying the failure\"] = body.failure[0].has(\"entityNumber: 0123456 was not found. No notification was sent to Marketo.\");",
-                  "",
-                  "postman.clearEnvironmentVariable(\"currentMonday\");",
-                  "postman.clearEnvironmentVariable(\"previousMonday\");",
-                  "",
-                  ""
+                  "tests[\"Verifying the failure\"] = body.failure[0].has(\"entityNumber: 0123456 was not found. No notification was sent to Marketo.\");"
                 ]
               }
             },
