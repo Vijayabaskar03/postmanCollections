@@ -37407,33 +37407,7 @@
                   "",
                   "var body = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";",
-                  "",
-                  "postman.clearEnvironmentVariable(\"currentMonday\");",
-                  "postman.clearEnvironmentVariable(\"previousMonday\");"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "var currentMonday = new Date();\r",
-                  "// set to Monday of this week\r",
-                  "currentMonday.setDate(currentMonday.getDate() - (currentMonday.getDay() + 6) % 7);\r",
-                  "\r",
-                  "postman.setEnvironmentVariable(\"currentMonday\", currentMonday.toISOString());\r",
-                  "\r",
-                  "var previousMonday = new Date();\r",
-                  "// set to Monday of this week\r",
-                  "previousMonday.setDate(previousMonday.getDate() - (previousMonday.getDay() + 6) % 7);\r",
-                  "// set to previous Monday\r",
-                  "previousMonday.setDate(previousMonday.getDate() - 7);\r",
-                  "\r",
-                  "postman.setEnvironmentVariable(\"previousMonday\", previousMonday.toISOString());\r",
-                  "\r",
-                  ""
+                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";"
                 ]
               }
             }
@@ -37455,7 +37429,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"currentWeek\":\"{{currentMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId2}}\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"previousWeek\":\"{{previousMonday}}\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId3}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"targetPoints\":\"250\"\r\n         }\r\n      }\r\n   ]\r\n}"
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"100\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId2}}\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"100\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId3}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"100\"\r\n         }\r\n      }\r\n   ]\r\n}"
             },
             "description": ""
           },
