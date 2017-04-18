@@ -37199,7 +37199,7 @@
         },
         {
           "_postman_id": "e8ff4361-cb36-1ad3-f97a-0cb5ed038a31",
-          "name": "RA-261 : Trigger Bulk Push Notification Same Entity Number",
+          "name": "RA-270 : Trigger bulk In-app Notification for 100 points",
           "event": [
             {
               "listen": "test",
