@@ -37345,7 +37345,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"123456\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"100\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"123456\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"100\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"123456\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"100\"\r\n         }\r\n      }\r\n   ]\r\n}"
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"123456\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"100\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"1234567\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"100\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"1234568\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"100\"\r\n         }\r\n      }\r\n   ]\r\n}"
             },
             "description": ""
           },
