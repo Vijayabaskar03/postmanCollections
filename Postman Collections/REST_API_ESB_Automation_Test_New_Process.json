@@ -37225,7 +37225,7 @@
         },
         {
           "_postman_id": "d93e70ad-2451-d3aa-4171-39b90e14eb85",
-          "name": "RA-261 : Trigger Push Notification for Current Week's invalid Entity No",
+          "name": "RA-270 : Trigger In-app Notification for 100 points - invalid Entity No",
           "event": [
             {
               "listen": "test",
