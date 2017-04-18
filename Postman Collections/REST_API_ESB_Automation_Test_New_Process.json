@@ -44979,14 +44979,18 @@
       "_postman_id": "6a8f892d-a591-e73e-099b-cf5ef1f8aeba",
       "name": "http://aaiwklt021512.aia.biz:5555/rest/aiaVitalityMembershipMaintenance.rs.updateMemberInfo.v1",
       "request": {
+        "auth": {
+          "type": "basic",
+          "basic": {
+            "username": "Administrator",
+            "password": "manage",
+            "saveHelperData": true,
+            "showPassword": false
+          }
+        },
         "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.updateMemberInfo.v1",
         "method": "PUT",
         "header": [
-          {
-            "key": "authorization",
-            "value": "Basic QWRtaW5pc3RyYXRvcjoxUDF0eXRoMw==",
-            "description": ""
-          },
           {
             "key": "cache-control",
             "value": "no-cache",
@@ -44998,8 +45002,8 @@
             "description": ""
           },
           {
-            "key": "postman-token",
-            "value": "840692de-45a7-79c0-1e80-679ec3312e9e",
+            "key": "Authorization",
+            "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
             "description": ""
           }
         ],
