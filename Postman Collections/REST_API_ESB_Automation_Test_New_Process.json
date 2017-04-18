@@ -33947,7 +33947,7 @@
     {
       "_postman_id": "d1ea6f8d-e63f-8cc2-ec4b-f821d9321e85",
       "name": "RA-270 : ESB API to trigger In-App Notifications for active benefits",
-      "description": "",
+      "description": "Provide Rest API to ActiveBenefits to bulk despatch in-app notification in Marketo.",
       "item": [
         {
           "_postman_id": "12332446-e3f1-7d22-fd8f-a6ba6d9ab51a",
