@@ -38046,7 +38046,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId2}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"\"\r\n         }\r\n      },\r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId3}}\",\r\n         \"transactionId\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"\"\r\n         }\r\n      }\r\n   ]\r\n}"
+              "raw": "{\n  \"notificationMessage\": [\n    {\n      \"entityNumber\": \"{{aiaVitalityId}}\",\n      \"transactionId\": \"{{$guid}}\",\n      \"notification\": {\n        \"pointsToTarget\": \"\"\n      }\n    },\n    {\n      \"entityNumber\": \"{{aiaVitalityId2}}\",\n      \"transactionId\": \"{{$guid}}\",\n      \"notification\": {\n        \"pointsToTarget\": \"\"\n      }\n    },\n    {\n      \"entityNumber\": \"{{aiaVitalityId3}}\",\n      \"transactionId\": \"{{$guid}}\",\n      \"notification\": {\n        \"pointsToTarget\": \"\"\n      }\n    }\n  ]\n}"
             },
             "description": ""
           },
