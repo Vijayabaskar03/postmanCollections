@@ -37071,7 +37071,7 @@
         },
         {
           "_postman_id": "0973f2f0-e7a5-d189-2aa6-c309bc666865",
-          "name": "RA-261 : Trigger Push Notification for Previous Week's success",
+          "name": "RA-270 : Trigger In-app Notification for 50 points",
           "event": [
             {
               "listen": "test",
