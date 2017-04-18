@@ -37032,7 +37032,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId}}\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"100\"\r\n         }\r\n      }\r\n   ]\r\n}"
+              "raw": "{  \r\n   \"notificationMessage\":[  \r\n      {  \r\n         \"entityNumber\":\"{{aiaVitalityId1}}\",\r\n         \"uuid\":\"{{$guid}}\",\r\n         \"notification\":{  \r\n            \"pointsToTarget\":\"100\"\r\n         }\r\n      }\r\n   ]\r\n}"
             },
             "description": ""
           },
