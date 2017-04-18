@@ -37395,7 +37395,7 @@
         },
         {
           "_postman_id": "7b894ea7-d8ea-4522-847e-4a966b429838",
-          "name": "RA-261 : Trigger Bulk Push Notification 3 Entity Numbers",
+          "name": "RA-261 : Trigger Bulk Push Notification 3 Entity Numbers 100 points",
           "event": [
             {
               "listen": "test",
