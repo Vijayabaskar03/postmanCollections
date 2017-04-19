@@ -37348,7 +37348,7 @@
                   "",
                   "var body = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";"
+                  "tests[\"Verifying that the notification is triggered successfully for all 3 entity numbers\"] =  body.status === \"Data Accepted\";"
                 ]
               }
             }
