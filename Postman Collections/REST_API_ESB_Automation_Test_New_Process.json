@@ -37093,21 +37093,6 @@
                   "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";"
                 ]
               }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "var previousMonday = new Date();\r",
-                  "// set to Monday of this week\r",
-                  "previousMonday.setDate(previousMonday.getDate() - (previousMonday.getDay() + 6) % 7);\r",
-                  "// set to previous Monday\r",
-                  "previousMonday.setDate(previousMonday.getDate() - 7);\r",
-                  "\r",
-                  "postman.setEnvironmentVariable(\"previousMonday\", previousMonday.toISOString());"
-                ]
-              }
             }
           ],
           "request": {
