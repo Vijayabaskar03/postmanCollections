@@ -37176,9 +37176,7 @@
                   "",
                   "tests[\"Verifying that the notification is not triggered\"] =  body.status === \"notification failed\";",
                   "",
-                  "tests[\"Verifying that the failure reason is 'Not Found'\"] =  body.failureReaon === \"Not Found\";",
-                  "",
-                  "postman.clearEnvironmentVariable(\"currentMonday\");"
+                  "tests[\"Verifying that the failure reason is 'Not Found'\"] =  body.failureReaon === \"Not Found\";"
                 ]
               }
             }
