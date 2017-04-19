@@ -34385,7 +34385,7 @@
               "type": "basic",
               "basic": {
                 "username": "Administrator",
-                "password": "{{password_ESB}}",
+                "password": "manage",
                 "saveHelperData": true,
                 "showPassword": false
               }
