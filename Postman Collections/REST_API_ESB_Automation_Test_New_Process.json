@@ -37149,7 +37149,7 @@
                   "",
                   "var body = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";"
+                  "tests[\"Verifying that the request is accepted\"] =  body.status === \"Data Accepted\";"
                 ]
               }
             }
@@ -37361,7 +37361,7 @@
                   "",
                   "var body = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Verifying that the notification is triggered successfully\"] =  body.status === \"Data Accepted\";"
+                  "tests[\"Verifying that the request is accepted\"] =  body.status === \"Data Accepted\";"
                 ]
               }
             }
