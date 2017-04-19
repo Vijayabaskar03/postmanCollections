@@ -37181,19 +37181,6 @@
                   "postman.clearEnvironmentVariable(\"currentMonday\");"
                 ]
               }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "var currentMonday = new Date();\r",
-                  "// set to Monday of this week\r",
-                  "currentMonday.setDate(currentMonday.getDate() - (currentMonday.getDay() + 6) % 7);\r",
-                  "\r",
-                  "postman.setEnvironmentVariable(\"currentMonday\", currentMonday.toISOString());"
-                ]
-              }
             }
           ],
           "request": {
