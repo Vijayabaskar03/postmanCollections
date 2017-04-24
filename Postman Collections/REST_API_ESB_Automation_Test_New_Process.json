@@ -33044,7 +33044,7 @@
         },
         {
           "_postman_id": "db37ca5a-d1b3-dc0e-3d90-49c08a42e1e0",
-          "name": "RA-249 : ESB - Request to update email of a member in ACTIVATED status copy",
+          "name": "RA-249 : ESB - Request to update details of a member with already existing Email address",
           "event": [
             {
               "listen": "test",
