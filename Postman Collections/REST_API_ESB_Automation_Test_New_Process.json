@@ -30363,7 +30363,7 @@
         },
         {
           "_postman_id": "1614bfcb-d961-c666-ee1a-51272cebed7c",
-          "name": "Wait for Termination to finish",
+          "name": "Wait for update to finish",
           "request": {
             "auth": {
               "type": "basic",
