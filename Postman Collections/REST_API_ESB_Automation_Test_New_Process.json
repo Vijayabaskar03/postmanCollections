@@ -30390,7 +30390,7 @@
         },
         {
           "_postman_id": "8669d4f1-4ec4-40dc-d4bc-413769ec7f72",
-          "name": "RA-144: Verifying that all the details are updated",
+          "name": "RA-144: Verifying that all the details are updated copy",
           "event": [
             {
               "listen": "test",
