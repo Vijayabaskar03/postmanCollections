@@ -33161,7 +33161,7 @@
         },
         {
           "_postman_id": "b84a8aba-77f7-aeb7-b550-046127dc73c2",
-          "name": "RA-249 : ESB - Request to update details of a member in ACTIVATED status copy",
+          "name": "RA-249 : ESB - Request to update details of a member in AWAITING_ACTIVATION status",
           "event": [
             {
               "listen": "test",
