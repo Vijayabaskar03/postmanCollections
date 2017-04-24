@@ -31261,7 +31261,7 @@
                   "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
                   "    strEmail = strEmail + strTmp;",
                   "  }",
-                  "  strEmail = strEmail + \"vmmpemail.com\";",
+                  "  strEmail = strEmail + \"esbemail.com\";",
                   "  return strEmail;",
                   "}",
                   "",
