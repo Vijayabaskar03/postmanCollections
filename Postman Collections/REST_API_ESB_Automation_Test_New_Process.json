@@ -30561,127 +30561,6 @@
           "response": []
         },
         {
-          "_postman_id": "480cda40-d44f-7b48-0baf-607cee21d60f",
-          "name": "RA-144: Verifying that all the PENDINGTERMIANTIONDATE value is removed",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
-                  "",
-                  "//Verifing that the response time is less than the value declared in global  variable ",
-                  "tests[\"Response time is less than \" + globals.responseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < globals.responseTime;",
-                  "",
-                  "var body = JSON.parse(responseBody);",
-                  "",
-                  "//console.log(environment.restMemberId+\"aiaPiiData\");",
-                  "",
-                  "try{",
-                  "    tests[\"Verifying that Email in Core VMMP DB is as passed\"] = body.email === environment.Email1;",
-                  "    // tests[\"Verifying that First Name in Core VMMP DB is as passed\"] = body.firstName === environment.firstName;",
-                  "    // tests[\"Verifying that Last Name in Core VMMP DB is as passed\"] = body.lastName === environment.lastName;",
-                  "    // tests[\"Verifying that Gender in Core VMMP DB is as passed\"] = body.gender === \"M\";",
-                  "    // tests[\"Verifying that DOB in Core VMMP DB is as passed\"] = Date.create(body.dateOfBirth).is(Date.create(environment.vmmpDOB));",
-                  "    // tests[\"Verifying that Relationship Id in Core VMMP DB is as passed\"] = body.relationship.name === environment.relationshipName;",
-                  "    ",
-                  "    tests[\"Verifying that the pendingTerminationDate is updated\"] = body.memberships[0].pendingTerminationDate === undefined;",
-                  "    tests[\"Verifying that the status is still ACTIVATED\"] = body.memberships[0].status.name === \"ACTIVATED\";",
-                  "}",
-                  "catch(err){",
-                  "    ",
-                  "    tests[\"Data does not exist\"] = false;",
-                  "}",
-                  "",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "basic",
-              "basic": {
-                "username": "Administrator",
-                "password": "manage",
-                "saveHelperData": true,
-                "showPassword": false
-              }
-            },
-            "url": "{{VmmpUrl}}/restapi-vitality-member-management-service/registration/members/{{Email}}",
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"email\":\"{{Email}}\"} "
-            },
-            "description": "A/C :\n\nDup check passed:\nGiven that a record is of a unique member \nWhen dup check runs\nThen VMMP core table member's record will be updated with the member's details"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "7ebf32c1-3566-93df-3b67-89138e0f2514",
-          "name": "RA-267 : Duplicate request to Cancel pending termination",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
-                  "",
-                  "try {",
-                  "    var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "    tests[\"Verifying that the over all result is SUCCESS\"] = jsonData.response.status === \"success\";",
-                  "    tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.response.member[0].memberId === environment.memberID;",
-                  "    tests[\"Verifying that the individual result is FAILURE\"] = jsonData.response.member[0].status === \"failure\";",
-                  "    tests[\"Verifying that the reason is'NO_ACTIVE_MEMBERSHIP'\"] = jsonData.response.member[0].reason === \"NO_REGISTERED_PENDING_TERMINATION\";",
-                  "} catch (err) {",
-                  "    tests[\"Data in response does not exist\"] = false;",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.cancelTermination.v1 ",
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"{{memberID}}\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
           "_postman_id": "1d3628ad-4286-79df-15b1-5a3d59448b7d",
           "name": "RA-153: Enrolling a Member - New Process 2",
           "event": [
@@ -33064,6 +32943,123 @@
                   "    // tests[\"Verifying that the overall result is SUCCESS\"] = jsonData.result === \"SUCCESS\";",
                   "    // tests[\"Verifying that the individual result is SUCCESS\"] = jsonData.responses[0].result === \"SUCCESS\";",
                   "    tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.memberUpdateSuccess[0].memberId === environment.memberID;",
+                  "    // tests[\"Verifying that the appropriate Relationship Name is returned\"] = jsonData.responses[0].relationshipName === environment.relationshipName;",
+                  "} catch (err) {",
+                  "    tests[\"Data in response does not exist\"] = false;",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Generating Random Email address to pass into the data so that user duplication does not happen",
+                  "function makeEmail() {",
+                  "  var strValues = \"qpotvghysbnxui56z\";",
+                  "  var strEmail = \"\";",
+                  "  var strTmp;",
+                  "  for (var i = 0; i < 10; i++) {",
+                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+                  "    strEmail = strEmail + strTmp;",
+                  "  }",
+                  "  strTmp = \"\";",
+                  "  strEmail = strEmail + \"@\";",
+                  "  for (var j = 0; j < 8; j++) {",
+                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+                  "    strEmail = strEmail + strTmp;",
+                  "  }",
+                  "  strEmail = strEmail + \"vmmpemail.com\";",
+                  "  return strEmail;",
+                  "}",
+                  "",
+                  "//Setting up the random email to an environment variable",
+                  "postman.setEnvironmentVariable(\"Email\", makeEmail());",
+                  "",
+                  "//Setting up the firstName to an environment variable",
+                  "var firstName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);",
+                  "postman.setEnvironmentVariable(\"firstName\", firstName);",
+                  "",
+                  "//Setting up the lastName to an environment variable",
+                  "var lastName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);",
+                  "postman.setEnvironmentVariable(\"lastName\", lastName);",
+                  "",
+                  "var mobileNumber = \"0\"+((Math.random()*10000000000).toString().substr(0,9));",
+                  "postman.setEnvironmentVariable(\"mobileNumber\", mobileNumber);",
+                  "console.log(environment.mobileNumber);",
+                  "",
+                  "var homeNumber = \"0\"+((Math.random()*10000000000).toString().substr(0,9));",
+                  "postman.setEnvironmentVariable(\"homeNumber\", homeNumber);",
+                  "console.log(environment.homeNumber);",
+                  "",
+                  "var workNumber = \"0\"+((Math.random()*10000000000).toString().substr(0,9));",
+                  "postman.setEnvironmentVariable(\"workNumber\", workNumber);",
+                  "console.log(environment.workNumber);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.updateMemberInfo.v1",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "cache-control",
+                "value": "no-cache",
+                "description": ""
+              },
+              {
+                "key": "content-type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "postman-token",
+                "value": "840692de-45a7-79c0-1e80-679ec3312e9e",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"members\": [\n    {\n      \"member\": {\n        \"title\": \"Ms\",\n        \"firstName\": \"{{firstName}}\",\n        \"lastName\": \"{{lastName}}\",\n        \"gender\": \"F\",\n        \"dateOfBirth\": \"07/12/1970\",\n        \"email\": \"{{Email}}\",\n        \"memberId\": \"{{memberID}}\",\n        \"address\": {\n          \"line1\": \"{{memberIdNumber}} {{firstName}} New Test Street\",\n          \"line2\": \"{{lastName}} Line 2\",\n          \"suburb\": \"Sydney\",\n          \"state\": \"NSW\",\n          \"country\": \"Australia\",\n          \"postcode\": \"2000\"\n        },\n        \"phone\": {\n          \"mobileNumber\": \"{{mobileNumber}}\",\n          \"homeNumber\": \"{{homeNumber}}\",\n          \"workNumber\": \"{{workNumber}}\"\n        }\n      }\n    }\n  ],\n  \"relationshipName\": \"GRESTFUNDMEMBER\",\n  \"uuid\": \"{{$guid}}\"\n}"
+            },
+            "description": "Generated from a curl request: \ncurl -X PUT \\\n  http://aaiwklt021512.aia.biz:5555/rest/aiaVitalityMembershipMaintenance.rs.updateMemberInfo.v1 \\\n  -H 'authorization: Basic QWRtaW5pc3RyYXRvcjoxUDF0eXRoMw==' \\\n  -H 'cache-control: no-cache' \\\n  -H 'content-type: application/json' \\\n  -H 'postman-token: 840692de-45a7-79c0-1e80-679ec3312e9e' \\\n  -d '{\n\t\\\"members\\\":[\n\t\t{\n\t\t\t\\\"member\\\":{\n\t\t\t\t\\\"title\\\":\\\"Mr\\\",\n\t\t\t\t\\\"firstName\\\":\\\"Charlie\\\",\n    \t\t\t\\\"lastName\\\":\\\"Chaplin\\\",\n    \t\t\t\\\"gender\\\":\\\"M\\\",\n    \t\t\t\\\"dateOfBirth\\\":\\\"07/12/1970\\\",\n    \t\t\t\\\"email\\\":\\\"tst1357426917@hotmail.com\\\",\n    \t\t\t\\\"memberId\\\":\\\"TESTNOM1357426917\\\",\n    \t\t\t\\\"address\\\":{\n    \t\t\t\t\\\"line1\\\":\\\"Drewrey Lane\\\",\n    \t\t\t\t\\\"line2\\\":\\\"\\\",\n    \t\t\t\t\\\"suburb\\\":\\\"London\\\",\n    \t\t\t\t\\\"state\\\":\\\"VIC\\\",\n    \t\t\t\t\\\"country\\\":\\\"Australia\\\",\n    \t\t\t\t\\\"postcode\\\":\\\"3000\\\"\n    \t\t\t},\n    \t\t\t\\\"phone\\\":{\n    \t\t\t\t\\\"mobileNumber\\\":\\\"0404040404\\\",\n    \t\t\t\t\\\"homeNumber\\\":\\\"0288911783\\\",\n    \t\t\t\t\\\"workNumber\\\":\\\"0288944513\\\"\n    \t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\\\"member\\\":{\n\t\t\t\t\\\"title\\\":\\\"Mr\\\",\n\t\t\t\t\\\"firstName\\\":\\\"Fred\\\",\n    \t\t\t\\\"lastName\\\":\\\"Lucy\\\",\n    \t\t\t\\\"gender\\\":\\\"M\\\",\n    \t\t\t\\\"dateOfBirth\\\":\\\"01/04/1986\\\",\n    \t\t\t\\\"memberId\\\":\\\"TESTNOM200940062\\\",\n    \t\t\t\\\"phone\\\":{\n    \t\t\t\t\\\"mobileNumber\\\":\\\"0400000000\\\",\n    \t\t\t\t\\\"homeNumber\\\":\\\"0213456789\\\",\n    \t\t\t\t\\\"workNumber\\\":\\\"0298765431\\\"\n    \t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\\\"member\\\":{\n\t\t\t\t\\\"title\\\":\\\"Mr\\\",\n\t\t\t\t\\\"firstName\\\":\\\"Dianne\\\",\n    \t\t\t\\\"lastName\\\":\\\"Gray\\\",\n    \t\t\t\\\"gender\\\":\\\"M\\\",\n    \t\t\t\\\"dateOfBirth\\\":\\\"08/13/1970\\\",\n    \t\t\t\\\"memberId\\\":\\\"TESTNOM14449914\\\",\n    \t\t\t\\\"address\\\":{\n    \t\t\t\t\\\"line1\\\":\\\"Changed Line1\\\",\n    \t\t\t\t\\\"line2\\\":\\\"Changed Line2\\\",\n    \t\t\t\t\\\"suburb\\\":\\\"Changed Suburb\\\",\n    \t\t\t\t\\\"state\\\":\\\"VIC\\\",\n    \t\t\t\t\\\"country\\\":\\\"Australia\\\",\n    \t\t\t\t\\\"postcode\\\":\\\"3100\\\"\n    \t\t\t},\n    \t\t\t\\\"phone\\\":{\n    \t\t\t\t\\\"mobileNumber\\\":\\\"0404040404\\\",\n    \t\t\t\t\\\"homeNumber\\\":\\\"0288911783\\\",\n    \t\t\t\t\\\"workNumber\\\":\\\"0288944513\\\"\n    \t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\\\"member\\\":{\n\t\t\t\t\\\"title\\\":\\\"Mr\\\",\n\t\t\t\t\\\"firstName\\\":\\\"Ge0rge\\\",\n    \t\t\t\\\"lastName\\\":\\\"Lucas\\\",\n    \t\t\t\\\"gender\\\":\\\"M\\\",\n    \t\t\t\\\"dateOfBirth\\\":\\\"08/13/1970\\\",\n    \t\t\t\\\"memberId\\\":\\\"TESTNOM-828628027\\\",\n    \t\t\t\\\"address\\\":{\n    \t\t\t\t\\\"line1\\\":\\\"Changed Line1\\\",\n    \t\t\t\t\\\"line2\\\":\\\"Changed Line2\\\",\n    \t\t\t\t\\\"suburb\\\":\\\"Changed Suburb\\\",\n    \t\t\t\t\\\"state\\\":\\\"VIC\\\",\n    \t\t\t\t\\\"country\\\":\\\"Australia\\\",\n    \t\t\t\t\\\"postcode\\\":\\\"3100\\\"\n    \t\t\t},\n    \t\t\t\\\"phone\\\":{\n    \t\t\t\t\\\"mobileNumber\\\":\\\"0404040404\\\",\n    \t\t\t\t\\\"homeNumber\\\":\\\"0288911783\\\",\n    \t\t\t\t\\\"workNumber\\\":\\\"0288944513\\\"\n    \t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\\\"member\\\":{\n\t\t\t\t\\\"title\\\":\\\"Mr\\\",\n\t\t\t\t\\\"firstName\\\":\\\"George\\\",\n    \t\t\t\\\"lastName\\\":\\\"Lucas\\\",\n    \t\t\t\\\"gender\\\":\\\"M\\\",\n    \t\t\t\\\"dateOfBirth\\\":\\\"08/13/1970\\\",\n    \t\t\t\\\"memberId\\\":\\\"TESTNOM1237596314\\\",\n    \t\t\t\\\"address\\\":{\n    \t\t\t\t\\\"line1\\\":\\\"Changed Line1\\\",\n    \t\t\t\t\\\"line2\\\":\\\"Changed Line2\\\",\n    \t\t\t\t\\\"suburb\\\":\\\"Changed Suburb\\\",\n    \t\t\t\t\\\"state\\\":\\\"VIC\\\",\n    \t\t\t\t\\\"country\\\":\\\"Australia\\\",\n    \t\t\t\t\\\"postcode\\\":\\\"3100\\\"\n    \t\t\t},\n    \t\t\t\\\"phone\\\":{\n    \t\t\t\t\\\"mobileNumber\\\":\\\"0404040404\\\",\n    \t\t\t\t\\\"homeNumber\\\":\\\"0288911783\\\",\n    \t\t\t\t\\\"workNumber\\\":\\\"0288944513\\\"\n    \t\t\t}\n\t\t\t}\n\t\t}\n\t\n\t],\n\t\\\"relationshipName\\\": \\\"GRESTFUNDMEMBER\\\",\n\t\\\"uuid\\\":\\\"599f9790-5c4f-13d4-8dd1-ffffffbaabca\\\"\n}'"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "db37ca5a-d1b3-dc0e-3d90-49c08a42e1e0",
+          "name": "RA-249 : ESB - Request to update email of a member in ACTIVATED status copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "try {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "    // tests[\"Verifying that the overall result is SUCCESS\"] = jsonData.result === \"SUCCESS\";",
+                  "    // tests[\"Verifying that the individual result is SUCCESS\"] = jsonData.responses[0].result === \"SUCCESS\";",
+                  "    // tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.memberUpdateFailure[0].memberId === environment.memberID;",
+                  "    tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.memberUpdateFailure[0].failureReason === \"USER_ALREADY_ACTIVATED_CANNOT_UPDATE_EMAIL\";",
                   "    // tests[\"Verifying that the appropriate Relationship Name is returned\"] = jsonData.responses[0].relationshipName === environment.relationshipName;",
                   "} catch (err) {",
                   "    tests[\"Data in response does not exist\"] = false;",
