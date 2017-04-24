@@ -44630,7 +44630,7 @@
               "    var jsonData = JSON.parse(responseBody);",
               "    // tests[\"Verifying that the overall result is SUCCESS\"] = jsonData.result === \"SUCCESS\";",
               "    // tests[\"Verifying that the individual result is SUCCESS\"] = jsonData.responses[0].result === \"SUCCESS\";",
-              "    tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.memberUpdateFailure[0].memberId === environment.memberID;",
+              "    tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.memberUpdateSuccess[0].memberId === environment.memberID;",
               "    // tests[\"Verifying that the appropriate Relationship Name is returned\"] = jsonData.responses[0].relationshipName === environment.relationshipName;",
               "} catch (err) {",
               "    tests[\"Data in response does not exist\"] = false;",
