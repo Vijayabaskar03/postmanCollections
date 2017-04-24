@@ -29260,9 +29260,18 @@
                   "//Verifying that the service is returning response code 200 ",
                   "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
                   "",
-                  "var body = JSON.parse(responseBody);",
+                  "//Verifing that the response time is less than the value declared in global  variable ",
+                  "tests[\"Response time is less than \" + globals.responseTime + \" ms and is \" + responseTime + \" ms\"] = responseTime < globals.responseTime;",
                   "",
-                  "tests[\"Verifying that Enrolment is successfull\"] = body.status === \"Data Accepted\";"
+                  "var body = JSON.parse(responseBody);",
+                  "try {",
+                  "    tests[\"Verifying that Enrolment is successfull\"] = body.status === \"Data Accepted\";",
+                  "",
+                  "    postman.setEnvironmentVariable(\"memberID1\", environment.memberID);",
+                  "    postman.setEnvironmentVariable(\"Email1\", environment.Email);",
+                  "} catch (err) {",
+                  "    tests[\"Data in response does not exist\"] = false;",
+                  "}"
                 ]
               }
             },
