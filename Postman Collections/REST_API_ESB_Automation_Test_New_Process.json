@@ -30561,54 +30561,6 @@
           "response": []
         },
         {
-          "_postman_id": "fa730896-8705-42b8-3607-65812a2243a4",
-          "name": "RA-267 : Cancel pending termination",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
-                  "",
-                  "try {",
-                  "    var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "    tests[\"Verifying that the over all result is SUCCESS\"] = jsonData.response.status === \"success\";",
-                  "    tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.response.member[0].memberId === environment.memberID;",
-                  "    tests[\"Verifying that the individual result is SUCCESS\"] = jsonData.response.member[0].status === \"success\";",
-                  "} catch (err) {",
-                  "    tests[\"Data in response does not exist\"] = false;",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.cancelTermination.v1 ",
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
-                "description": ""
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"relationshipName\":\"GRESTFUNDMEMBER\",\r\n   \"member\":[\r\n      {\r\n         \"memberId\":\"{{memberID}}\"\r\n      }\r\n   ],\r\n   \"uuid\":\"{{$guid}}\"\r\n}"
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
           "_postman_id": "acdc538b-b8c3-b677-5943-6a1e8982b7b7",
           "name": "Wait for Cancel Termination to finish",
           "request": {
