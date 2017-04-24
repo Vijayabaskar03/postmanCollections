@@ -30390,7 +30390,7 @@
         },
         {
           "_postman_id": "8669d4f1-4ec4-40dc-d4bc-413769ec7f72",
-          "name": "RA-144: Verifying that all the details are updated copy",
+          "name": "RA-144: Verifying that all the details are updated",
           "event": [
             {
               "listen": "test",
@@ -33129,6 +33129,122 @@
             "body": {
               "mode": "raw",
               "raw": "{\n  \"members\": [\n    {\n      \"member\": {\n        \"title\": \"Ms\",\n        \"firstName\": \"{{firstName}}\",\n        \"lastName\": \"{{lastName}}\",\n        \"gender\": \"F\",\n        \"dateOfBirth\": \"07/12/1970\",\n        \"email\": \"{{Email}}\",\n        \"memberId\": \"{{memberID}}\",\n        \"address\": {\n          \"line1\": \"{{memberIdNumber}} {{firstName}} New Test Street\",\n          \"line2\": \"{{lastName}} Line 2\",\n          \"suburb\": \"Sydney\",\n          \"state\": \"NSW\",\n          \"country\": \"Australia\",\n          \"postcode\": \"2000\"\n        },\n        \"phone\": {\n          \"mobileNumber\": \"{{mobileNumber}}\",\n          \"homeNumber\": \"{{homeNumber}}\",\n          \"workNumber\": \"{{workNumber}}\"\n        }\n      }\n    },\n    {\n      \"member\": {\n        \"title\": \"Ms\",\n        \"firstName\": \"{{firstName}}\",\n        \"lastName\": \"{{lastName}}\",\n        \"gender\": \"F\",\n        \"dateOfBirth\": \"007/12/1970\",\n        \"email\": \"{{Email}}\",\n        \"memberId\": \"{{memberID}}\",\n        \"address\": {\n          \"line1\": \"{{memberIdNumber}} {{firstName}} New Test Street\",\n          \"line2\": \"{{lastName}} Line 2\",\n          \"suburb\": \"Sydney\",\n          \"state\": \"NSW\",\n          \"country\": \"Australia\",\n          \"postcode\": \"2000\"\n        },\n        \"phone\": {\n          \"mobileNumber\": \"{{mobileNumber}}\",\n          \"homeNumber\": \"{{homeNumber}}\",\n          \"workNumber\": \"{{workNumber}}\"\n        }\n      }\n    }\n  ],\n  \"relationshipName\": \"GRESTFUNDMEMBER\",\n  \"uuid\": \"{{$guid}}\"\n}"
+            },
+            "description": "Generated from a curl request: \ncurl -X PUT \\\n  http://aaiwklt021512.aia.biz:5555/rest/aiaVitalityMembershipMaintenance.rs.updateMemberInfo.v1 \\\n  -H 'authorization: Basic QWRtaW5pc3RyYXRvcjoxUDF0eXRoMw==' \\\n  -H 'cache-control: no-cache' \\\n  -H 'content-type: application/json' \\\n  -H 'postman-token: 840692de-45a7-79c0-1e80-679ec3312e9e' \\\n  -d '{\n\t\\\"members\\\":[\n\t\t{\n\t\t\t\\\"member\\\":{\n\t\t\t\t\\\"title\\\":\\\"Mr\\\",\n\t\t\t\t\\\"firstName\\\":\\\"Charlie\\\",\n    \t\t\t\\\"lastName\\\":\\\"Chaplin\\\",\n    \t\t\t\\\"gender\\\":\\\"M\\\",\n    \t\t\t\\\"dateOfBirth\\\":\\\"07/12/1970\\\",\n    \t\t\t\\\"email\\\":\\\"tst1357426917@hotmail.com\\\",\n    \t\t\t\\\"memberId\\\":\\\"TESTNOM1357426917\\\",\n    \t\t\t\\\"address\\\":{\n    \t\t\t\t\\\"line1\\\":\\\"Drewrey Lane\\\",\n    \t\t\t\t\\\"line2\\\":\\\"\\\",\n    \t\t\t\t\\\"suburb\\\":\\\"London\\\",\n    \t\t\t\t\\\"state\\\":\\\"VIC\\\",\n    \t\t\t\t\\\"country\\\":\\\"Australia\\\",\n    \t\t\t\t\\\"postcode\\\":\\\"3000\\\"\n    \t\t\t},\n    \t\t\t\\\"phone\\\":{\n    \t\t\t\t\\\"mobileNumber\\\":\\\"0404040404\\\",\n    \t\t\t\t\\\"homeNumber\\\":\\\"0288911783\\\",\n    \t\t\t\t\\\"workNumber\\\":\\\"0288944513\\\"\n    \t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\\\"member\\\":{\n\t\t\t\t\\\"title\\\":\\\"Mr\\\",\n\t\t\t\t\\\"firstName\\\":\\\"Fred\\\",\n    \t\t\t\\\"lastName\\\":\\\"Lucy\\\",\n    \t\t\t\\\"gender\\\":\\\"M\\\",\n    \t\t\t\\\"dateOfBirth\\\":\\\"01/04/1986\\\",\n    \t\t\t\\\"memberId\\\":\\\"TESTNOM200940062\\\",\n    \t\t\t\\\"phone\\\":{\n    \t\t\t\t\\\"mobileNumber\\\":\\\"0400000000\\\",\n    \t\t\t\t\\\"homeNumber\\\":\\\"0213456789\\\",\n    \t\t\t\t\\\"workNumber\\\":\\\"0298765431\\\"\n    \t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\\\"member\\\":{\n\t\t\t\t\\\"title\\\":\\\"Mr\\\",\n\t\t\t\t\\\"firstName\\\":\\\"Dianne\\\",\n    \t\t\t\\\"lastName\\\":\\\"Gray\\\",\n    \t\t\t\\\"gender\\\":\\\"M\\\",\n    \t\t\t\\\"dateOfBirth\\\":\\\"08/13/1970\\\",\n    \t\t\t\\\"memberId\\\":\\\"TESTNOM14449914\\\",\n    \t\t\t\\\"address\\\":{\n    \t\t\t\t\\\"line1\\\":\\\"Changed Line1\\\",\n    \t\t\t\t\\\"line2\\\":\\\"Changed Line2\\\",\n    \t\t\t\t\\\"suburb\\\":\\\"Changed Suburb\\\",\n    \t\t\t\t\\\"state\\\":\\\"VIC\\\",\n    \t\t\t\t\\\"country\\\":\\\"Australia\\\",\n    \t\t\t\t\\\"postcode\\\":\\\"3100\\\"\n    \t\t\t},\n    \t\t\t\\\"phone\\\":{\n    \t\t\t\t\\\"mobileNumber\\\":\\\"0404040404\\\",\n    \t\t\t\t\\\"homeNumber\\\":\\\"0288911783\\\",\n    \t\t\t\t\\\"workNumber\\\":\\\"0288944513\\\"\n    \t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\\\"member\\\":{\n\t\t\t\t\\\"title\\\":\\\"Mr\\\",\n\t\t\t\t\\\"firstName\\\":\\\"Ge0rge\\\",\n    \t\t\t\\\"lastName\\\":\\\"Lucas\\\",\n    \t\t\t\\\"gender\\\":\\\"M\\\",\n    \t\t\t\\\"dateOfBirth\\\":\\\"08/13/1970\\\",\n    \t\t\t\\\"memberId\\\":\\\"TESTNOM-828628027\\\",\n    \t\t\t\\\"address\\\":{\n    \t\t\t\t\\\"line1\\\":\\\"Changed Line1\\\",\n    \t\t\t\t\\\"line2\\\":\\\"Changed Line2\\\",\n    \t\t\t\t\\\"suburb\\\":\\\"Changed Suburb\\\",\n    \t\t\t\t\\\"state\\\":\\\"VIC\\\",\n    \t\t\t\t\\\"country\\\":\\\"Australia\\\",\n    \t\t\t\t\\\"postcode\\\":\\\"3100\\\"\n    \t\t\t},\n    \t\t\t\\\"phone\\\":{\n    \t\t\t\t\\\"mobileNumber\\\":\\\"0404040404\\\",\n    \t\t\t\t\\\"homeNumber\\\":\\\"0288911783\\\",\n    \t\t\t\t\\\"workNumber\\\":\\\"0288944513\\\"\n    \t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\\\"member\\\":{\n\t\t\t\t\\\"title\\\":\\\"Mr\\\",\n\t\t\t\t\\\"firstName\\\":\\\"George\\\",\n    \t\t\t\\\"lastName\\\":\\\"Lucas\\\",\n    \t\t\t\\\"gender\\\":\\\"M\\\",\n    \t\t\t\\\"dateOfBirth\\\":\\\"08/13/1970\\\",\n    \t\t\t\\\"memberId\\\":\\\"TESTNOM1237596314\\\",\n    \t\t\t\\\"address\\\":{\n    \t\t\t\t\\\"line1\\\":\\\"Changed Line1\\\",\n    \t\t\t\t\\\"line2\\\":\\\"Changed Line2\\\",\n    \t\t\t\t\\\"suburb\\\":\\\"Changed Suburb\\\",\n    \t\t\t\t\\\"state\\\":\\\"VIC\\\",\n    \t\t\t\t\\\"country\\\":\\\"Australia\\\",\n    \t\t\t\t\\\"postcode\\\":\\\"3100\\\"\n    \t\t\t},\n    \t\t\t\\\"phone\\\":{\n    \t\t\t\t\\\"mobileNumber\\\":\\\"0404040404\\\",\n    \t\t\t\t\\\"homeNumber\\\":\\\"0288911783\\\",\n    \t\t\t\t\\\"workNumber\\\":\\\"0288944513\\\"\n    \t\t\t}\n\t\t\t}\n\t\t}\n\t\n\t],\n\t\\\"relationshipName\\\": \\\"GRESTFUNDMEMBER\\\",\n\t\\\"uuid\\\":\\\"599f9790-5c4f-13d4-8dd1-ffffffbaabca\\\"\n}'"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "4d066948-9599-da3b-5e90-faa57f1127de",
+          "name": "RA-249 : ESB - Request to update details of a member in ACTIVATED status copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Verifying that the service is returning response code 200 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "",
+                  "try {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "    // tests[\"Verifying that the overall result is SUCCESS\"] = jsonData.result === \"SUCCESS\";",
+                  "    // tests[\"Verifying that the individual result is SUCCESS\"] = jsonData.responses[0].result === \"SUCCESS\";",
+                  "    tests[\"Verifying that the appropriate MemberID is returned\"] = jsonData.memberUpdateSuccess[0].memberId === environment.memberID;",
+                  "    // tests[\"Verifying that the appropriate Relationship Name is returned\"] = jsonData.responses[0].relationshipName === environment.relationshipName;",
+                  "} catch (err) {",
+                  "    tests[\"Data in response does not exist\"] = false;",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Generating Random Email address to pass into the data so that user duplication does not happen",
+                  "function makeEmail() {",
+                  "  var strValues = \"qpotvghysbnxui56z\";",
+                  "  var strEmail = \"\";",
+                  "  var strTmp;",
+                  "  for (var i = 0; i < 10; i++) {",
+                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+                  "    strEmail = strEmail + strTmp;",
+                  "  }",
+                  "  strTmp = \"\";",
+                  "  strEmail = strEmail + \"@\";",
+                  "  for (var j = 0; j < 8; j++) {",
+                  "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
+                  "    strEmail = strEmail + strTmp;",
+                  "  }",
+                  "  strEmail = strEmail + \"vmmpemail.com\";",
+                  "  return strEmail;",
+                  "}",
+                  "",
+                  "//Setting up the random email to an environment variable",
+                  "postman.setEnvironmentVariable(\"Email\", makeEmail());",
+                  "",
+                  "//Setting up the firstName to an environment variable",
+                  "var firstName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);",
+                  "postman.setEnvironmentVariable(\"firstName\", firstName);",
+                  "",
+                  "//Setting up the lastName to an environment variable",
+                  "var lastName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);",
+                  "postman.setEnvironmentVariable(\"lastName\", lastName);",
+                  "",
+                  "var mobileNumber = \"0\"+((Math.random()*10000000000).toString().substr(0,9));",
+                  "postman.setEnvironmentVariable(\"mobileNumber\", mobileNumber);",
+                  "console.log(environment.mobileNumber);",
+                  "",
+                  "var homeNumber = \"0\"+((Math.random()*10000000000).toString().substr(0,9));",
+                  "postman.setEnvironmentVariable(\"homeNumber\", homeNumber);",
+                  "console.log(environment.homeNumber);",
+                  "",
+                  "var workNumber = \"0\"+((Math.random()*10000000000).toString().substr(0,9));",
+                  "postman.setEnvironmentVariable(\"workNumber\", workNumber);",
+                  "console.log(environment.workNumber);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "Administrator",
+                "password": "manage",
+                "saveHelperData": true,
+                "showPassword": false
+              }
+            },
+            "url": "{{ESBURL}}/rest/aiaVitalityMembershipMaintenance.rs.updateMemberInfo.v1",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "cache-control",
+                "value": "no-cache",
+                "description": ""
+              },
+              {
+                "key": "content-type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "postman-token",
+                "value": "840692de-45a7-79c0-1e80-679ec3312e9e",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"members\": [\n    {\n      \"member\": {\n        \"title\": \"Ms\",\n        \"firstName\": \"{{firstName}}\",\n        \"lastName\": \"{{lastName}}\",\n        \"gender\": \"F\",\n        \"dateOfBirth\": \"07/12/1970\",\n        \"email\": \"{{Email}}\",\n        \"memberId\": \"{{memberID}}\",\n        \"address\": {\n          \"line1\": \"{{memberIdNumber}} {{firstName}} New Test Street\",\n          \"line2\": \"{{lastName}} Line 2\",\n          \"suburb\": \"Sydney\",\n          \"state\": \"NSW\",\n          \"country\": \"Australia\",\n          \"postcode\": \"2000\"\n        },\n        \"phone\": {\n          \"mobileNumber\": \"{{mobileNumber}}\",\n          \"homeNumber\": \"{{homeNumber}}\",\n          \"workNumber\": \"{{workNumber}}\"\n        }\n      }\n    }\n  ],\n  \"relationshipName\": \"GRESTFUNDMEMBER\",\n  \"uuid\": \"{{$guid}}\"\n}"
             },
             "description": "Generated from a curl request: \ncurl -X PUT \\\n  http://aaiwklt021512.aia.biz:5555/rest/aiaVitalityMembershipMaintenance.rs.updateMemberInfo.v1 \\\n  -H 'authorization: Basic QWRtaW5pc3RyYXRvcjoxUDF0eXRoMw==' \\\n  -H 'cache-control: no-cache' \\\n  -H 'content-type: application/json' \\\n  -H 'postman-token: 840692de-45a7-79c0-1e80-679ec3312e9e' \\\n  -d '{\n\t\\\"members\\\":[\n\t\t{\n\t\t\t\\\"member\\\":{\n\t\t\t\t\\\"title\\\":\\\"Mr\\\",\n\t\t\t\t\\\"firstName\\\":\\\"Charlie\\\",\n    \t\t\t\\\"lastName\\\":\\\"Chaplin\\\",\n    \t\t\t\\\"gender\\\":\\\"M\\\",\n    \t\t\t\\\"dateOfBirth\\\":\\\"07/12/1970\\\",\n    \t\t\t\\\"email\\\":\\\"tst1357426917@hotmail.com\\\",\n    \t\t\t\\\"memberId\\\":\\\"TESTNOM1357426917\\\",\n    \t\t\t\\\"address\\\":{\n    \t\t\t\t\\\"line1\\\":\\\"Drewrey Lane\\\",\n    \t\t\t\t\\\"line2\\\":\\\"\\\",\n    \t\t\t\t\\\"suburb\\\":\\\"London\\\",\n    \t\t\t\t\\\"state\\\":\\\"VIC\\\",\n    \t\t\t\t\\\"country\\\":\\\"Australia\\\",\n    \t\t\t\t\\\"postcode\\\":\\\"3000\\\"\n    \t\t\t},\n    \t\t\t\\\"phone\\\":{\n    \t\t\t\t\\\"mobileNumber\\\":\\\"0404040404\\\",\n    \t\t\t\t\\\"homeNumber\\\":\\\"0288911783\\\",\n    \t\t\t\t\\\"workNumber\\\":\\\"0288944513\\\"\n    \t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\\\"member\\\":{\n\t\t\t\t\\\"title\\\":\\\"Mr\\\",\n\t\t\t\t\\\"firstName\\\":\\\"Fred\\\",\n    \t\t\t\\\"lastName\\\":\\\"Lucy\\\",\n    \t\t\t\\\"gender\\\":\\\"M\\\",\n    \t\t\t\\\"dateOfBirth\\\":\\\"01/04/1986\\\",\n    \t\t\t\\\"memberId\\\":\\\"TESTNOM200940062\\\",\n    \t\t\t\\\"phone\\\":{\n    \t\t\t\t\\\"mobileNumber\\\":\\\"0400000000\\\",\n    \t\t\t\t\\\"homeNumber\\\":\\\"0213456789\\\",\n    \t\t\t\t\\\"workNumber\\\":\\\"0298765431\\\"\n    \t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\\\"member\\\":{\n\t\t\t\t\\\"title\\\":\\\"Mr\\\",\n\t\t\t\t\\\"firstName\\\":\\\"Dianne\\\",\n    \t\t\t\\\"lastName\\\":\\\"Gray\\\",\n    \t\t\t\\\"gender\\\":\\\"M\\\",\n    \t\t\t\\\"dateOfBirth\\\":\\\"08/13/1970\\\",\n    \t\t\t\\\"memberId\\\":\\\"TESTNOM14449914\\\",\n    \t\t\t\\\"address\\\":{\n    \t\t\t\t\\\"line1\\\":\\\"Changed Line1\\\",\n    \t\t\t\t\\\"line2\\\":\\\"Changed Line2\\\",\n    \t\t\t\t\\\"suburb\\\":\\\"Changed Suburb\\\",\n    \t\t\t\t\\\"state\\\":\\\"VIC\\\",\n    \t\t\t\t\\\"country\\\":\\\"Australia\\\",\n    \t\t\t\t\\\"postcode\\\":\\\"3100\\\"\n    \t\t\t},\n    \t\t\t\\\"phone\\\":{\n    \t\t\t\t\\\"mobileNumber\\\":\\\"0404040404\\\",\n    \t\t\t\t\\\"homeNumber\\\":\\\"0288911783\\\",\n    \t\t\t\t\\\"workNumber\\\":\\\"0288944513\\\"\n    \t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\\\"member\\\":{\n\t\t\t\t\\\"title\\\":\\\"Mr\\\",\n\t\t\t\t\\\"firstName\\\":\\\"Ge0rge\\\",\n    \t\t\t\\\"lastName\\\":\\\"Lucas\\\",\n    \t\t\t\\\"gender\\\":\\\"M\\\",\n    \t\t\t\\\"dateOfBirth\\\":\\\"08/13/1970\\\",\n    \t\t\t\\\"memberId\\\":\\\"TESTNOM-828628027\\\",\n    \t\t\t\\\"address\\\":{\n    \t\t\t\t\\\"line1\\\":\\\"Changed Line1\\\",\n    \t\t\t\t\\\"line2\\\":\\\"Changed Line2\\\",\n    \t\t\t\t\\\"suburb\\\":\\\"Changed Suburb\\\",\n    \t\t\t\t\\\"state\\\":\\\"VIC\\\",\n    \t\t\t\t\\\"country\\\":\\\"Australia\\\",\n    \t\t\t\t\\\"postcode\\\":\\\"3100\\\"\n    \t\t\t},\n    \t\t\t\\\"phone\\\":{\n    \t\t\t\t\\\"mobileNumber\\\":\\\"0404040404\\\",\n    \t\t\t\t\\\"homeNumber\\\":\\\"0288911783\\\",\n    \t\t\t\t\\\"workNumber\\\":\\\"0288944513\\\"\n    \t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\\\"member\\\":{\n\t\t\t\t\\\"title\\\":\\\"Mr\\\",\n\t\t\t\t\\\"firstName\\\":\\\"George\\\",\n    \t\t\t\\\"lastName\\\":\\\"Lucas\\\",\n    \t\t\t\\\"gender\\\":\\\"M\\\",\n    \t\t\t\\\"dateOfBirth\\\":\\\"08/13/1970\\\",\n    \t\t\t\\\"memberId\\\":\\\"TESTNOM1237596314\\\",\n    \t\t\t\\\"address\\\":{\n    \t\t\t\t\\\"line1\\\":\\\"Changed Line1\\\",\n    \t\t\t\t\\\"line2\\\":\\\"Changed Line2\\\",\n    \t\t\t\t\\\"suburb\\\":\\\"Changed Suburb\\\",\n    \t\t\t\t\\\"state\\\":\\\"VIC\\\",\n    \t\t\t\t\\\"country\\\":\\\"Australia\\\",\n    \t\t\t\t\\\"postcode\\\":\\\"3100\\\"\n    \t\t\t},\n    \t\t\t\\\"phone\\\":{\n    \t\t\t\t\\\"mobileNumber\\\":\\\"0404040404\\\",\n    \t\t\t\t\\\"homeNumber\\\":\\\"0288911783\\\",\n    \t\t\t\t\\\"workNumber\\\":\\\"0288944513\\\"\n    \t\t\t}\n\t\t\t}\n\t\t}\n\t\n\t],\n\t\\\"relationshipName\\\": \\\"GRESTFUNDMEMBER\\\",\n\t\\\"uuid\\\":\\\"599f9790-5c4f-13d4-8dd1-ffffffbaabca\\\"\n}'"
           },
