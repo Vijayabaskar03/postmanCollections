@@ -4237,7 +4237,7 @@
                   "tests[\"Verifying that Home Phone in staging VMMP DB is passed\"] = body.getMemberInfoStagingOutput.results[0].HOME_PHONE === environment.homeNumber;",
                   "tests[\"Verifying that Processed File staging VMMP DB is passed\"] = body.getMemberInfoStagingOutput.results[0].PROCESSED_FILE === null;",
                   "tests[\"Verifying that Relationship No. in staging VMMP DB is as passed\"] = body.getMemberInfoStagingOutput.results[0].RELATIONSHIP_NAME === environment.relationshipName;",
-                  "tests[\"Verifying that NOMINATION ID in staging VMMP DB is as passed\"] = body.getMemberInfoStagingOutput.results[0].NOMINATION_ID === \"601466578\";",
+                  "tests[\"Verifying that NOMINATION ID in staging VMMP DB is as passed\"] = body.getMemberInfoStagingOutput.results[0].NOMINATION_ID === environment.memberID;",
                   "tests[\"Verifying that Status in staging VMMP DB is as passed\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"VALID_SHORT_PROCESS\";",
                   "",
                   "}",
