@@ -12045,7 +12045,7 @@
                   "",
                   "try{",
                   "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "    tests[\"Verifying that Failure reason in staging VMMP DB is uuid-uuid must exist. Please re-submit with a valid transaction ID.\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"uuid-uuid must exist. Please re-submit with a valid transaction ID.\";",
+                  "    tests[\"Verifying that Failure reason in staging VMMP DB is uuid-uuid must exist. Please re-submit with a valid uuid.\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"uuid-uuid must exist. Please re-submit with a valid uuid.\";",
                   "}",
                   "catch(err){",
                   "  tests[\"Data in response does not exist\"] = false;  ",
