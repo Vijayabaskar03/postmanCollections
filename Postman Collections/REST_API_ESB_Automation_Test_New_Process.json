@@ -13323,7 +13323,7 @@
                   "",
                   "try{",
                   "    tests[\"Verifying that Status in staging VMMP DB is Invalid\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"INVALID\";",
-                  "    tests[\"Verifying that Failure reason in staging VMMP DB is lastName-Missing last name\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"gender-Gender must be entered\";",
+                  "    tests[\"Verifying that Failure reason in staging VMMP DB is gender-Gender is a mandatory field and must be provided\"] = body.getMemberInfoStagingOutput.results[0].FAILURE_REASON === \"gender-Gender is a mandatory field and must be provided\";",
                   "    tests[\"Verifying that Title in staging VMMP DB is null\"] = body.getMemberInfoStagingOutput.results[0].GENDER === null;",
                   "}",
                   "catch(err){",
