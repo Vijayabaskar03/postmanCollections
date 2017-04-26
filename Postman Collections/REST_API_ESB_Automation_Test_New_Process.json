@@ -3784,7 +3784,6 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "",
                   "//Generating Random Email address to pass into the data so that user duplication does not happen",
                   "function makeEmail() {",
                   "  var strValues = \"qpotvghysbnxui56z\";",
@@ -3800,10 +3799,9 @@
                   "    strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));",
                   "    strEmail = strEmail + strTmp;",
                   "  }",
-                  "  strEmail = strEmail + \"testpii.com\";",
+                  "  strEmail = strEmail + \"esbpii.com\";",
                   "  return strEmail;",
                   "}",
-                  "",
                   "",
                   "//Setting up the random email to an environment variable",
                   "postman.setEnvironmentVariable(\"Email\", makeEmail());",
@@ -3813,23 +3811,16 @@
                   "//Setting up the firstName to an environment variable",
                   "postman.setEnvironmentVariable(\"firstName\", firstName);",
                   "",
-                  "",
                   "var lastName = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);",
                   "",
                   "//Setting up the lastName to an environment variable",
                   "postman.setEnvironmentVariable(\"lastName\", lastName);",
                   "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  ""
+                  "//Incrementing and Setting up the memberID to an environment variable",
+                  "// var memberIdNumber = parseInt(environment.memberIdNumber)+1;",
+                  "var memberIdNumber = Date.now();",
+                  "postman.setEnvironmentVariable(\"memberIdNumber\", memberIdNumber);",
+                  "postman.setEnvironmentVariable(\"memberID\", \"RA\"+memberIdNumber.toString());"
                 ]
               }
             }
