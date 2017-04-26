@@ -4307,7 +4307,7 @@
                   "",
                   "tests[\"Verifying that Email in Core VMMP DB is as passed\"] = body.email === environment.Email;",
                   "tests[\"Verifying that First Name in Core VMMP DB is as passed\"] = body.firstName === environment.firstName;",
-                  "tests[\"Verifying that status is ONLINE_READY_TO_ENROL\"] = body.memberships[0].status.name === \"AWAITING_ACTIVATION\";",
+                  "tests[\"Verifying that status is AWAITING_ACTIVATION\"] = body.memberships[0].status.name === \"AWAITING_ACTIVATION\";",
                   "tests[\"Verifying that Last Name in Core VMMP DB is as passed\"] = body.lastName === environment.lastName;",
                   "tests[\"Verifying that Gender in Core VMMP DB is as passed\"] = body.gender === \"M\";",
                   "tests[\"Verifying that DOB in Core VMMP DB is as passed\"] = body.dateOfBirth === \"1970-01-01\";",
