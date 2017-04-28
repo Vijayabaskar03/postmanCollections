@@ -29104,26 +29104,15 @@
                   "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
                   "",
                   "//Verifing that the response time is less than what has been declared in enviroenment variable ",
-                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
+                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\"] = responseTime < environment.ResponseTime;",
                   "",
-                  "",
-                  "",
-                  "try{",
-                  "",
-                  "",
-                  "var body = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Verifying that Status in staging VMMP DB is as passed\"] = body.getMemberInfoStagingOutput.results[0].STATUS === \"VALID_SHORT_PROCESS\";",
-                  "",
-                  "}",
-                  "",
-                  "catch(err)",
-                  "",
-                  "{",
-                  "    ",
+                  "try {",
+                  "    var body = JSON.parse(responseBody);",
+                  "    tests[\"Verifying that Status in staging VMMP DB is INVALID\"] = body.getMemberInfoStagingOutput.results[1].STATUS === \"INVALID\";",
+                  "tests[\"Verifying that Failure Reason in staging VMMP DB is DUPLICATED_MEMBER\"] = body.getMemberInfoStagingOutput.results[1].FAILURE_REASON === \"DUPLICATED_MEMBER\";",
+                  "} catch (err) {",
                   "    tests[\"Data does not exist\"] = false;",
-                  "}",
-                  ""
+                  "}"
                 ]
               }
             }
