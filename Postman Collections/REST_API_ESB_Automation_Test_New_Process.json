@@ -28684,7 +28684,7 @@
         },
         {
           "_postman_id": "5be304e8-19a5-04d8-8869-5be3a739277b",
-          "name": "RA-153: Enrolling a Member - New Process ",
+          "name": "RA-153: Enrolling a Member - Duplicate in UMS",
           "event": [
             {
               "listen": "test",
