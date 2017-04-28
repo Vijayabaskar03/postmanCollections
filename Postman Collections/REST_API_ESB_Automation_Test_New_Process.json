@@ -28691,18 +28691,20 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "//Verifying that the service is returning response code 200 ",
-                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 200\"] = responseCode.code === 200;",
+                  "//Verifying that the service is returning response code 400 ",
+                  "tests[\"Verifying that hitting the service endpoint is returning with a Status code of 400\"] = responseCode.code === 400;",
+                  "",
+                  "//Verifing that the response time is less than what has been declared in enviroenment variable ",
+                  "tests[\"Response time is less than \" + environment.ResponseTime + \" ms and is \" + responseTime + \" ms\" ] = responseTime < environment.ResponseTime;",
                   "",
                   "var body = JSON.parse(responseBody);",
-                  "",
-                  "",
-                  "",
-                  "tests[\"Verifying that Enrolment is successfull\"] =  body.status === \"Data Accepted\";",
-                  "",
-                  "",
-                  "",
-                  ""
+                  "try{",
+                  "    tests[\"Verifying that the status is 'registration failed'\"] = body.status === \"registration failed\";",
+                  "    tests[\"Verifying that the failure reason is as expected\"] = body.failureReason === \"A member with these details already exists. If you do not have your login details, please call the AIA Vitality member services team on 1800 848 254.\";",
+                  "}",
+                  "catch(err){",
+                  "  tests[\"Data in response does not exist\"] = false;  ",
+                  "}"
                 ]
               }
             }
