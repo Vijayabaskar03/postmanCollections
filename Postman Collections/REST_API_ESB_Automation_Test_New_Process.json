@@ -1,7 +1,7 @@
 {
   "variables": [],
   "info": {
-    "name": "REST - ESB - API Automation",
+    "name": "REST - ESB - API Automation Test",
     "_postman_id": "54777009-d9a6-d677-a634-cc647af95b2e",
     "description": "Integration testing from ESB for REST API",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
