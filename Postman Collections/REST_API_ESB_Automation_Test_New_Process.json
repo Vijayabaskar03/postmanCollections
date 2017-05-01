@@ -29093,7 +29093,7 @@
         },
         {
           "_postman_id": "21e1c873-822e-646e-c062-93dc1208225c",
-          "name": "RA-110: Valid request should store all Data in VMMP staging table with status : VALID_SHORT_PROCESS",
+          "name": "A record should be created in Staging Table with status : DUPLICATED_MEMBER",
           "event": [
             {
               "listen": "test",
