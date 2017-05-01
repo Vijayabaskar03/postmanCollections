@@ -3752,7 +3752,7 @@
     },
     {
       "_postman_id": "069957e5-e6c1-b0a4-6ec5-624e268fe131",
-      "name": "RA-255 : ESB API to Provide PII Data copy",
+      "name": "RA-255 : ESB API to Provide PII Data",
       "description": "AC1:\r\nScenario: ESB API to return PII data\r\nGiven a member has been enrolled in Vitality\r\nWhen a request is sent to ESB with one of the following details:\r\n1. MemberID (Nomination ID) and RelationshipID\r\n2. Email\r\n3. EntityID\r\n4. AIAVitalityNumber\r\n5. EntityID and AIAVitalityNumber\r\nThen the corresponding PII data should be returned\r\nAC2:\r\nScenario: ESB API to return PII data without Address and only one phone number\r\nGiven a member has been enrolled in Vitality with only one phone number and no address details\r\nWhen a request is sent to ESB with one of the following details:\r\n1. MemberID (Nomination ID) and RelationshipID\r\n2. Email\r\n3. EntityID\r\n4. AIAVitalityNumber\r\n5. EntityID and AIAVitalityNumber\r\nThen the corresponding PII data should be returned\r\nAC3:\r\nScenario: 404 Not Found when incorrect values are sent in the request\r\nGiven a member has been enrolled in Vitality\r\nWhen a request is sent to ESB with incrrect value for one of the following types:\r\n1. MemberID (Nomination ID) and RelationshipID\r\n2. Email\r\n3. EntityID\r\n4. AIAVitalityNumber\r\n5. EntityID and AIAVitalityNumber\r\nThen a 404 Not Found status should be retuturned\r\nOptionsAttachments",
       "item": [
         {
