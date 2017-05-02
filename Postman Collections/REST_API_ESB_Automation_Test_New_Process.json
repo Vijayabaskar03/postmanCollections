@@ -1795,7 +1795,7 @@
                   "tests[\"Verifying that Gender in staging VMMP DB is as passed\"] = body.getMemberInfoStagingOutput.results[0].GENDER === \"M\";",
                   "tests[\"Verifying that DOB in staging VMMP DB is as passed\"] = body.getMemberInfoStagingOutput.results[0].DOB === \"1970-01-01\";",
                   "tests[\"Verifying that Mobile in staging VMMP DB is passed\"] = body.getMemberInfoStagingOutput.results[0].MOBILE === environment.mobileNumber;",
-                  "tests[\"Verifying that Address 1 in staging VMMP DB is passed\"] = body.getMemberInfoStagingOutput.results[0].MAILING_ADDRESS1 ===\"test street1\";",
+                  "tests[\"Verifying that Address 1 in staging VMMP DB is passed\"] = body.getMemberInfoStagingOutput.results[0].MAILING_ADDRESS1 === environment.memberIdNumber+\" Test Street\";",
                   "tests[\"Verifying that Address 2 in staging VMMP DB is is passed\"] = body.getMemberInfoStagingOutput.results[0].MAILING_ADDRESS2 === null;",
                   "tests[\"Verifying that Suburb in staging VMMP DB is is passed\"] = body.getMemberInfoStagingOutput.results[0].MAILING_CITY === \"Wiseman's Ferry\";",
                   "tests[\"Verifying that State in staging VMMP DB is is passed\"] = body.getMemberInfoStagingOutput.results[0].MAILING_STATE === \"VIC\";",
