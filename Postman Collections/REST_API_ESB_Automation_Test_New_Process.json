@@ -12739,7 +12739,7 @@
                   "tests[\"Verifying that First name is masked\"] = body['ns2:payload']['ns2:content']['ns2:userDetails']['ns2:firstName'] === \"AIAPIIDATA\"  ;",
                   "tests[\"Verifying that Last name is masked\"] = body['ns2:payload']['ns2:content']['ns2:userDetails']['ns2:lastName'] === \"AIAPIIDATA\"  ;",
                   "tests[\"Verifying that Email is masked\"] = body['ns2:payload']['ns2:content']['ns2:userDetails']['ns2:emailAddress'] === environment.aiaClientNumber+\".aiapiidata@aia.com\"  ;",
-                  "tests[\"Verifying that Full name is masked\"] = body['ns2:payload']['ns2:content']['ns2:userDetails']['ns2:fullName'] === \"AIAPIIDATA,A,MR.\"  ;",
+                  "tests[\"Verifying that Full name is masked\"] = body['ns2:payload']['ns2:content']['ns2:userDetails']['ns2:fullName'] === \"AIAPIIDATA,A,MR\"  ;",
                   "",
                   "",
                   "",
