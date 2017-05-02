@@ -13897,7 +13897,7 @@
         },
         {
           "_postman_id": "5584a0a7-9a1c-1066-d815-9740a48fe1f1",
-          "name": "RA-153: Activate member - New Process copy",
+          "name": "RA-153: Activate member - New Process",
           "event": [
             {
               "listen": "test",
