@@ -12757,7 +12757,7 @@
             }
           ],
           "request": {
-            "url": "{{testPackageURL}}/rest/restTestPackage.ws.login?entityNumber={{entityNumber}}&email={{Email}}",
+            "url": "{{testPackageURL}}/rest/restTestPackage.ws.login?entityNumber={{aiaVitalityId}}&email={{Email}}",
             "method": "GET",
             "header": [
               {
